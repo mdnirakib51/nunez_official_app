@@ -51,6 +51,14 @@ class AppStrings {
   static const String pleaseCheckOtp = "Please check the OTP code and try again";
   static const String gotIt = "Got it";
 
+  // Forgot Password
+  static const String forgotPassTitle = "Forgot Password";
+  static const String forgotPassSubTitle = "Enter your email/Phone and get one time passcode for verification";
+  static const String resetPassword = "Reset Password";
+  static const String setNewPassword = "Set New password";
+  static const String setNewPasswordSubTitle = "Let's get your account secured with a new password";
+  static const String newPassword = "New Password";
+
   // Validation
   static const String fieldRequired = "This field is required";
   static const String invalidEmail = "Please enter a valid email address";

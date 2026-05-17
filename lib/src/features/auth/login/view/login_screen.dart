@@ -72,9 +72,7 @@ class LoginScreen extends GetView<LoginController> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {
-                    // Navigate to forgot password
-                  },
+                  onPressed: () => Get.toNamed(AppRouteKeys.forgotPass),
                   child: const GlobalText(
                     str: AppStrings.forgotPassword,
                     fontSize: 14,

@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import '../../core_features/on_boarding/view/on_boarding_screen.dart';
 import '../../core_features/splash/view/splash_screen.dart';
+import '../../features/auth/forgot/binding/forgot_binding.dart';
+import '../../features/auth/forgot/view/forgot_password_scree.dart';
+import '../../features/auth/forgot/view/forgot_verification_screen.dart';
+import '../../features/auth/forgot/view/set_new_password_screen.dart';
 import '../../features/auth/login/binding/login_binding.dart';
 import '../../features/auth/login/view/login_screen.dart';
 import '../../features/auth/registration/binding/registration_binding.dart';
@@ -17,6 +21,7 @@ class AppRouteKeys {
   static const String login        = '/login';
   static const String registration = '/registration';
   static const String forgotPass   = '/forgot-password';
+  static const String forgotOtp    = '/forgot-otp';
   static const String resetPass    = '/reset-password';
   static const String otp          = '/otp';
 
@@ -40,6 +45,9 @@ class AppPages {
     GetPage(name: AppRouteKeys.onBoarding, page: () => const OnBoardingScreen()),
     GetPage(name: AppRouteKeys.registration, page: () => const RegistrationScreen(), binding: RegistrationBinding()),
     GetPage(name: AppRouteKeys.login, page: () => const LoginScreen(), binding: LoginBinding()),
+    GetPage(name: AppRouteKeys.forgotPass, page: () => const ForgotPassScreen(), binding: ForgotBinding()),
+    GetPage(name: AppRouteKeys.forgotOtp, page: () => const ForgotVerificationScreen(), binding: ForgotBinding()),
+    GetPage(name: AppRouteKeys.resetPass, page: () => const SetNewPasswordScreen(), binding: ForgotBinding()),
     GetPage(name: AppRouteKeys.otp, page: () => const VerificationScreen(), binding: VerificationBinding()),
     //
     // // ── Main ──
