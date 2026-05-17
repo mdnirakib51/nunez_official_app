@@ -25,7 +25,7 @@ class GlobalButtonWidget extends StatefulWidget {
 
   const GlobalButtonWidget({
     super.key,
-    this.height = 50,
+    this.height = 45,
     this.width,
     this.horizontal,
     this.vertical,

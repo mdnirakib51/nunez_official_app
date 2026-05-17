@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/app_strings.dart';
 import '../../domain/model/auth_model.dart';
 
@@ -9,8 +10,8 @@ class LoginController extends GetxController {
   LoginController({required this.authRepository});
 
   final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController(text: "md.rakib3248@gmail.com");
+  final passwordController = TextEditingController(text: "123456");
 
   final isLoading = false.obs;
 
@@ -40,6 +41,9 @@ class LoginController extends GetxController {
     try {
       // API call logic here
       log("Login attempted with: ${emailController.text}");
+      
+      // Navigate to Dashboard on successful login
+      Get.offAllNamed(AppRouteKeys.dashboard);
     } catch (e) {
       log("Error during login: ${e.toString()}");
     } finally {

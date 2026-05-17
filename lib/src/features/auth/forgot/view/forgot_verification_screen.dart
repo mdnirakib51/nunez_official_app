@@ -79,7 +79,7 @@ class ForgotVerificationScreen extends GetView<ForgotController> {
                                 } else if (value.isEmpty && index > 0) {
                                   controller.focusNodes[index - 1].requestFocus();
                                 }
-                                if (index == 5 && value.length == 1) {
+                                if (controller.otpValues.where((v) => v.isNotEmpty).length == 6) {
                                   controller.verifyOTP();
                                 }
                               },

@@ -85,7 +85,14 @@ class ForgotController extends GetxController {
       isLoading.value = true;
       Future.delayed(const Duration(seconds: 1), () {
         isLoading.value = false;
-        Get.offAllNamed(AppRouteKeys.login);
+        Get.toNamed(
+          AppRouteKeys.congratulation,
+          arguments: {
+            'title': 'Congratulations',
+            'subTitle': 'Your password has been successfully changed.',
+            'onTap': () => Get.offAllNamed(AppRouteKeys.login),
+          },
+        );
       });
     }
   }

@@ -52,7 +52,7 @@ class ToastService {
       ..showSnackBar(snackBar);
   }
 
-  /// Show success message
+  /// Show congratulation message
   static void success(String message, {IconData? icon}) {
     show(message, type: ToastType.success, icon: icon);
   }

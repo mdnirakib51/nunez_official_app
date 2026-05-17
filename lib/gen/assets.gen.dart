@@ -18,12 +18,20 @@ class $AssetsAppIconsGen {
   AssetGenImage get appLogoIc =>
       const AssetGenImage('assets/app_icons/app_logo_ic.png');
 
+  /// Directory path: assets/app_icons/buttom_nav_ic
+  $AssetsAppIconsButtomNavIcGen get buttomNavIc =>
+      const $AssetsAppIconsButtomNavIcGen();
+
+  /// File path: assets/app_icons/congratulation_ic.png
+  AssetGenImage get congratulationIc =>
+      const AssetGenImage('assets/app_icons/congratulation_ic.png');
+
   /// File path: assets/app_icons/onboard_email.png
   AssetGenImage get onboardEmail =>
       const AssetGenImage('assets/app_icons/onboard_email.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appLogoIc, onboardEmail];
+  List<AssetGenImage> get values => [appLogoIc, congratulationIc, onboardEmail];
 }
 
 class $AssetsAppImagesGen {
@@ -109,6 +117,51 @@ class $AssetsSocialIcGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [facebookIc, googleIc, linkedin];
+}
+
+class $AssetsAppIconsButtomNavIcGen {
+  const $AssetsAppIconsButtomNavIcGen();
+
+  /// File path: assets/app_icons/buttom_nav_ic/activity_ic.png
+  AssetGenImage get activityIc =>
+      const AssetGenImage('assets/app_icons/buttom_nav_ic/activity_ic.png');
+
+  /// File path: assets/app_icons/buttom_nav_ic/categories_active_ic.png
+  AssetGenImage get categoriesActiveIc => const AssetGenImage(
+    'assets/app_icons/buttom_nav_ic/categories_active_ic.png',
+  );
+
+  /// File path: assets/app_icons/buttom_nav_ic/categories_ic.png
+  AssetGenImage get categoriesIc =>
+      const AssetGenImage('assets/app_icons/buttom_nav_ic/categories_ic.png');
+
+  /// File path: assets/app_icons/buttom_nav_ic/home_active_ic.png
+  AssetGenImage get homeActiveIc =>
+      const AssetGenImage('assets/app_icons/buttom_nav_ic/home_active_ic.png');
+
+  /// File path: assets/app_icons/buttom_nav_ic/home_ic.png
+  AssetGenImage get homeIc =>
+      const AssetGenImage('assets/app_icons/buttom_nav_ic/home_ic.png');
+
+  /// File path: assets/app_icons/buttom_nav_ic/profile_active_ic.png
+  AssetGenImage get profileActiveIc => const AssetGenImage(
+    'assets/app_icons/buttom_nav_ic/profile_active_ic.png',
+  );
+
+  /// File path: assets/app_icons/buttom_nav_ic/profile_ic.png
+  AssetGenImage get profileIc =>
+      const AssetGenImage('assets/app_icons/buttom_nav_ic/profile_ic.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    activityIc,
+    categoriesActiveIc,
+    categoriesIc,
+    homeActiveIc,
+    homeIc,
+    profileActiveIc,
+    profileIc,
+  ];
 }
 
 class Assets {

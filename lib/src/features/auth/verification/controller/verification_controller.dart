@@ -61,7 +61,7 @@ class VerificationController extends GetxController {
     // Simulate API call
     Future.delayed(const Duration(seconds: 2), () {
       isLoading.value = false;
-      // Handle success or error
+      // Handle congratulation or error
     });
   }
 
