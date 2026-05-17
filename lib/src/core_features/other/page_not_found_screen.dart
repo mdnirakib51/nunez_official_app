@@ -27,7 +27,7 @@ class PageNotFoundScreen extends StatelessWidget {
               const Spacer(),
               // 404 Icon
               GlobalImageLoader(
-                imagePath: Assets.appIcons.img1.path,
+                imagePath: Assets.appIcons.pageNotFoundIc.path,
                 height: 150,
                 width: 150,
                 fit: BoxFit.contain,

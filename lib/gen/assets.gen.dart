@@ -22,27 +22,44 @@ class $AssetsAppIconsGen {
   $AssetsAppIconsButtomNavIcGen get buttomNavIc =>
       const $AssetsAppIconsButtomNavIcGen();
 
+  /// File path: assets/app_icons/cart_ic.png
+  AssetGenImage get cartIc =>
+      const AssetGenImage('assets/app_icons/cart_ic.png');
+
   /// File path: assets/app_icons/congratulation_ic.png
   AssetGenImage get congratulationIc =>
       const AssetGenImage('assets/app_icons/congratulation_ic.png');
 
   /// File path: assets/app_icons/no_internet_connection_ic.png
-  AssetGenImage get img => const AssetGenImage('assets/app_icons/no_internet_connection_ic.png');
+  AssetGenImage get noInternetConnectionIc =>
+      const AssetGenImage('assets/app_icons/no_internet_connection_ic.png');
 
-  /// File path: assets/app_icons/page_not_found_ic.png
-  AssetGenImage get img1 => const AssetGenImage('assets/app_icons/page_not_found_ic.png');
+  /// File path: assets/app_icons/notification_ic.png
+  AssetGenImage get notificationIc =>
+      const AssetGenImage('assets/app_icons/notification_ic.png');
 
   /// File path: assets/app_icons/onboard_email.png
   AssetGenImage get onboardEmail =>
       const AssetGenImage('assets/app_icons/onboard_email.png');
 
+  /// File path: assets/app_icons/page_not_found_ic.png
+  AssetGenImage get pageNotFoundIc =>
+      const AssetGenImage('assets/app_icons/page_not_found_ic.png');
+
+  /// File path: assets/app_icons/search_ic.png
+  AssetGenImage get searchIc =>
+      const AssetGenImage('assets/app_icons/search_ic.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     appLogoIc,
+    cartIc,
     congratulationIc,
-    img,
-    img1,
+    noInternetConnectionIc,
+    notificationIc,
     onboardEmail,
+    pageNotFoundIc,
+    searchIc,
   ];
 }
 
@@ -72,6 +89,17 @@ class $AssetsAppImagesGen {
     onBoard3,
     onBoardBackImg,
   ];
+}
+
+class $AssetsDummyImgGen {
+  const $AssetsDummyImgGen();
+
+  /// File path: assets/dummy_img/home_dummy_img1.png
+  AssetGenImage get homeDummyImg1 =>
+      const AssetGenImage('assets/dummy_img/home_dummy_img1.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [homeDummyImg1];
 }
 
 class $AssetsRequiredSrcGen {
@@ -181,6 +209,7 @@ class Assets {
 
   static const $AssetsAppIconsGen appIcons = $AssetsAppIconsGen();
   static const $AssetsAppImagesGen appImages = $AssetsAppImagesGen();
+  static const $AssetsDummyImgGen dummyImg = $AssetsDummyImgGen();
   static const $AssetsRequiredSrcGen requiredSrc = $AssetsRequiredSrcGen();
   static const $AssetsSocialIcGen socialIc = $AssetsSocialIcGen();
 }

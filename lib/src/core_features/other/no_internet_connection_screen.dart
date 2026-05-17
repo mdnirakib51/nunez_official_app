@@ -27,7 +27,7 @@ class NoInternetConnectionScreen extends StatelessWidget {
               const Spacer(),
               // No Internet Icon
               GlobalImageLoader(
-                imagePath: Assets.appIcons.img.path,
+                imagePath: Assets.appIcons.noInternetConnectionIc.path,
                 height: 150,
                 width: 150,
                 fit: BoxFit.contain,

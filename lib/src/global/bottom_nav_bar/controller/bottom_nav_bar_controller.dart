@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../gen/assets.gen.dart';
+import '../../../features/home/view/home_screen.dart';
 
 // ─── Nav Item Model ───────────────────────────────────────────────────────────
 class NavItemModel {
@@ -45,9 +46,9 @@ class BottomNavBarController extends GetxController {
 
   // ── Screens ────────────────────────────────────────────────────────────────
   final List<Widget> screens = [
-    const Scaffold(body: Center(child: Text("Home Screen"))),
+    const HomeScreen(),
     const Scaffold(body: Center(child: Text("Categories Screen"))),
-    const SizedBox.shrink(), // Placeholder for middle button
+    const SizedBox.shrink(),
     const Scaffold(body: Center(child: Text("Activity Screen"))),
     const Scaffold(body: Center(child: Text("Profile Screen"))),
   ];

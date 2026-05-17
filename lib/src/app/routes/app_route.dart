@@ -15,6 +15,7 @@ import '../../features/auth/registration/binding/registration_binding.dart';
 import '../../features/auth/registration/view/registration_screen.dart';
 import '../../features/auth/verification/binding/verification_binding.dart';
 import '../../features/auth/verification/view/verification_screen.dart';
+import '../../features/home/binding/home_binding.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -63,6 +64,13 @@ class AppPages {
     GetPage(name: AppRouteKeys.otp, page: () => const VerificationScreen(), binding: VerificationBinding()),
     
     // ── Main ──
-    GetPage(name: AppRouteKeys.dashboard, page: () => const BottomNavBar(), binding: BottomNavBarBinding()),
+    GetPage(
+      name: AppRouteKeys.dashboard,
+      page: () => const BottomNavBar(),
+      bindings: [
+        BottomNavBarBinding(),
+        HomeBinding(),
+      ],
+    ),
   ];
 }
