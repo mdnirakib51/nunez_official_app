@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../core_features/on_boarding/view/on_boarding_screen.dart';
 import '../../core_features/splash/view/splash_screen.dart';
 // import screens...
 
@@ -31,9 +32,9 @@ class AppPages {
 
     // ── Start ──
     GetPage(name: AppRouteKeys.splash, page: () => const SplashScreen()),
+    GetPage(name: AppRouteKeys.onBoarding, page: () => const OnBoardingScreen()),
     // GetPage(name: AppRouteKeys.login, page: () => const LoginScreen()),
     // GetPage(name: AppRouteKeys.registration, page: () => const RegistrationScreen()),
-    // GetPage(name: AppRouteKeys.onBoarding, page: () => const OnBoardingScreen()),
     //
     // // ── Main ──
     // GetPage(name: AppRouteKeys.dashboard, page: () => const BottomNavBar()),

@@ -72,13 +72,8 @@ class ColorRes {
   static const Color textHint = Color(0xFFBBBBBB);
 
   // ==/@ App Color @/==
-
-  // static const Color appColor = Color(0xFF0A67DE);
-  // static const Color appColor = Color(0xFF7738C8);
-  // static const Color appColor = Color(0xFF0077B6);
-  // static const Color appColor = Color(0xFF0096C7);
-  static const Color appButtonColor = Color(0xFF0096C7);
-  static const Color appColor = Color(0xFFEF3425);
+  static const Color appColor = Color(0xFFFF5B03);
+  static const Color appButtonColor = Color(0xFFFF5B03);
   static const Color appBackColor = Color(0xFFFFFFFF);
   static const Color appRedColor = Color(0xFFD20820);
   static const Color textColor = Color(0xFF004080);

@@ -18,8 +18,12 @@ class $AssetsAppIconsGen {
   AssetGenImage get appLogoIc =>
       const AssetGenImage('assets/app_icons/app_logo_ic.png');
 
+  /// File path: assets/app_icons/onboard_email.png
+  AssetGenImage get onboardEmail =>
+      const AssetGenImage('assets/app_icons/onboard_email.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appLogoIc];
+  List<AssetGenImage> get values => [appLogoIc, onboardEmail];
 }
 
 class $AssetsAppImagesGen {

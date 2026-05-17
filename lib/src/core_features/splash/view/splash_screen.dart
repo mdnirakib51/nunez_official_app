@@ -14,14 +14,13 @@ class SplashScreen extends StatelessWidget {
     Get.put(SplashController());
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0A12),
-      body: Scaffold(
-        backgroundColor: ColorRes.appBackColor,
-        body: Center(
-          child: GlobalImageLoader(
-            imagePath: Assets.appIcons.appLogoIc.path,
-            height: 150,
-          ),
+      backgroundColor: ColorRes.appBackColor,
+      body: Center(
+        child: GlobalImageLoader(
+          imagePath: Assets.appIcons.appLogoIc.path,
+          height: 120,
+          width: 120,
+          fit: BoxFit.contain,
         ),
       ),
     );

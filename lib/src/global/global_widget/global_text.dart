@@ -50,7 +50,7 @@ class GlobalText extends StatelessWidget {
       overflow: overflow,
       textAlign: textAlign,
       softWrap: softWrap,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.inter(
         color: color ?? ColorRes.black,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -126,7 +126,7 @@ class GlobalText extends StatelessWidget {
 //             overflow: overflow,
 //             textAlign: textAlign,
 //             softWrap: softWrap,
-//             style: GoogleFonts.roboto(
+//             style: GoogleFonts.inter(
 //               color: color,
 //               fontSize: fontSize,
 //               fontWeight: fontWeight,

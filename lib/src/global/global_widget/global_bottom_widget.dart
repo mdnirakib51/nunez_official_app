@@ -80,7 +80,7 @@ class _GlobalButtonWidgetState extends State<GlobalButtonWidget> {
             fontWeight: FontWeight.w500,
             textAlign: TextAlign.center,
             height: 0.10,
-            fontFamily: 'Rubik',
+            fontFamily: 'Inter',
           ) : Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -88,7 +88,7 @@ class _GlobalButtonWidgetState extends State<GlobalButtonWidget> {
                 imagePath: widget.img ?? "",
                 height: 22,
                 width: 22,
-                color: widget.imgColor ?? ColorRes.grey,
+                // color: widget.imgColor ?? Colors.transparent,
               ),
               sizedBoxW(10),
               GlobalText(
@@ -98,7 +98,7 @@ class _GlobalButtonWidgetState extends State<GlobalButtonWidget> {
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.center,
                 height: 0.10,
-                fontFamily: 'Rubik',
+                fontFamily: 'Inter',
               ),
             ],
           ),
