@@ -4,6 +4,7 @@ import 'core_functionality/constants/app_config.dart';
 import 'core_functionality/network/http_client/request_handler.dart';
 import 'core_functionality/storage/local_storage.dart';
 import 'core_functionality/storage/storage_controller.dart';
+import 'features/auth/domain/model/auth_model.dart';
 import 'global/utils/device_info.dart';
 
 Future<void> init() async {
@@ -16,6 +17,8 @@ Future<void> init() async {
 
   RequestHandler requestHandler = await RequestHandler.create();
   Get.put<RequestHandler>(requestHandler, permanent: true);
+
+  Get.put(AuthRepository(), permanent: true);
 
   AppUrlExtension.initializeUrl(defaultUrlLink: ApiBaseUrl.isDev);
 

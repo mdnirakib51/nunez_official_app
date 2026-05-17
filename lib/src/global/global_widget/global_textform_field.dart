@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/colors_resources.dart';
 import '../constants/input_decoration.dart';
 import 'global_sized_box.dart';
+import 'global_text.dart';
 
 class GlobalTextFormField extends StatefulWidget {
   final bool? enabled;
@@ -100,45 +101,32 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
         widget.isRequired == false ?
         widget.titleText == null
             ? const SizedBox.shrink()
-            : Text(widget.titleText ?? "",
-          style: widget.titleStyle
-              ?? GoogleFonts.roboto(
-                  color: ColorRes.black,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700
-              ),
+            : GlobalText(
+          str: widget.titleText ?? "",
+          color: widget.titleStyle?.color ?? ColorRes.black,
+          fontSize: widget.titleStyle?.fontSize ?? 12,
+          fontWeight: widget.titleStyle?.fontWeight ?? FontWeight.w500,
         ) : SizedBox(
           child: Row(
             children: [
               widget.titleText == null
                   ? const SizedBox.shrink()
-                  : Text(widget.titleText ?? "",
-                style: widget.titleStyle
-                    ?? GoogleFonts.roboto(
-                        color: ColorRes.black,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700
-                    ),
+                  : GlobalText(
+                str: widget.titleText ?? "",
+                color: widget.titleStyle?.color ?? ColorRes.black,
+                fontSize: widget.titleStyle?.fontSize ?? 12,
+                fontWeight: widget.titleStyle?.fontWeight ?? FontWeight.w500,
               ),
               sizedBoxW(2),
-              Text("*",
-                style: GoogleFonts.roboto(
-                    color: ColorRes.red,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700
-                ),
+              const GlobalText(
+                str: "*",
+                color: ColorRes.red,
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
               ),
             ],
           ),
         ),
-        //   : GlobalText(
-        // str: widget.titleText ?? "",
-        // color: ColorRes.textColor,
-        // fontSize: 16,
-        // fontWeight: FontWeight.w400,
-        // textAlign: TextAlign.center,
-        // fontFamily: 'Rubik',
-        // ),
         /// When I give the title text it will take the sizedbox
         widget.titleText != null ? const SizedBox(height: 5) : const SizedBox.shrink(),
         TextFormField(
@@ -157,26 +145,25 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
           textInputAction: widget.textInputAction,
           onFieldSubmitted: widget.onFieldSubmitted,
           onChanged: (text)=> widget.onChanged != null ? widget.onChanged!(text) : widget.onChanged,
+          style: widget.style ?? GoogleFonts.inter(
+              color: ColorRes.black,
+              fontSize: 12,
+              fontWeight: FontWeight.w400
+          ),
           decoration: widget.decoration?.copyWith(
             isDense: widget.isDense,
             hintText: widget.hintText,
-            hintStyle: widget.hintTextStyle ?? GoogleFonts.roboto(
+            hintStyle: widget.hintTextStyle ?? GoogleFonts.inter(
                 fontSize: 12,
                 color: ColorRes.white200,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
             ),
-            // const TextStyle(
-            //     fontSize: 12,
-            //     color: ColorRes.white200,
-            //     fontWeight: FontWeight.w400,
-            //     fontFamily: 'Rubik'
-            // ),
             contentPadding: widget.contentPadding,
             labelText: widget.labelText,
-            labelStyle: widget.labelTextStyle ?? GoogleFonts.roboto(
+            labelStyle: widget.labelTextStyle ?? GoogleFonts.inter(
                 fontSize: 12,
                 color: ColorRes.deep300,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
             ),
             prefixIcon: widget.prefixIcon,
             filled: widget.filled,
@@ -200,16 +187,18 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
           ) ?? inputDecoration.copyWith(
             isDense: widget.isDense,
             hintText: widget.hintText,
-            hintStyle: widget.hintTextStyle ?? GoogleFonts.roboto(
+            hintStyle: widget.hintTextStyle ?? const TextStyle(
                 fontSize: 12,
                 color: ColorRes.white200,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Inter'
             ),
             labelText: widget.labelText,
-            labelStyle: widget.labelTextStyle ?? GoogleFonts.roboto(
+            labelStyle: widget.labelTextStyle ?? const TextStyle(
                 fontSize: 12,
                 color: ColorRes.white200,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Inter'
             ),
             prefixIcon: widget.prefixIcon,
             // filled: true,
@@ -242,11 +231,6 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
             }
             return null;
           },
-          style: widget.style ?? GoogleFonts.roboto(
-            color: ColorRes.black,
-            fontWeight: FontWeight.w400,
-            fontSize: 13,
-          ),
         ),
       ],
     );

@@ -20,4 +20,14 @@ class AppStrings {
   static const String termsOfServiceSpanish = "Términos de servicio";
   static const String andSpanish = " y nuestra ";
   static const String privacyPolicySpanish = "Política de privacidad.";
+
+  // Signup Screen
+  static const String signup = "Signup";
+  static const String fullName = "Full Name";
+  static const String enterName = "Enter name";
+  static const String emailAddress = "Email Address";
+  static const String enterEmail = "Enter email address";
+  static const String password = "Password";
+  static const String enterPassword = "Enter password";
+  static const String signUp = "Sign up";
 }

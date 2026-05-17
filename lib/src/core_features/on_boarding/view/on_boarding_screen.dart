@@ -88,7 +88,7 @@ class OnBoardingScreen extends StatelessWidget {
                   GlobalButtonWidget(
                     str: AppStrings.signUpWithEmail,
                     img: Assets.appIcons.onboardEmail.path,
-                    onTap: () {},
+                    onTap: () => Get.toNamed(AppRouteKeys.registration),
                     buttomColor: ColorRes.appButtonColor,
                     textColor: ColorRes.white,
                     imgColor: ColorRes.white,

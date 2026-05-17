@@ -21,6 +21,7 @@ class GlobalButtonWidget extends StatefulWidget {
   final double? textSize;
   final Color? borderColor;
   final Color? foregroundColor;
+  final Widget? child;
 
   const GlobalButtonWidget({
     super.key,
@@ -38,7 +39,8 @@ class GlobalButtonWidget extends StatefulWidget {
     this.imgColor,
     this.textSize,
     this.borderColor,
-    this.foregroundColor
+    this.foregroundColor,
+    this.child,
   });
 
   @override
