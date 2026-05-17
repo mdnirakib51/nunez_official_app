@@ -48,7 +48,7 @@ class ResponseWrapper<T> {
     return main;
   }
 
-  /// Check if congratulation
+  /// Check if other
   bool get isSuccess {
     final c = code ?? 0;
     return c >= 200 && c < 300;

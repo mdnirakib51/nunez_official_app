@@ -26,12 +26,24 @@ class $AssetsAppIconsGen {
   AssetGenImage get congratulationIc =>
       const AssetGenImage('assets/app_icons/congratulation_ic.png');
 
+  /// File path: assets/app_icons/no_internet_connection_ic.png
+  AssetGenImage get img => const AssetGenImage('assets/app_icons/no_internet_connection_ic.png');
+
+  /// File path: assets/app_icons/page_not_found_ic.png
+  AssetGenImage get img1 => const AssetGenImage('assets/app_icons/page_not_found_ic.png');
+
   /// File path: assets/app_icons/onboard_email.png
   AssetGenImage get onboardEmail =>
       const AssetGenImage('assets/app_icons/onboard_email.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appLogoIc, congratulationIc, onboardEmail];
+  List<AssetGenImage> get values => [
+    appLogoIc,
+    congratulationIc,
+    img,
+    img1,
+    onboardEmail,
+  ];
 }
 
 class $AssetsAppImagesGen {

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
-import '../../core_features/congratulation/congratulations_screen.dart';
+import '../../core_features/other/congratulations_screen.dart';
 import '../../core_features/on_boarding/view/on_boarding_screen.dart';
 import '../../core_features/splash/view/splash_screen.dart';
 import '../../features/auth/forgot/binding/forgot_binding.dart';
@@ -26,7 +26,7 @@ class AppRouteKeys {
   static const String forgotPass   = '/forgot-password';
   static const String forgotOtp    = '/forgot-otp';
   static const String resetPass    = '/reset-password';
-  static const String congratulation = '/congratulation';
+  static const String congratulation = '/other';
   static const String otp          = '/otp';
 
   static const String dashboard    = '/dashboard';
