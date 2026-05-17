@@ -6,8 +6,11 @@ import '../../../global/global_widget/global_image_loader.dart';
 import '../../../global/global_widget/global_sized_box.dart';
 import '../../../global/global_widget/global_text.dart';
 import '../controller/home_controller.dart';
+import 'tab/electronics_tab.dart';
+import 'tab/fashion_tab.dart';
 import 'tab/for_you_tab.dart';
 import 'tab/toys_hobbies_tab.dart';
+import 'tab/video_games_tab.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
@@ -99,12 +102,12 @@ class HomeScreen extends GetView<HomeController> {
       ),
       body: TabBarView(
         controller: controller.tabController,
-        children: [
-          const ForYouTab(),
-          const ForYouTab(),
-          const Center(child: Text("Electronics")),
-          const Center(child: Text("Video Games")),
-          const Center(child: Text("Fashion")),
+        children: const [
+          ForYouTab(),
+          ToysHobbiesTab(),
+          ElectronicsTab(),
+          VideoGamesTab(),
+          FashionTab(),
         ],
       ),
     );

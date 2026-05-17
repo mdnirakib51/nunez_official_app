@@ -98,8 +98,12 @@ class $AssetsDummyImgGen {
   AssetGenImage get homeDummyImg1 =>
       const AssetGenImage('assets/dummy_img/home_dummy_img1.png');
 
+  /// File path: assets/dummy_img/home_dummy_img2.png
+  AssetGenImage get homeDummyImg2 =>
+      const AssetGenImage('assets/dummy_img/home_dummy_img2.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [homeDummyImg1];
+  List<AssetGenImage> get values => [homeDummyImg1, homeDummyImg2];
 }
 
 class $AssetsRequiredSrcGen {

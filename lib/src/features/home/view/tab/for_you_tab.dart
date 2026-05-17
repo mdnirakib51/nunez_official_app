@@ -1,134 +1,217 @@
+
 import 'package:flutter/material.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
+import '../widgets/home_item_card.dart';
 
 class ForYouTab extends StatelessWidget {
   const ForYouTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(15),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 15,
-        childAspectRatio: 0.58,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(15),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
+              childAspectRatio: 0.50,
+            ),
+            itemCount: 4, // Dummy count
+            itemBuilder: (context, index) {
+              return const HomeItemCard();
+            },
+          ),
+
+          const _UpcomingSection(),
+          sizedBoxH(10),
+        ],
       ),
-      itemCount: 4, // Dummy count
-      itemBuilder: (context, index) {
-        return const _HomeItemCard();
-      },
     );
   }
 }
 
-class _HomeItemCard extends StatelessWidget {
-  const _HomeItemCard();
+class _UpcomingSection extends StatelessWidget {
+  const _UpcomingSection();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // User Info
-        Row(
-          children: [
-            const CircleAvatar(
-              radius: 14,
-              backgroundColor: ColorRes.grey,
-              backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=1"), // Dummy avatar
+    return Container(
+      width: double.infinity,
+      color: Color(0xFF6E6E6E),
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const GlobalText(
+                  str: "Upcoming Toys & Hobbies",
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: ColorRes.white,
+                ),
+                Row(
+                  children: [
+                    const GlobalText(
+                      str: "Show All",
+                      fontSize: 14,
+                      color: ColorRes.white,
+                    ),
+                    sizedBoxW(5),
+                    const Icon(Icons.arrow_forward_ios, size: 12, color: ColorRes.white),
+                  ],
+                ),
+              ],
             ),
-            sizedBoxW(8),
-            const Expanded(
-              child: GlobalText(
-                str: "Asadur Yead",
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                overflow: TextOverflow.ellipsis,
-              ),
+          ),
+          sizedBoxH(15),
+          SizedBox(
+            height: 330, // Height for horizontal cards
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return const _UpcomingItemCard();
+              },
             ),
-          ],
-        ),
-        sizedBoxH(8),
-        // Product Image with Badges
-        Expanded(
-          child: Stack(
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _UpcomingItemCard extends StatelessWidget {
+  const _UpcomingItemCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 170,
+      margin: const EdgeInsets.only(right: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // User Info
+          Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: GlobalImageLoader(
-                  imagePath: Assets.dummyImg.homeDummyImg1.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+              const CircleAvatar(
+                radius: 12,
+                backgroundColor: ColorRes.grey,
+                backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=12"),
               ),
-              // Live Badge
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.red.withValues(alpha: 0.8),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const GlobalText(
-                        str: "Live • 84",
-                        color: ColorRes.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              // Free Shipping Badge
-              Positioned(
-                bottom: 8,
-                left: 8,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: ColorRes.indigo.withValues(alpha: 0.8),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: const GlobalText(
-                    str: "Free Shipping",
-                    color: ColorRes.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w500,
-                  ),
+              sizedBoxW(6),
+              const Expanded(
+                child: GlobalText(
+                  str: "Asadur Yead",
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: ColorRes.white,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
           ),
-        ),
-        sizedBoxH(8),
-        // Title
-        const GlobalText(
-          str: "500 Items Starts \$1 Electronics General Items",
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-        sizedBoxH(4),
-        // Category
-        const GlobalText(
-          str: "Toys & Hobbies",
-          fontSize: 11,
-          color: ColorRes.green,
-          fontWeight: FontWeight.w500,
-        ),
-      ],
+          sizedBoxH(8),
+          // Product Image with Badges
+          Expanded(
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: GlobalImageLoader(
+                    imagePath: Assets.dummyImg.homeDummyImg1.path,
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // Date/Time Badge
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: ColorRes.white,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const GlobalText(
+                      str: "Tomorrow,\n10:30 PM",
+                      color: ColorRes.black,
+                      fontSize: 9,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                // Bookmark Icon
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: ColorRes.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.bookmark_border, size: 16, color: ColorRes.black),
+                  ),
+                ),
+                // Free Shipping Badge
+                Positioned(
+                  bottom: 8,
+                  left: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: ColorRes.indigo.withOpacity(0.8),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const GlobalText(
+                      str: "Free Shipping",
+                      color: ColorRes.white,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          sizedBoxH(8),
+          // Title
+          const GlobalText(
+            str: "500 Items Starts \$1 Electronics General Items",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: ColorRes.white,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          sizedBoxH(4),
+          // Category
+          const GlobalText(
+            str: "Electronics",
+            fontSize: 10,
+            color: ColorRes.green,
+            fontWeight: FontWeight.w500,
+          ),
+        ],
+      ),
     );
   }
 }
+
