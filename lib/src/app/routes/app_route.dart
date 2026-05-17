@@ -2,8 +2,12 @@ import 'package:get/get.dart';
 
 import '../../core_features/on_boarding/view/on_boarding_screen.dart';
 import '../../core_features/splash/view/splash_screen.dart';
+import '../../features/auth/login/binding/login_binding.dart';
+import '../../features/auth/login/view/login_screen.dart';
 import '../../features/auth/registration/binding/registration_binding.dart';
 import '../../features/auth/registration/view/registration_screen.dart';
+import '../../features/auth/verification/binding/verification_binding.dart';
+import '../../features/auth/verification/view/verification_screen.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -35,7 +39,8 @@ class AppPages {
     GetPage(name: AppRouteKeys.splash, page: () => const SplashScreen()),
     GetPage(name: AppRouteKeys.onBoarding, page: () => const OnBoardingScreen()),
     GetPage(name: AppRouteKeys.registration, page: () => const RegistrationScreen(), binding: RegistrationBinding()),
-    // GetPage(name: AppRouteKeys.login, page: () => const LoginScreen()),
+    GetPage(name: AppRouteKeys.login, page: () => const LoginScreen(), binding: LoginBinding()),
+    GetPage(name: AppRouteKeys.otp, page: () => const VerificationScreen(), binding: VerificationBinding()),
     //
     // // ── Main ──
     // GetPage(name: AppRouteKeys.dashboard, page: () => const BottomNavBar()),

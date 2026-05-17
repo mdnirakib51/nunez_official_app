@@ -25,7 +25,7 @@ class GlobalButtonWidget extends StatefulWidget {
 
   const GlobalButtonWidget({
     super.key,
-    this.height = 57,
+    this.height = 50,
     this.width,
     this.horizontal,
     this.vertical,
@@ -74,7 +74,7 @@ class _GlobalButtonWidgetState extends State<GlobalButtonWidget> {
           minimumSize: Size(widget.width ?? size(context).width, widget.height),
         ),
         child: Center(
-          child: widget.img == null
+          child: widget.child ?? (widget.img == null
               ? GlobalText(
             str: widget.str,
             color: widget.textColor ?? ColorRes.white,
@@ -103,7 +103,7 @@ class _GlobalButtonWidgetState extends State<GlobalButtonWidget> {
                 fontFamily: 'Inter',
               ),
             ],
-          ),
+          )),
         ),
       ),
     );

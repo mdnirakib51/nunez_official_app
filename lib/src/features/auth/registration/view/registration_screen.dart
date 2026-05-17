@@ -53,6 +53,8 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        textInputAction: TextInputAction.next,
+                        validator: controller.validateName,
                       ),
                       
                       sizedBoxH(20),
@@ -67,6 +69,8 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        textInputAction: TextInputAction.next,
+                        validator: controller.validateEmail,
                       ),
                       
                       sizedBoxH(20),
@@ -81,6 +85,25 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        textInputAction: TextInputAction.next,
+                        validator: controller.validatePassword,
+                      ),
+
+                      sizedBoxH(20),
+
+                      // Confirm Password
+                      GlobalTextFormField(
+                        controller: controller.confirmPasswordController,
+                        titleText: AppStrings.confirmPassword,
+                        hintText: AppStrings.confirmPassword,
+                        prefixIcon: const Icon(Icons.lock_outline, size: 22, color: ColorRes.grey),
+                        isPasswordField: true,
+                        fillColor: ColorRes.white,
+                        filled: true,
+                        decoration: borderDecoration,
+                        textInputAction: TextInputAction.done,
+                        validator: controller.validateConfirmPassword,
+                        onFieldSubmitted: (_) => controller.register(),
                       ),
                       
                       sizedBoxH(24),
