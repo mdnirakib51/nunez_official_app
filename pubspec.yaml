@@ -51,4 +51,5 @@ flutter:
     - assets/required_src/
     - assets/social_ic/
     - assets/app_icons/buttom_nav_ic/
+    - assets/app_icons/live_video_ic/
     - assets/dummy_img/

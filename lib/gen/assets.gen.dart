@@ -30,6 +30,10 @@ class $AssetsAppIconsGen {
   AssetGenImage get congratulationIc =>
       const AssetGenImage('assets/app_icons/congratulation_ic.png');
 
+  /// Directory path: assets/app_icons/live_video_ic
+  $AssetsAppIconsLiveVideoIcGen get liveVideoIc =>
+      const $AssetsAppIconsLiveVideoIcGen();
+
   /// File path: assets/app_icons/no_internet_connection_ic.png
   AssetGenImage get noInternetConnectionIc =>
       const AssetGenImage('assets/app_icons/no_internet_connection_ic.png');
@@ -205,6 +209,39 @@ class $AssetsAppIconsButtomNavIcGen {
     homeIc,
     profileActiveIc,
     profileIc,
+  ];
+}
+
+class $AssetsAppIconsLiveVideoIcGen {
+  const $AssetsAppIconsLiveVideoIcGen();
+
+  /// File path: assets/app_icons/live_video_ic/more_vert.png
+  AssetGenImage get moreVert =>
+      const AssetGenImage('assets/app_icons/live_video_ic/more_vert.png');
+
+  /// File path: assets/app_icons/live_video_ic/share_ic.png
+  AssetGenImage get shareIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/share_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/tip_ic.png
+  AssetGenImage get tipIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/tip_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/view_shop_ic.png
+  AssetGenImage get viewShopIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/view_shop_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/wallet_ic.png
+  AssetGenImage get walletIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/wallet_ic.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    moreVert,
+    shareIc,
+    tipIc,
+    viewShopIc,
+    walletIc,
   ];
 }
 
