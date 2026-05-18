@@ -1,5 +1,6 @@
-
 import 'package:get/get.dart';
+import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
+import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
 import '../../features/dashboard_features/home/binding/home_binding.dart';
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
@@ -38,6 +39,7 @@ class AppRouteKeys {
   static const String profileMenu  = '/profileMenu';
   static const String profile      = '/profile';
   static const String editProfile  = '/edit-profile';
+  static const String sellerProfile = '/seller-profile';
 }
 
 class AppPages {
@@ -71,6 +73,11 @@ class AppPages {
         BottomNavBarBinding(),
         HomeBinding(),
       ],
+    ),
+    GetPage(
+      name: AppRouteKeys.sellerProfile,
+      page: () => const SellerProfileScreen(),
+      binding: SellerProfileBinding(),
     ),
   ];
 }

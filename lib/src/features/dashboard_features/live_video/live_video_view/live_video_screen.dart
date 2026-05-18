@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import '../../../../../gen/assets.gen.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
-import '../seller_profile/seller_profile_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {
   const LiveVideoScreen({super.key});
@@ -43,18 +44,8 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
     super.dispose();
   }
 
-  void _showProfileBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.9,
-        maxChildSize: 0.95,
-        minChildSize: 0.5,
-        builder: (_, scrollController) => const SellerProfileScreen(),
-      ),
-    );
+  void _navigateToSellerProfile(BuildContext context) {
+    Get.toNamed(AppRouteKeys.sellerProfile);
   }
 
   @override
@@ -111,7 +102,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                         child: Row(
                           children: [
                             GestureDetector(
-                              onTap: () => _showProfileBottomSheet(context),
+                              onTap: () => _navigateToSellerProfile(context),
                               child: Row(
                                 children: [
                                   const CircleAvatar(
