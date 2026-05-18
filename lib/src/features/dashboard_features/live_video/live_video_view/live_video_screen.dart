@@ -93,67 +93,77 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                   child: Row(
                     children: [
                       // User Info & Follow Button
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: ColorRes.black.withValues(alpha: 0.3),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () => _navigateToSellerProfile(context),
-                              child: Row(
-                                children: [
-                                  const CircleAvatar(
-                                    radius: 18,
-                                    backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=annie"),
-                                  ),
-                                  sizedBoxW(8),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                      Flexible(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: ColorRes.black.withValues(alpha: 0.3),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: GestureDetector(
+                                  onTap: () => _navigateToSellerProfile(context),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const GlobalText(
-                                        str: "Annie Marie",
-                                        color: ColorRes.white,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
+                                      const CircleAvatar(
+                                        radius: 18,
+                                        backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=annie"),
                                       ),
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.star, color: ColorRes.white, size: 12),
-                                          const GlobalText(
-                                            str: " 4.9",
-                                            color: ColorRes.white,
-                                            fontSize: 12,
-                                          ),
-                                        ],
+                                      sizedBoxW(8),
+                                      Flexible(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const GlobalText(
+                                              str: "Annie Marie",
+                                              color: ColorRes.white,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const Row(
+                                              children: [
+                                                Icon(Icons.star, color: ColorRes.white, size: 12),
+                                                GlobalText(
+                                                  str: " 4.9",
+                                                  color: ColorRes.white,
+                                                  fontSize: 12,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ),
-                            sizedBoxW(12),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                                decoration: BoxDecoration(
-                                  color: Colors.orange.shade800,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: const GlobalText(
-                                  str: "Follow",
-                                  color: ColorRes.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ),
-                            sizedBoxW(4),
-                          ],
+                              sizedBoxW(12),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: Colors.orange.shade800,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: const GlobalText(
+                                    str: "Follow",
+                                    color: ColorRes.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              sizedBoxW(4),
+                            ],
+                          ),
                         ),
                       ),
                       const Spacer(),
@@ -285,11 +295,15 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                                           color: ColorRes.white,
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         const GlobalText(
                                           str: "Brand New",
                                           color: ColorRes.white,
                                           fontSize: 12,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         sizedBoxH(6),
                                         Row(

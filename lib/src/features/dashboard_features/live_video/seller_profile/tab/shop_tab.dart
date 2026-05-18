@@ -7,66 +7,164 @@ class ShopTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(15),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 0.7,
-      ),
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  index == 0
-                      ? "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
-                      : index == 1
-                          ? "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
-                          : index == 2
-                              ? "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
-                              : "https://images.unsplash.com/photo-1485955900006-10f4d324d411",
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
+    return Column(
+      children: [
+        // Search Bar
+        Padding(
+          padding: const EdgeInsets.all(15),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Search shop...",
+                hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+                prefixIcon: Icon(Icons.search, color: Colors.grey.shade600, size: 20),
+                suffixIcon: const Icon(Icons.close, color: Colors.black, size: 20),
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
               ),
             ),
-            sizedBoxH(8),
-            const GlobalText(
-              str: "Luxury Product Item",
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            sizedBoxH(4),
-            Row(
-              children: [
-                const GlobalText(
-                  str: "\$120.00",
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Icons.add, color: Colors.white, size: 14),
-                ),
-              ],
-            ),
-          ],
-        );
+          ),
+        ),
+
+        // Toggle Buttons (Auction / Buy Now)
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            children: [
+              _toggleButton("Auction", isSelected: true),
+              sizedBoxW(10),
+              _toggleButton("Buy Now", isSelected: false),
+            ],
+          ),
+        ),
+
+        sizedBoxH(10),
+
+        // Product List
+        Expanded(
+          child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            itemCount: 4,
+            physics: const NeverScrollableScrollPhysics(), // NestedScrollView handles scrolling
+            shrinkWrap: true,
+            separatorBuilder: (context, index) => sizedBoxH(25),
+            itemBuilder: (context, index) {
+              return _productItem(index);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _toggleButton(String text, {required bool isSelected}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.black87 : Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: GlobalText(
+        str: text,
+        color: isSelected ? Colors.white : Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      ),
+    );
+  }
+
+  Widget _productItem(int index) {
+    final products = [
+      {
+        "title": "ZaRa Original Hand bag",
+        "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
+        "desc": "Qty: 40  •  Brand New"
       },
+      {
+        "title": "Olive Smart Watch",
+        "img": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "desc": "Qty: 40  •  Brand New"
+      },
+      {
+        "title": "Nike Fast Sneakers",
+        "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "desc": "Qty: 40  •  Brand New"
+      },
+      {
+        "title": "Nikon 750D Camera",
+        "img": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+        "desc": "Qty: 40  •  Box open"
+      },
+    ];
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Product Image
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.network(
+            products[index]["img"]!,
+            height: 120,
+            width: 120,
+            fit: BoxFit.cover,
+          ),
+        ),
+        sizedBoxW(15),
+        // Product Details
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GlobalText(
+                str: products[index]["title"]!,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              sizedBoxH(4),
+              GlobalText(
+                str: products[index]["desc"]!,
+                fontSize: 12,
+                color: Colors.grey.shade600,
+                fontWeight: FontWeight.w400,
+              ),
+              sizedBoxH(4),
+              const GlobalText(
+                str: "\$10.00",
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              const GlobalText(
+                str: "4 bids",
+                fontSize: 12,
+                color: Colors.grey,
+                fontWeight: FontWeight.w400,
+              ),
+              sizedBoxH(10),
+              // Pre-Bid Button
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                alignment: Alignment.center,
+                child: const GlobalText(
+                  str: "Pre-Bid",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
