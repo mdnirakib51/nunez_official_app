@@ -215,6 +215,10 @@ class $AssetsAppIconsButtomNavIcGen {
 class $AssetsAppIconsLiveVideoIcGen {
   const $AssetsAppIconsLiveVideoIcGen();
 
+  /// File path: assets/app_icons/live_video_ic/message_ic.png
+  AssetGenImage get messageIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/message_ic.png');
+
   /// File path: assets/app_icons/live_video_ic/more_vert.png
   AssetGenImage get moreVert =>
       const AssetGenImage('assets/app_icons/live_video_ic/more_vert.png');
@@ -227,6 +231,10 @@ class $AssetsAppIconsLiveVideoIcGen {
   AssetGenImage get tipIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/tip_ic.png');
 
+  /// File path: assets/app_icons/live_video_ic/tip_me_ic.png
+  AssetGenImage get tipMeIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/tip_me_ic.png');
+
   /// File path: assets/app_icons/live_video_ic/view_shop_ic.png
   AssetGenImage get viewShopIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/view_shop_ic.png');
@@ -237,9 +245,11 @@ class $AssetsAppIconsLiveVideoIcGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    messageIc,
     moreVert,
     shareIc,
     tipIc,
+    tipMeIc,
     viewShopIc,
     walletIc,
   ];

@@ -6,6 +6,7 @@ import '../../../global/constants/colors_resources.dart';
 import '../../../global/global_widget/global_image_loader.dart';
 import '../../../global/global_widget/global_sized_box.dart';
 import '../../../global/global_widget/global_text.dart';
+import 'seller_profile_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {
   const LiveVideoScreen({super.key});
@@ -20,7 +21,6 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
   @override
   void initState() {
     super.initState();
-    // Using a stable HLS stream for live video experience
     _controller = VideoPlayerController.networkUrl(
       Uri.parse("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"),
       httpHeaders: {
@@ -34,11 +34,6 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
         }
       }).catchError((error) {
         debugPrint("Video Player Error: $error");
-        if (mounted) {
-           ScaffoldMessenger.of(context).showSnackBar(
-             SnackBar(content: Text("Video error: $error")),
-           );
-        }
       });
   }
 
@@ -46,6 +41,20 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _showProfileBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.9,
+        maxChildSize: 0.95,
+        minChildSize: 0.5,
+        builder: (_, scrollController) => const SellerProfileScreen(),
+      ),
+    );
   }
 
   @override
@@ -101,32 +110,39 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                         ),
                         child: Row(
                           children: [
-                            const CircleAvatar(
-                              radius: 18,
-                              backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=annie"),
-                            ),
-                            sizedBoxW(8),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const GlobalText(
-                                  str: "Annie Marie",
-                                  color: ColorRes.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                Row(
-                                  children: [
-                                    const Icon(Icons.star, color: ColorRes.white, size: 12),
-                                    const GlobalText(
-                                      str: " 4.9",
-                                      color: ColorRes.white,
-                                      fontSize: 12,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            GestureDetector(
+                              onTap: () => _showProfileBottomSheet(context),
+                              child: Row(
+                                children: [
+                                  const CircleAvatar(
+                                    radius: 18,
+                                    backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=annie"),
+                                  ),
+                                  sizedBoxW(8),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const GlobalText(
+                                        str: "Annie Marie",
+                                        color: ColorRes.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Icon(Icons.star, color: ColorRes.white, size: 12),
+                                          const GlobalText(
+                                            str: " 4.9",
+                                            color: ColorRes.white,
+                                            fontSize: 12,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                             sizedBoxW(12),
                             GestureDetector(
@@ -200,7 +216,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Comments Area - Scrolling from bottom to top
+                            // Comments Area
                             SizedBox(
                               height: 200,
                               child: ListView.builder(
@@ -327,7 +343,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                           _sideIcon(Assets.appIcons.liveVideoIc.tipIc.path, "Tip"),
                           _sideIcon(Assets.appIcons.liveVideoIc.walletIc.path, "Wallet"),
                           _sideIcon(Assets.appIcons.liveVideoIc.shareIc.path, "Share", count: "5"),
-                          _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, "View Shop", isCircle: true),
+                          _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, "View\nShop", isCircle: true),
                         ],
                       ),
                     ],
@@ -396,8 +412,9 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                 padding: const EdgeInsets.all(6),
                 child: GlobalImageLoader(
                   imagePath: iconPath,
-                  height: isCircle == true ? 40 : 22,
-                  width: isCircle == true ? 40 : 22,
+                  height: isCircle == true ? 42 : 22,
+                  width: isCircle == true ? 42 : 22,
+                  fit: BoxFit.fill,
                 ),
               ),
               if (count != null)
@@ -420,7 +437,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                 ),
             ],
           ),
-          sizedBoxH(6),
+          sizedBoxH(2),
           GlobalText(
             str: label,
             color: ColorRes.white,
