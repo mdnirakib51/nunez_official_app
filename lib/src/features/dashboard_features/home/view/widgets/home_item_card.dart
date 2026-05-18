@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../live_video_screen.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../global/constants/colors_resources.dart';
-import '../../../../global/global_widget/global_image_loader.dart';
-import '../../../../global/global_widget/global_sized_box.dart';
-import '../../../../global/global_widget/global_text.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../global/constants/colors_resources.dart';
+import '../../../../../global/global_widget/global_image_loader.dart';
+import '../../../../../global/global_widget/global_sized_box.dart';
+import '../../../../../global/global_widget/global_text.dart';
+import '../../../live_video/view/live_video_screen.dart';
 
 class HomeItemCard extends StatelessWidget {
   final String? category;

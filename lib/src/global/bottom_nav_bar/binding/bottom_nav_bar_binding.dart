@@ -1,5 +1,6 @@
+
 import 'package:get/get.dart';
-import '../../../features/home/controller/home_controller.dart';
+import '../../../features/dashboard_features/home/controller/home_controller.dart';
 import '../controller/bottom_nav_bar_controller.dart';
 
 class BottomNavBarBinding extends Bindings {

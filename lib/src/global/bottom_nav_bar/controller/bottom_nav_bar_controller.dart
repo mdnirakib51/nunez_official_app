@@ -1,8 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../gen/assets.gen.dart';
-import '../../../features/home/view/home_screen.dart';
+import '../../../features/dashboard_features/home/view/home_screen.dart';
 
 // ─── Nav Item Model ───────────────────────────────────────────────────────────
 class NavItemModel {

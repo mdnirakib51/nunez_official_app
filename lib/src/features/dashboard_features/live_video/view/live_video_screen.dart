@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../global/constants/colors_resources.dart';
-import '../../../global/global_widget/global_image_loader.dart';
-import '../../../global/global_widget/global_sized_box.dart';
-import '../../../global/global_widget/global_text.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../global/constants/colors_resources.dart';
+import '../../../../global/global_widget/global_image_loader.dart';
+import '../../../../global/global_widget/global_sized_box.dart';
+import '../../../../global/global_widget/global_text.dart';
 import 'seller_profile_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {

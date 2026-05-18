@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../global/global_widget/global_sized_box.dart';
+import '../../../../../global/global_widget/global_sized_box.dart';
 import '../widgets/home_item_card.dart';
 
-class ElectronicsTab extends StatelessWidget {
-  const ElectronicsTab({super.key});
+class FashionTab extends StatelessWidget {
+  const FashionTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ElectronicsTab extends StatelessWidget {
             ),
             itemCount: 6, // Dummy count
             itemBuilder: (context, index) {
-              return const HomeItemCard(category: "Electronics");
+              return const HomeItemCard(category: "Fashion");
             },
           ),
         ],

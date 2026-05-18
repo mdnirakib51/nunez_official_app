@@ -1,5 +1,6 @@
-import 'package:get/get.dart';
 
+import 'package:get/get.dart';
+import '../../features/dashboard_features/home/binding/home_binding.dart';
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
 import '../../core_features/other/congratulations_screen.dart';
@@ -15,7 +16,6 @@ import '../../features/auth/registration/binding/registration_binding.dart';
 import '../../features/auth/registration/view/registration_screen.dart';
 import '../../features/auth/verification/binding/verification_binding.dart';
 import '../../features/auth/verification/view/verification_screen.dart';
-import '../../features/home/binding/home_binding.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -31,7 +31,7 @@ class AppRouteKeys {
   static const String otp          = '/otp';
 
   static const String dashboard    = '/dashboard';
-  static const String home         = '/home';
+  static const String home         = '/dashboard_features';
   static const String notification = '/notification';
   static const String settings     = '/settings';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../global/constants/colors_resources.dart';
-import '../../../global/global_widget/global_image_loader.dart';
-import '../../../global/global_widget/global_sized_box.dart';
-import '../../../global/global_widget/global_text.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../global/constants/colors_resources.dart';
+import '../../../../global/global_widget/global_image_loader.dart';
+import '../../../../global/global_widget/global_sized_box.dart';
+import '../../../../global/global_widget/global_text.dart';
 
 class SellerProfileScreen extends StatelessWidget {
   const SellerProfileScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../global/global_widget/global_sized_box.dart';
+import '../../../../../global/global_widget/global_sized_box.dart';
 import '../widgets/home_item_card.dart';
 
 class VideoGamesTab extends StatelessWidget {
