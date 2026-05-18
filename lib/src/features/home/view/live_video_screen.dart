@@ -20,7 +20,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
   @override
   void initState() {
     super.initState();
-    // Using the most standard and widely supported test video URL
+    // Using a stable HLS stream for live video experience
     _controller = VideoPlayerController.networkUrl(
       Uri.parse("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"),
       httpHeaders: {
@@ -34,7 +34,6 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
         }
       }).catchError((error) {
         debugPrint("Video Player Error: $error");
-        // Simple error handling: Try a direct small video if the first one fails
         if (mounted) {
            ScaffoldMessenger.of(context).showSnackBar(
              SnackBar(content: Text("Video error: $error")),
@@ -69,16 +68,16 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                 )
               : const Center(child: CircularProgressIndicator(color: ColorRes.white)),
 
-          // Dark Overlay
+          // Dark Overlay Gradient
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  ColorRes.black.withValues(alpha: 0.3),
+                  ColorRes.black.withValues(alpha: 0.4),
                   Colors.transparent,
-                  ColorRes.black.withValues(alpha: 0.5),
+                  ColorRes.black.withValues(alpha: 0.6),
                 ],
               ),
             ),
@@ -93,11 +92,11 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: Row(
                     children: [
-                      // User Info
+                      // User Info & Follow Button
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                         decoration: BoxDecoration(
-                          color: ColorRes.black.withValues(alpha: 0.4),
+                          color: ColorRes.black.withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Row(
@@ -114,7 +113,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                                 const GlobalText(
                                   str: "Annie Marie",
                                   color: ColorRes.white,
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 Row(
@@ -133,9 +132,9 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                                 decoration: BoxDecoration(
-                                  color: Colors.orange,
+                                  color: Colors.orange.shade800,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: const GlobalText(
@@ -160,19 +159,12 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                         ),
                         child: Row(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(2),
-                              decoration: const BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(Icons.bar_chart, color: ColorRes.white, size: 12),
-                            ),
+                            const Icon(Icons.sensors, color: Colors.red, size: 16),
                             sizedBoxW(6),
                             const GlobalText(
                               str: "1K",
                               color: ColorRes.white,
-                              fontSize: 12,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold,
                             ),
                           ],
@@ -183,12 +175,12 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
                         child: Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
                             color: ColorRes.black.withValues(alpha: 0.4),
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(Icons.keyboard_arrow_down, color: ColorRes.white, size: 24),
+                          child: const Icon(Icons.keyboard_arrow_down, color: ColorRes.white, size: 28),
                         ),
                       ),
                     ],
@@ -208,21 +200,28 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Comments Area
+                            // Comments Area - Scrolling from bottom to top
                             SizedBox(
-                              height: 120,
+                              height: 200,
                               child: ListView.builder(
-                                itemCount: 2,
+                                reverse: true,
+                                itemCount: 4,
+                                padding: EdgeInsets.zero,
                                 itemBuilder: (context, index) {
-                                  final names = ["Rafa Jamila", "Rafsan Jamil"];
+                                  final names = ["Nazmul Islam Sakib", "Farhan Tanvir Chowdhury", "Rafsan Jamil", "Rafa Jamila"];
+                                  final avatars = [
+                                    "https://i.pravatar.cc/150?u=sakib",
+                                    "https://i.pravatar.cc/150?u=farhan",
+                                    "https://i.pravatar.cc/150?u=rafsan",
+                                    "https://i.pravatar.cc/150?u=rafa"
+                                  ];
                                   return Padding(
-                                    padding: const EdgeInsets.only(bottom: 10),
+                                    padding: const EdgeInsets.only(top: 10),
                                     child: Row(
                                       children: [
                                         CircleAvatar(
                                           radius: 15,
-                                          backgroundColor: ColorRes.grey.withValues(alpha: 0.5),
-                                          backgroundImage: index == 1 ? const NetworkImage("https://i.pravatar.cc/150?u=rafsan") : null,
+                                          backgroundImage: NetworkImage(avatars[index]),
                                         ),
                                         sizedBoxW(10),
                                         Expanded(
@@ -252,23 +251,24 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                             sizedBoxH(10),
                             // Product Card
                             Container(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: ColorRes.white.withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(12),
+                                color: ColorRes.black.withValues(alpha: 0.3),
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
                               ),
                               child: Row(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(10),
                                     child: GlobalImageLoader(
                                       imagePath: Assets.dummyImg.homeDummyImg2.path,
-                                      height: 60,
-                                      width: 60,
+                                      height: 65,
+                                      width: 65,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  sizedBoxW(10),
+                                  sizedBoxW(12),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -276,20 +276,20 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                                         const GlobalText(
                                           str: "ZaRa Original Hand bag",
                                           color: ColorRes.white,
-                                          fontSize: 13,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         const GlobalText(
                                           str: "Brand New",
                                           color: ColorRes.white,
-                                          fontSize: 11,
+                                          fontSize: 12,
                                         ),
-                                        sizedBoxH(4),
+                                        sizedBoxH(6),
                                         Row(
                                           children: [
-                                            _badge("Free Shipping", ColorRes.indigo),
-                                            sizedBoxW(5),
-                                            _badge("+ Taxes", ColorRes.grey),
+                                            _badge("Free Shipping", ColorRes.indigo.withValues(alpha: 0.7)),
+                                            sizedBoxW(6),
+                                            _badge("+ Taxes", ColorRes.grey.withValues(alpha: 0.7)),
                                           ],
                                         ),
                                       ],
@@ -301,13 +301,14 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                                       const GlobalText(
                                         str: "\$10.00",
                                         color: ColorRes.white,
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      const GlobalText(
+                                      GlobalText(
                                         str: "Sold",
-                                        color: Colors.orange,
-                                        fontSize: 11,
+                                        color: Colors.orange.shade700,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ],
                                   ),
@@ -317,7 +318,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                           ],
                         ),
                       ),
-                      sizedBoxW(15),
+                      sizedBoxW(20),
                       // Right Side Icons
                       Column(
                         mainAxisSize: MainAxisSize.min,
@@ -339,35 +340,35 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
-                      // Search-like Input
+                      // "Say Something" Input
                       Container(
-                        height: 45,
+                        height: 50,
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
-                          border: Border.all(color: ColorRes.white, width: 1),
-                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: ColorRes.white.withValues(alpha: 0.8), width: 1.2),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         alignment: Alignment.centerLeft,
                         child: const GlobalText(
                           str: "Say Something",
                           color: ColorRes.white,
-                          fontSize: 14,
+                          fontSize: 15,
                         ),
                       ),
                       sizedBoxH(15),
                       // Awaiting Next Item Button
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                         decoration: BoxDecoration(
-                          color: ColorRes.black.withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(25),
+                          color: ColorRes.black.withValues(alpha: 0.9),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                         alignment: Alignment.center,
                         child: const GlobalText(
                           str: "Awaiting Next Item",
                           color: ColorRes.white,
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -385,32 +386,26 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
 
   Widget _sideIcon(String iconPath, String label, {String? count, bool isCircle = false}) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.only(bottom: 18),
       child: Column(
         children: [
           Stack(
             clipBehavior: Clip.none,
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: isCircle ? ColorRes.white.withValues(alpha: 0.2) : Colors.transparent,
-                  shape: BoxShape.circle,
-                  border: isCircle ? Border.all(color: ColorRes.white, width: 1) : null,
-                ),
+                padding: const EdgeInsets.all(6),
                 child: GlobalImageLoader(
                   imagePath: iconPath,
-                  height: 24,
-                  width: 24,
-                  color: ColorRes.white,
+                  height: isCircle == true ? 40 : 22,
+                  width: isCircle == true ? 40 : 22,
                 ),
               ),
               if (count != null)
                 Positioned(
-                  top: -5,
-                  right: -5,
+                  top: -4,
+                  right: -4,
                   child: Container(
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(5),
                     decoration: const BoxDecoration(
                       color: ColorRes.black,
                       shape: BoxShape.circle,
@@ -418,18 +413,18 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                     child: GlobalText(
                       str: count,
                       color: ColorRes.white,
-                      fontSize: 8,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
             ],
           ),
-          sizedBoxH(4),
+          sizedBoxH(6),
           GlobalText(
             str: label,
             color: ColorRes.white,
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: FontWeight.w500,
           ),
         ],
@@ -441,7 +436,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.8),
+        color: color,
         borderRadius: BorderRadius.circular(4),
       ),
       child: GlobalText(
