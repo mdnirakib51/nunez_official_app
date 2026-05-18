@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../live_video_screen.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
@@ -13,8 +15,7 @@ class HomeItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: Navigate to Product Detail Screen
-        debugPrint("Product clicked: ${category ?? "Toys & Hobbies"}");
+        Get.to(() => const LiveVideoScreen());
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
