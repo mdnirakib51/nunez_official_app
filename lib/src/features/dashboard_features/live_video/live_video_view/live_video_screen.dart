@@ -1,4 +1,4 @@
-
+import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -21,10 +21,18 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
   late VideoPlayerController _controller;
   bool _isPausedForNavigation = false;
 
+  // Bidding State
+  int _currentBid = 7;
+  int _timerSeconds = 15;
+  Timer? _bidTimer;
+  bool _isBiddingActive = true;
+  double _swipePosition = 0.0;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _startTimer();
     _controller = VideoPlayerController.networkUrl(
       Uri.parse("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"),
       httpHeaders: {
@@ -44,8 +52,161 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _bidTimer?.cancel();
     _controller.dispose();
     super.dispose();
+  }
+
+  void _startTimer() {
+    _bidTimer?.cancel();
+    _bidTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_timerSeconds > 0) {
+        setState(() {
+          _timerSeconds--;
+        });
+      } else {
+        setState(() {
+          _isBiddingActive = false;
+        });
+        _bidTimer?.cancel();
+      }
+    });
+  }
+
+  void _resetTimerAndBid(int amount) {
+    setState(() {
+      _currentBid = amount;
+      _timerSeconds = 15;
+      _isBiddingActive = true;
+      _swipePosition = 0.0;
+    });
+    _startTimer();
+  }
+
+  void _showCustomBidDialog() {
+    final TextEditingController amountController = TextEditingController();
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const GlobalText(
+                    str: "Custom Your Bid",
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: const Icon(Icons.close, color: Colors.grey),
+                  ),
+                ],
+              ),
+              sizedBoxH(20),
+              const GlobalText(
+                str: "Amount",
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              const GlobalText(
+                str: "Your bid must be higher than the current highest bid.",
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+              sizedBoxH(10),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextField(
+                  controller: amountController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    prefixText: "\$ ",
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              sizedBoxH(20),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: ColorRes.indigo.withValues(alpha: 0.05),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.info_outline, color: ColorRes.indigo, size: 20),
+                    sizedBoxW(10),
+                    const Expanded(
+                      child: GlobalText(
+                        str: "If you win, your payment method will be charged automatically.",
+                        fontSize: 12,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              sizedBoxH(25),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Get.back(),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        alignment: Alignment.center,
+                        child: const GlobalText(str: "Cancel", fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  sizedBoxW(15),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        if (amountController.text.isNotEmpty) {
+                          int? newBid = int.tryParse(amountController.text);
+                          if (newBid != null && newBid > _currentBid) {
+                            Get.back();
+                            _resetTimerAndBid(newBid);
+                          }
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade900,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        alignment: Alignment.center,
+                        child: const GlobalText(str: "Place Bid", color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -238,20 +399,20 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
 
                 const Spacer(),
 
-                // Bottom Content
+                // Bottom Content (Comments & Product + Right Icons)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      // Comments & Product
+                      // Comments & Product Card
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Comments Area
                             SizedBox(
-                              height: 200,
+                              height: 180,
                               child: ListView.builder(
                                 reverse: true,
                                 itemCount: 4,
@@ -297,7 +458,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                 },
                               ),
                             ),
-                            sizedBoxH(10),
+                            sizedBoxH(15),
                             // Product Card
                             GestureDetector(
                               onTap: _navigateToProductDetails,
@@ -374,7 +535,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                           ],
                         ),
                       ),
-                      sizedBoxW(20),
+                      sizedBoxW(15),
                       // Right Side Icons
                       Column(
                         mainAxisSize: MainAxisSize.min,
@@ -394,18 +555,20 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                 ),
 
                 sizedBoxH(20),
-                // Bottom Input and Button
+
+                // Bottom Input and Bidding Area
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
                       // "Say Something" Input
                       Container(
-                        height: 50,
+                        height: 52,
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
-                          border: Border.all(color: ColorRes.white.withValues(alpha: 0.8), width: 1.2),
+                          border: Border.all(color: ColorRes.white.withValues(alpha: 0.6), width: 1.0),
                           borderRadius: BorderRadius.circular(30),
+                          color: ColorRes.black.withValues(alpha: 0.2),
                         ),
                         alignment: Alignment.centerLeft,
                         child: const GlobalText(
@@ -415,21 +578,160 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                         ),
                       ),
                       sizedBoxH(15),
-                      // Awaiting Next Item Button
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          color: ColorRes.black.withValues(alpha: 0.9),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        alignment: Alignment.center,
-                        child: const GlobalText(
-                          str: "Awaiting Next Item",
-                          color: ColorRes.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      // Bidding UI or Awaiting Next Item
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 400),
+                        child: _isBiddingActive
+                            ? Row(
+                                key: const ValueKey("bidding_active"),
+                                children: [
+                                  // Custom Button
+                                  Expanded(
+                                    flex: 3,
+                                    child: GestureDetector(
+                                      onTap: _showCustomBidDialog,
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(vertical: 10),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: ColorRes.white, width: 0.5),
+                                          borderRadius: BorderRadius.circular(30),
+                                          color: ColorRes.white.withValues(alpha: 0.1),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: const GlobalText(
+                                          str: "Custom",
+                                          color: ColorRes.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  sizedBoxW(12),
+                                  // Combined Bid Button and Timer (Pill-in-Pill with Swipe)
+                                  Expanded(
+                                    flex: 7,
+                                    child: LayoutBuilder(
+                                      builder: (context, constraints) {
+                                        double totalWidth = constraints.maxWidth;
+                                        double timerWidth = 85;
+                                        double padding = 4;
+                                        double bidButtonWidth = totalWidth - timerWidth - (padding * 2);
+                                        double maxSwipe = totalWidth - bidButtonWidth - (padding * 2);
+
+                                        return Container(
+                                          height: 52,
+                                          padding: EdgeInsets.all(padding),
+                                          decoration: BoxDecoration(
+                                            color: Colors.orange.shade700.withValues(alpha: 0.3),
+                                            borderRadius: BorderRadius.circular(30),
+                                          ),
+                                          child: Stack(
+                                            children: [
+                                              // Timer part (Visible in background when swiping)
+                                              Align(
+                                                alignment: Alignment.centerRight,
+                                                child: SizedBox(
+                                                  width: timerWidth,
+                                                  child: Center(
+                                                    child: GlobalText(
+                                                      str: "$_timerSeconds Sec",
+                                                      color: ColorRes.white,
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              // Draggable Bid Button
+                                              AnimatedPositioned(
+                                                duration: _swipePosition == 0 ? const Duration(milliseconds: 200) : Duration.zero,
+                                                left: _swipePosition,
+                                                top: 0,
+                                                bottom: 0,
+                                                width: bidButtonWidth,
+                                                child: GestureDetector(
+                                                  onHorizontalDragUpdate: (details) {
+                                                    setState(() {
+                                                      _swipePosition += details.delta.dx;
+                                                      if (_swipePosition < 0) _swipePosition = 0;
+                                                      if (_swipePosition > maxSwipe) _swipePosition = maxSwipe;
+                                                    });
+                                                  },
+                                                  onHorizontalDragEnd: (details) {
+                                                    if (_swipePosition >= maxSwipe * 0.8) {
+                                                      _resetTimerAndBid(_currentBid + 2);
+                                                    } else {
+                                                      setState(() {
+                                                        _swipePosition = 0.0;
+                                                      });
+                                                    }
+                                                  },
+                                                  onTap: () {
+                                                    // Optional: Tap still works, but swipe is emphasized
+                                                    _resetTimerAndBid(_currentBid + 2);
+                                                  },
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.orange.shade900,
+                                                      borderRadius: BorderRadius.circular(30),
+                                                      boxShadow: [
+                                                        if (_swipePosition > 0)
+                                                          BoxShadow(
+                                                            color: Colors.black.withValues(alpha: 0.2),
+                                                            blurRadius: 4,
+                                                            offset: const Offset(2, 0),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        const Spacer(flex: 2),
+                                                        GlobalText(
+                                                          str: "Bid: \$$_currentBid",
+                                                          color: ColorRes.white,
+                                                          fontSize: 16,
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
+                                                        const Spacer(flex: 1),
+                                                        // More prominent arrow to suggest swiping
+                                                        const Icon(
+                                                          Icons.keyboard_double_arrow_right_rounded,
+                                                          color: Colors.white,
+                                                          size: 20,
+                                                        ),
+                                                        sizedBoxW(10),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Container(
+                                key: const ValueKey("bidding_inactive"),
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                decoration: BoxDecoration(
+                                  color: ColorRes.black.withValues(alpha: 0.8),
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                                ),
+                                alignment: Alignment.center,
+                                child: const GlobalText(
+                                  str: "Awaiting Next Item",
+                                  color: ColorRes.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       ),
                       sizedBoxH(10),
                     ],
