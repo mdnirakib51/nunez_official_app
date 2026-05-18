@@ -4,6 +4,9 @@ import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
+import 'tab/reviews_tab.dart';
+import 'tab/shop_tab.dart';
+import 'tab/shows_tab.dart';
 
 class SellerProfileScreen extends StatelessWidget {
   const SellerProfileScreen({super.key});
@@ -216,82 +219,18 @@ class SellerProfileScreen extends StatelessWidget {
             ),
 
             // Tab Bar View
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
-                  _shopTab(),
-                  _showsTab(),
-                  _reviewsTab(),
+                  ShopTab(),
+                  ShowsTab(),
+                  ReviewsTab(),
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _shopTab() {
-    return GridView.builder(
-      padding: const EdgeInsets.all(15),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 0.7,
-      ),
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  index == 0
-                      ? "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
-                      : index == 1
-                          ? "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
-                          : index == 2
-                              ? "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
-                              : "https://images.unsplash.com/photo-1485955900006-10f4d324d411",
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-            sizedBoxH(8),
-            const GlobalText(
-              str: "Luxury Product Item",
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            sizedBoxH(4),
-            Row(
-              children: [
-                const GlobalText(
-                  str: "\$120.00",
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Icons.add, color: Colors.white, size: 14),
-                ),
-              ],
-            ),
-          ],
-        );
-      },
     );
   }
 
@@ -332,108 +271,6 @@ class SellerProfileScreen extends StatelessWidget {
           GlobalText(str: label, fontWeight: FontWeight.w500, fontSize: 13),
         ],
       ),
-    );
-  }
-
-  Widget _showsTab() {
-    return GridView.builder(
-      padding: const EdgeInsets.all(15),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 0.8,
-      ),
-      itemCount: 2,
-      itemBuilder: (context, index) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(radius: 12, backgroundImage: NetworkImage(index == 0 ? "https://i.pravatar.cc/150?u=rafsan" : "https://i.pravatar.cc/150?u=irfan")),
-                sizedBoxW(8),
-                GlobalText(str: index == 0 ? "Rafsan Jamil" : "Irfan Haider", fontSize: 12, fontWeight: FontWeight.bold),
-              ],
-            ),
-            sizedBoxH(8),
-            Expanded(
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      index == 0 ? "https://images.unsplash.com/photo-1542291026-7eec264c27ff" : "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04",
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(5)),
-                      child: const GlobalText(str: "Live • 84", color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Widget _reviewsTab() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(15),
-      itemCount: 1,
-      itemBuilder: (context, index) => Container(
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade200),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const CircleAvatar(radius: 18, backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=irfan")),
-                sizedBoxW(10),
-                const Expanded(child: GlobalText(str: "Irfan Haider", fontWeight: FontWeight.bold)),
-                const GlobalText(str: "02/06/2026", color: Colors.grey, fontSize: 11),
-              ],
-            ),
-            sizedBoxH(10),
-            const Row(
-              children: [
-                GlobalText(str: "4.9 ", fontWeight: FontWeight.bold),
-                Icon(Icons.star, color: Colors.orange, size: 16),
-              ],
-            ),
-            sizedBoxH(8),
-            const GlobalText(str: "Great Product and Fast Delivery. Thanks", fontSize: 13),
-            sizedBoxH(12),
-            Row(
-              children: [
-                _reviewImage("https://images.unsplash.com/photo-1434389677669-e08b4cac3105"),
-                sizedBoxW(10),
-                _reviewImage("https://images.unsplash.com/photo-1523381210434-271e8be1f52b"),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _reviewImage(String url) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.network(url, height: 70, width: 70, fit: BoxFit.cover),
     );
   }
 }

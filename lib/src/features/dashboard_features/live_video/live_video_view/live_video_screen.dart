@@ -6,7 +6,7 @@ import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
-import 'seller_profile_screen.dart';
+import '../seller_profile/seller_profile_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {
   const LiveVideoScreen({super.key});
