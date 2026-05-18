@@ -2,15 +2,25 @@ import 'package:flutter/material.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
 
-class ReviewsTab extends StatelessWidget {
+class ReviewsTab extends StatefulWidget {
   const ReviewsTab({super.key});
 
   @override
+  State<ReviewsTab> createState() => _ReviewsTabState();
+}
+
+class _ReviewsTabState extends State<ReviewsTab> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView.builder(
       padding: const EdgeInsets.all(15),
-      itemCount: 1,
+      itemCount: 4,
       itemBuilder: (context, index) => Container(
+        margin: const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade200),

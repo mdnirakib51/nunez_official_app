@@ -8,6 +8,7 @@ import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
+import '../seller_profile/product_details_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {
   const LiveVideoScreen({super.key});
@@ -16,19 +17,21 @@ class LiveVideoScreen extends StatefulWidget {
   State<LiveVideoScreen> createState() => _LiveVideoScreenState();
 }
 
-class _LiveVideoScreenState extends State<LiveVideoScreen> {
+class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingObserver {
   late VideoPlayerController _controller;
+  bool _isPausedForNavigation = false;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _controller = VideoPlayerController.networkUrl(
       Uri.parse("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"),
       httpHeaders: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
     )..initialize().then((_) {
-        if (mounted) {
+        if (mounted && !_isPausedForNavigation) {
           setState(() {});
           _controller.play();
           _controller.setLooping(true);
@@ -40,12 +43,45 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
   }
 
-  void _navigateToSellerProfile(BuildContext context) {
-    Get.toNamed(AppRouteKeys.sellerProfile);
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
+      _controller.pause();
+    } else if (state == AppLifecycleState.resumed) {
+      if (!_isPausedForNavigation && mounted && _controller.value.isInitialized) {
+        _controller.play();
+      }
+    }
+  }
+
+  void _navigateToSellerProfile(BuildContext context) async {
+    _isPausedForNavigation = true;
+    _controller.pause();
+    await Get.toNamed(AppRouteKeys.sellerProfile);
+    _isPausedForNavigation = false;
+    if (mounted) {
+      _controller.play();
+    }
+  }
+
+  void _navigateToProductDetails() async {
+    _isPausedForNavigation = true;
+    _controller.pause();
+    await Get.to(() => ProductDetailsScreen(product: const {
+          "title": "ZaRa Original Hand bag",
+          "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
+          "desc": "40 Available  •  Brand New"
+        }));
+    _isPausedForNavigation = false;
+    if (mounted) {
+      _controller.play();
+    }
   }
 
   @override
@@ -263,73 +299,76 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                             ),
                             sizedBoxH(10),
                             // Product Card
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: ColorRes.black.withValues(alpha: 0.3),
-                                borderRadius: BorderRadius.circular(15),
-                                border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
-                              ),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: GlobalImageLoader(
-                                      imagePath: Assets.dummyImg.homeDummyImg2.path,
-                                      height: 65,
-                                      width: 65,
-                                      fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap: _navigateToProductDetails,
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: ColorRes.black.withValues(alpha: 0.3),
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                                ),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: GlobalImageLoader(
+                                        imagePath: Assets.dummyImg.homeDummyImg2.path,
+                                        height: 65,
+                                        width: 65,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  sizedBoxW(12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    sizedBoxW(12),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const GlobalText(
+                                            str: "ZaRa Original Hand bag",
+                                            color: ColorRes.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const GlobalText(
+                                            str: "Brand New",
+                                            color: ColorRes.white,
+                                            fontSize: 12,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          sizedBoxH(6),
+                                          Row(
+                                            children: [
+                                              _badge("Free Shipping", ColorRes.indigo.withValues(alpha: 0.7)),
+                                              sizedBoxW(6),
+                                              _badge("+ Taxes", ColorRes.grey.withValues(alpha: 0.7)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         const GlobalText(
-                                          str: "ZaRa Original Hand bag",
+                                          str: "\$10.00",
                                           color: ColorRes.white,
-                                          fontSize: 14,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
                                         ),
-                                        const GlobalText(
-                                          str: "Brand New",
-                                          color: ColorRes.white,
+                                        GlobalText(
+                                          str: "Sold",
+                                          color: Colors.orange.shade700,
                                           fontSize: 12,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        sizedBoxH(6),
-                                        Row(
-                                          children: [
-                                            _badge("Free Shipping", ColorRes.indigo.withValues(alpha: 0.7)),
-                                            sizedBoxW(6),
-                                            _badge("+ Taxes", ColorRes.grey.withValues(alpha: 0.7)),
-                                          ],
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const GlobalText(
-                                        str: "\$10.00",
-                                        color: ColorRes.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      GlobalText(
-                                        str: "Sold",
-                                        color: Colors.orange.shade700,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -344,7 +383,10 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                           _sideIcon(Assets.appIcons.liveVideoIc.tipIc.path, "Tip"),
                           _sideIcon(Assets.appIcons.liveVideoIc.walletIc.path, "Wallet"),
                           _sideIcon(Assets.appIcons.liveVideoIc.shareIc.path, "Share", count: "5"),
-                          _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, "View\nShop", isCircle: true),
+                          GestureDetector(
+                            onTap: () => _navigateToSellerProfile(context),
+                            child: _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, "View\nShop", isCircle: true),
+                          ),
                         ],
                       ),
                     ],

@@ -14,6 +14,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.fontSize,
     this.fontWeight,
     this.backColor,
+    this.iconColor,
     this.notiOnTap,
     this.actions,
   });
@@ -23,6 +24,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? backColor;
+  final Color? iconColor;
   final bool? isBackIc;
   final bool? centerTitle;
   final Function()? notiOnTap;
@@ -35,18 +37,19 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backColor ?? ColorRes.appColor,
+      elevation: 0,
       automaticallyImplyLeading: false,
       leadingWidth: isBackIc == true ? 50 : 0,
       leading: isBackIc == true
           ? IconButton(
         splashRadius: 0.1,
-        icon: const Icon(Icons.arrow_back_ios_new_outlined, color: ColorRes.white, size: 18),
+        icon: Icon(Icons.arrow_back_ios_new_outlined, color: iconColor ?? ColorRes.white, size: 18),
         onPressed: () {
           AppNavigator.pop();
         },
       )
           : const SizedBox.shrink(),
-      centerTitle: centerTitle,
+      centerTitle: centerTitle ?? true,
       title: GlobalText(
         str: title,
         color: titleColor ?? ColorRes.white,

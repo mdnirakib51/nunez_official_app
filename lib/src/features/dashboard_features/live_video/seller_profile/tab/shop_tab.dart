@@ -1,12 +1,23 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
+import '../product_details_screen.dart';
 
-class ShopTab extends StatelessWidget {
+class ShopTab extends StatefulWidget {
   const ShopTab({super.key});
 
   @override
+  State<ShopTab> createState() => _ShopTabState();
+}
+
+class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         // Search Bar
@@ -50,16 +61,46 @@ class ShopTab extends StatelessWidget {
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             itemCount: 4,
-            physics: const NeverScrollableScrollPhysics(), // NestedScrollView handles scrolling
-            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
             separatorBuilder: (context, index) => sizedBoxH(25),
             itemBuilder: (context, index) {
-              return _productItem(index);
+              return GestureDetector(
+                onTap: () {
+                  final products = _getProducts();
+                  Get.to(() => ProductDetailsScreen(product: products[index]));
+                },
+                child: _productItem(index),
+              );
             },
           ),
         ),
       ],
     );
+  }
+
+  List<Map<String, String>> _getProducts() {
+    return [
+      {
+        "title": "ZaRa Original Hand bag",
+        "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
+        "desc": "40 Available  •  Brand New"
+      },
+      {
+        "title": "Olive Smart Watch",
+        "img": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "desc": "40 Available  •  Brand New"
+      },
+      {
+        "title": "Nike Fast Sneakers",
+        "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "desc": "40 Available  •  Brand New"
+      },
+      {
+        "title": "Nikon 750D Camera",
+        "img": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+        "desc": "40 Available  •  Box open"
+      },
+    ];
   }
 
   Widget _toggleButton(String text, {required bool isSelected}) {
@@ -79,28 +120,7 @@ class ShopTab extends StatelessWidget {
   }
 
   Widget _productItem(int index) {
-    final products = [
-      {
-        "title": "ZaRa Original Hand bag",
-        "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
-        "desc": "Qty: 40  •  Brand New"
-      },
-      {
-        "title": "Olive Smart Watch",
-        "img": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-        "desc": "Qty: 40  •  Brand New"
-      },
-      {
-        "title": "Nike Fast Sneakers",
-        "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-        "desc": "Qty: 40  •  Brand New"
-      },
-      {
-        "title": "Nikon 750D Camera",
-        "img": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
-        "desc": "Qty: 40  •  Box open"
-      },
-    ];
+    final products = _getProducts();
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
