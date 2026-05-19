@@ -4,7 +4,7 @@ import '../../../../../../global/constants/colors_resources.dart';
 import '../../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../../global/global_widget/global_text.dart';
 import '../controller/purchase_controller.dart';
-import '../order_summary/view/order_summary_screen.dart';
+import '../../../../../../app/routes/app_route.dart';
 
 class PurchaseTab extends StatelessWidget {
   const PurchaseTab({super.key});
@@ -45,7 +45,7 @@ class PurchaseTab extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = items[index];
                 return GestureDetector(
-                  onTap: () => Get.to(() => OrderSummaryScreen(item: item)),
+                  onTap: () => Get.toNamed(AppRouteKeys.orderSummary, arguments: item),
                   behavior: HitTestBehavior.opaque,
                   child: _buildActivityItem(
                     title: item['title'],

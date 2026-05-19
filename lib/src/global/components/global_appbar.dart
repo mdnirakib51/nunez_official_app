@@ -7,7 +7,7 @@ import '../global_widget/global_text.dart';
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GlobalAppBar({
     super.key,
-    required this.title,
+    this.title,
     this.isBackIc = true,
     this.centerTitle,
     this.titleColor,
@@ -19,7 +19,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
   });
 
-  final String title;
+  final String? title;
   final Color? titleColor;
   final double? fontSize;
   final FontWeight? fontWeight;
@@ -36,7 +36,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backColor ?? ColorRes.appColor,
+      backgroundColor: backColor ?? ColorRes.white,
       elevation: 0,
       automaticallyImplyLeading: false,
       leadingWidth: isBackIc == true ? 50 : 0,
@@ -51,7 +51,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
           : const SizedBox.shrink(),
       centerTitle: centerTitle ?? true,
       title: GlobalText(
-        str: title,
+        str: title ?? '',
         color: titleColor ?? ColorRes.white,
         fontSize: fontSize ?? 16,
         fontWeight: fontWeight ?? FontWeight.w500,

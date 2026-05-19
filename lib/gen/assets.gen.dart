@@ -111,8 +111,16 @@ class $AssetsDummyImgGen {
   AssetGenImage get homeDummyImg2 =>
       const AssetGenImage('assets/dummy_img/home_dummy_img2.png');
 
+  /// File path: assets/dummy_img/sneaker_dummy.png
+  AssetGenImage get sneakerDummy =>
+      const AssetGenImage('assets/dummy_img/sneaker_dummy.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [homeDummyImg1, homeDummyImg2];
+  List<AssetGenImage> get values => [
+    homeDummyImg1,
+    homeDummyImg2,
+    sneakerDummy,
+  ];
 }
 
 class $AssetsRequiredSrcGen {
@@ -281,6 +289,10 @@ class $AssetsAppIconsLiveVideoIcGen {
   AssetGenImage get shareIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/share_ic.png');
 
+  /// File path: assets/app_icons/live_video_ic/start_live.png
+  AssetGenImage get startLive =>
+      const AssetGenImage('assets/app_icons/live_video_ic/start_live.png');
+
   /// File path: assets/app_icons/live_video_ic/tip_ic.png
   AssetGenImage get tipIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/tip_ic.png');
@@ -314,6 +326,7 @@ class $AssetsAppIconsLiveVideoIcGen {
     reportIc,
     sendATipIc,
     shareIc,
+    startLive,
     tipIc,
     tipMeIc,
     viewShopIc,

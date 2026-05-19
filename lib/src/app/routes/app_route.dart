@@ -1,5 +1,12 @@
 import 'package:get/get.dart';
 import '../../features/dashboard_features/categories/view/category_product_screen.dart';
+import '../../features/dashboard_features/activity/view/purchase/order_summary/view/order_summary_screen.dart';
+import '../../features/dashboard_features/stream_hub/binding/stream_hub_binding.dart';
+import '../../features/dashboard_features/stream_hub/create_listing/category_selection/binding/category_selection_binding.dart';
+import '../../features/dashboard_features/stream_hub/create_listing/category_selection/view/category_selection_screen.dart';
+import '../../features/dashboard_features/stream_hub/create_listing/binding/create_listing_binding.dart';
+import '../../features/dashboard_features/stream_hub/create_listing/view/create_listing_screen.dart';
+import '../../features/dashboard_features/stream_hub/view/stream_hub_view.dart';
 import '../../features/dashboard_features/search/view/search_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
 import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
@@ -56,6 +63,10 @@ class AppRouteKeys {
   static const String addNewCard = '/add-new-card';
   static const String categoryProduct = '/category-product';
   static const String search = '/search';
+  static const String orderSummary = '/order-summary';
+  static const String streamHub = '/stream-hub';
+  static const String createListing = '/create-listing';
+  static const String categorySelection = '/category-selection';
 }
 
 class AppPages {
@@ -88,6 +99,7 @@ class AppPages {
       bindings: [
         BottomNavBarBinding(),
         HomeBinding(),
+        StreamHubBinding(),
       ],
     ),
     GetPage(
@@ -103,5 +115,21 @@ class AppPages {
     GetPage(name: AppRouteKeys.addNewCard, page: () => const AddNewCardScreen()),
     GetPage(name: AppRouteKeys.categoryProduct, page: () => const CategoryProductScreen()),
     GetPage(name: AppRouteKeys.search, page: () => const SearchScreen()),
+    GetPage(name: AppRouteKeys.orderSummary, page: () => OrderSummaryScreen(item: Get.arguments)),
+    GetPage(
+      name: AppRouteKeys.streamHub,
+      page: () => const StreamHubView(),
+      binding: StreamHubBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.createListing,
+      page: () => const CreateListingScreen(),
+      binding: CreateListingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.categorySelection,
+      page: () => const CategorySelectionScreen(),
+      binding: CategorySelectionBinding(),
+    ),
   ];
 }
