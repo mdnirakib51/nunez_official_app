@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../../features/dashboard_features/categories/view/category_product_screen.dart';
+import '../../features/dashboard_features/search/view/search_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
 import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/product_details_screen.dart';
@@ -52,6 +54,8 @@ class AppRouteKeys {
   static const String addPaymentMethod = '/add-payment-method';
   static const String paymentCards = '/payment-cards';
   static const String addNewCard = '/add-new-card';
+  static const String categoryProduct = '/category-product';
+  static const String search = '/search';
 }
 
 class AppPages {
@@ -97,5 +101,7 @@ class AppPages {
     GetPage(name: AppRouteKeys.addPaymentMethod, page: () => const AddPaymentMethodScreen()),
     GetPage(name: AppRouteKeys.paymentCards, page: () => const PaymentCardsScreen()),
     GetPage(name: AppRouteKeys.addNewCard, page: () => const AddNewCardScreen()),
+    GetPage(name: AppRouteKeys.categoryProduct, page: () => const CategoryProductScreen()),
+    GetPage(name: AppRouteKeys.search, page: () => const SearchScreen()),
   ];
 }

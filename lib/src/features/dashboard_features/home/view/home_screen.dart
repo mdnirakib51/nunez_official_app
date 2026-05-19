@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../gen/assets.gen.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
+import '../../../../global/global_widget/global_text.dart';
 import '../controller/home_controller.dart';
 import 'tab/electronics_tab.dart';
 import 'tab/fashion_tab.dart';
@@ -26,32 +28,33 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             // Search Bar
             Expanded(
-              child: Container(
-                height: 45,
-                decoration: BoxDecoration(
-                  color: ColorRes.grey.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    GlobalImageLoader(
-                      imagePath: Assets.appIcons.searchIc.path,
-                      height: 20,
-                      width: 20,
-                      color: ColorRes.grey,
-                    ),
-                    sizedBoxW(10),
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Search",
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(color: ColorRes.grey, fontSize: 14),
+              child: GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.search),
+                child: Container(
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: ColorRes.grey.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      GlobalImageLoader(
+                        imagePath: Assets.appIcons.searchIc.path,
+                        height: 20,
+                        width: 20,
+                        color: ColorRes.grey,
+                      ),
+                      sizedBoxW(10),
+                      const Expanded(
+                        child: GlobalText(
+                          str: "Search",
+                          fontSize: 14,
+                          color: ColorRes.grey,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
