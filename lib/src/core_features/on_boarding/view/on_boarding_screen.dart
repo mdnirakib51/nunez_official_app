@@ -31,26 +31,56 @@ class OnBoardingScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: size(context).width * 0.06),
               child: Column(
                 children: [
-                  // Language selector (Static English)
+                  // Language selector (English/Spanish Dropdown)
                   Align(
                     alignment: Alignment.topRight,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white70),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const GlobalText(
+                    child: PopupMenuButton<String>(
+                      offset: const Offset(0, 45),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      color: Colors.white,
+                      elevation: 2,
+                      constraints: const BoxConstraints(minWidth: 120),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 'English',
+                          height: 50,
+                          child: GlobalText(
                             str: AppStrings.english,
-                            color: ColorRes.white,
-                            fontSize: 12,
+                            color: ColorRes.black.withOpacity(0.9),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
                           ),
-                          sizedBoxW(4),
-                          const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
-                        ],
+                        ),
+                        const PopupMenuDivider(height: 1),
+                        PopupMenuItem(
+                          value: 'Spanish',
+                          height: 50,
+                          child: GlobalText(
+                            str: AppStrings.spanish,
+                            color: ColorRes.black.withOpacity(0.9),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white70),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const GlobalText(
+                              str: AppStrings.english,
+                              color: ColorRes.white,
+                              fontSize: 12,
+                            ),
+                            sizedBoxW(4),
+                            const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
+                          ],
+                        ),
                       ),
                     ),
                   ),

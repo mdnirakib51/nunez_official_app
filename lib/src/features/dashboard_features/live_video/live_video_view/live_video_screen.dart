@@ -718,18 +718,23 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                             : Container(
                                 key: const ValueKey("bidding_inactive"),
                                 width: double.infinity,
-                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                padding: const EdgeInsets.symmetric(vertical: 12),
                                 decoration: BoxDecoration(
-                                  color: ColorRes.black.withValues(alpha: 0.8),
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                                  color: Colors.white.withValues(alpha: 0.08),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                alignment: Alignment.center,
-                                child: const GlobalText(
-                                  str: "Awaiting Next Item",
-                                  color: ColorRes.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.watch_later_outlined, color: ColorRes.white, size: 20),
+                                    sizedBoxW(10),
+                                    const GlobalText(
+                                      str: "Awaiting Next Item...",
+                                      color: ColorRes.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
                                 ),
                               ),
                       ),
