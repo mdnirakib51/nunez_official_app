@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'components/bid_confirmation_dialog.dart';
+import 'components/custom_bid_dialog.dart';
+import 'components/more_options_bottom_sheet.dart';
+import '../../../../global/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -8,7 +12,6 @@ import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
-import '../seller_profile/product_details_screen.dart';
 
 class LiveVideoScreen extends StatefulWidget {
   const LiveVideoScreen({super.key});
@@ -83,128 +86,20 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
     _startTimer();
   }
 
-  void _showCustomBidDialog() {
-    final TextEditingController amountController = TextEditingController();
+  void _showBidConfirmationDialog(int amount) {
     Get.dialog(
-      Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const GlobalText(
-                    str: "Custom Your Bid",
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  GestureDetector(
-                    onTap: () => Get.back(),
-                    child: const Icon(Icons.close, color: Colors.grey),
-                  ),
-                ],
-              ),
-              sizedBoxH(20),
-              const GlobalText(
-                str: "Amount",
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-              const GlobalText(
-                str: "Your bid must be higher than the current highest bid.",
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-              sizedBoxH(10),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: TextField(
-                  controller: amountController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    prefixText: "\$ ",
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-              sizedBoxH(20),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: ColorRes.indigo.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.info_outline, color: ColorRes.indigo, size: 20),
-                    sizedBoxW(10),
-                    const Expanded(
-                      child: GlobalText(
-                        str: "If you win, your payment method will be charged automatically.",
-                        fontSize: 12,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              sizedBoxH(25),
-              Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        alignment: Alignment.center,
-                        child: const GlobalText(str: "Cancel", fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  sizedBoxW(15),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (amountController.text.isNotEmpty) {
-                          int? newBid = int.tryParse(amountController.text);
-                          if (newBid != null && newBid > _currentBid) {
-                            Get.back();
-                            _resetTimerAndBid(newBid);
-                          }
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          color: Colors.orange.shade900,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        alignment: Alignment.center,
-                        child: const GlobalText(str: "Place Bid", color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+      BidConfirmationDialog(
+        amount: amount,
+        onConfirm: () => _resetTimerAndBid(amount),
+      ),
+    );
+  }
+
+  void _showCustomBidDialog() {
+    Get.dialog(
+      CustomBidDialog(
+        currentBid: _currentBid,
+        onBidPlaced: (amount) => _resetTimerAndBid(amount),
       ),
     );
   }
@@ -234,15 +129,35 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
   void _navigateToProductDetails() async {
     _isPausedForNavigation = true;
     _controller.pause();
-    await Get.to(() => ProductDetailsScreen(product: const {
-          "title": "ZaRa Original Hand bag",
-          "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
-          "desc": "40 Available  •  Brand New"
-        }));
+    await Get.toNamed(AppRouteKeys.productDetails, arguments: {
+      "title": "ZaRa Original Hand bag",
+      "img": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
+      "desc": "40 Available  •  Brand New"
+    });
     _isPausedForNavigation = false;
     if (mounted) {
       _controller.play();
     }
+  }
+
+  void _navigateToSendTip() async {
+    _isPausedForNavigation = true;
+    _controller.pause();
+    await Get.toNamed(AppRouteKeys.sendTip);
+    _isPausedForNavigation = false;
+    if (mounted) {
+      _controller.play();
+    }
+  }
+
+  void _showMoreBottomSheet() {
+    Get.bottomSheet(
+      MoreOptionsBottomSheet(
+        onSendTip: _navigateToSendTip,
+        onViewProfile: () => _navigateToSellerProfile(context),
+      ),
+      isScrollControlled: true,
+    );
   }
 
   @override
@@ -348,7 +263,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: const GlobalText(
-                                  str: "Follow",
+                                  str: AppStrings.follow,
                                   color: ColorRes.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -503,9 +418,9 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                           sizedBoxH(6),
                                           Row(
                                             children: [
-                                              _badge("Free Shipping", ColorRes.indigo.withValues(alpha: 0.7)),
+                                              _badge(AppStrings.freeShipping, ColorRes.indigo.withValues(alpha: 0.7)),
                                               sizedBoxW(6),
-                                              _badge("+ Taxes", ColorRes.grey.withValues(alpha: 0.7)),
+                                              _badge(AppStrings.taxes, ColorRes.grey.withValues(alpha: 0.7)),
                                             ],
                                           ),
                                         ],
@@ -521,7 +436,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                           fontWeight: FontWeight.bold,
                                         ),
                                         GlobalText(
-                                          str: "Sold",
+                                          str: AppStrings.sold,
                                           color: Colors.orange.shade700,
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
@@ -540,13 +455,22 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _sideIcon(Assets.appIcons.liveVideoIc.moreVert.path, "More"),
-                          _sideIcon(Assets.appIcons.liveVideoIc.tipIc.path, "Tip"),
-                          _sideIcon(Assets.appIcons.liveVideoIc.walletIc.path, "Wallet"),
-                          _sideIcon(Assets.appIcons.liveVideoIc.shareIc.path, "Share", count: "5"),
+                          GestureDetector(
+                            onTap: _showMoreBottomSheet,
+                            child: _sideIcon(Assets.appIcons.liveVideoIc.moreVert.path, AppStrings.more),
+                          ),
+                          GestureDetector(
+                            onTap: _navigateToSendTip,
+                            child: _sideIcon(Assets.appIcons.liveVideoIc.tipIc.path, AppStrings.tip),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.toNamed(AppRouteKeys.addPaymentMethod),
+                            child: _sideIcon(Assets.appIcons.liveVideoIc.walletIc.path, AppStrings.wallet),
+                          ),
+                          _sideIcon(Assets.appIcons.liveVideoIc.shareIc.path, AppStrings.share, count: "5"),
                           GestureDetector(
                             onTap: () => _navigateToSellerProfile(context),
-                            child: _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, "View\nShop", isCircle: true),
+                            child: _sideIcon(Assets.appIcons.liveVideoIc.viewShopIc.path, AppStrings.viewShop, isCircle: true),
                           ),
                         ],
                       ),
@@ -572,7 +496,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                         ),
                         alignment: Alignment.centerLeft,
                         child: const GlobalText(
-                          str: "Say Something",
+                          str: AppStrings.saySomething,
                           color: ColorRes.white,
                           fontSize: 15,
                         ),
@@ -599,7 +523,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                         ),
                                         alignment: Alignment.center,
                                         child: const GlobalText(
-                                          str: "Custom",
+                                          str: AppStrings.custom,
                                           color: ColorRes.white,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w500,
@@ -635,7 +559,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                                   width: timerWidth,
                                                   child: Center(
                                                     child: GlobalText(
-                                                      str: "$_timerSeconds Sec",
+                                                      str: "$_timerSeconds ${AppStrings.sec}",
                                                       color: ColorRes.white,
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.bold,
@@ -660,7 +584,10 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                                   },
                                                   onHorizontalDragEnd: (details) {
                                                     if (_swipePosition >= maxSwipe * 0.8) {
-                                                      _resetTimerAndBid(_currentBid + 2);
+                                                      _showBidConfirmationDialog(_currentBid + 2);
+                                                      setState(() {
+                                                        _swipePosition = 0.0;
+                                                      });
                                                     } else {
                                                       setState(() {
                                                         _swipePosition = 0.0;
@@ -669,7 +596,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                                   },
                                                   onTap: () {
                                                     // Optional: Tap still works, but swipe is emphasized
-                                                    _resetTimerAndBid(_currentBid + 2);
+                                                    _showBidConfirmationDialog(_currentBid + 2);
                                                   },
                                                   child: Container(
                                                     decoration: BoxDecoration(
@@ -689,7 +616,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                                       children: [
                                                         const Spacer(flex: 2),
                                                         GlobalText(
-                                                          str: "Bid: \$$_currentBid",
+                                                          str: "${AppStrings.bidPrefix}\$$_currentBid",
                                                           color: ColorRes.white,
                                                           fontSize: 16,
                                                           fontWeight: FontWeight.bold,
@@ -729,7 +656,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                     const Icon(Icons.watch_later_outlined, color: ColorRes.white, size: 20),
                                     sizedBoxW(10),
                                     const GlobalText(
-                                      str: "Awaiting Next Item...",
+                                      str: AppStrings.awaitingNextItem,
                                       color: ColorRes.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,

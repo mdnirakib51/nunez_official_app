@@ -215,6 +215,34 @@ class $AssetsAppIconsButtomNavIcGen {
 class $AssetsAppIconsLiveVideoIcGen {
   const $AssetsAppIconsLiveVideoIcGen();
 
+  /// File path: assets/app_icons/live_video_ic/block_ic.png
+  AssetGenImage get blockIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/block_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji1.png
+  AssetGenImage get emoji1 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji1.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji2.png
+  AssetGenImage get emoji2 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji2.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji3.png
+  AssetGenImage get emoji3 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji3.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji4.png
+  AssetGenImage get emoji4 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji4.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji5.png
+  AssetGenImage get emoji5 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji5.png');
+
+  /// File path: assets/app_icons/live_video_ic/emoji6.png
+  AssetGenImage get emoji6 =>
+      const AssetGenImage('assets/app_icons/live_video_ic/emoji6.png');
+
   /// File path: assets/app_icons/live_video_ic/message_ic.png
   AssetGenImage get messageIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/message_ic.png');
@@ -222,6 +250,27 @@ class $AssetsAppIconsLiveVideoIcGen {
   /// File path: assets/app_icons/live_video_ic/more_vert.png
   AssetGenImage get moreVert =>
       const AssetGenImage('assets/app_icons/live_video_ic/more_vert.png');
+
+  /// File path: assets/app_icons/live_video_ic/pay_card_ic.png
+  AssetGenImage get payCardIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/pay_card_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/pay_with_card_ic.png
+  AssetGenImage get payWithCardIc => const AssetGenImage(
+    'assets/app_icons/live_video_ic/pay_with_card_ic.png',
+  );
+
+  /// File path: assets/app_icons/live_video_ic/paypal_ic.png
+  AssetGenImage get paypalIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/paypal_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/report_ic.png
+  AssetGenImage get reportIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/report_ic.png');
+
+  /// File path: assets/app_icons/live_video_ic/send_a_tip_ic.png
+  AssetGenImage get sendATipIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/send_a_tip_ic.png');
 
   /// File path: assets/app_icons/live_video_ic/share_ic.png
   AssetGenImage get shareIc =>
@@ -245,8 +294,20 @@ class $AssetsAppIconsLiveVideoIcGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    blockIc,
+    emoji1,
+    emoji2,
+    emoji3,
+    emoji4,
+    emoji5,
+    emoji6,
     messageIc,
     moreVert,
+    payCardIc,
+    payWithCardIc,
+    paypalIc,
+    reportIc,
+    sendATipIc,
     shareIc,
     tipIc,
     tipMeIc,

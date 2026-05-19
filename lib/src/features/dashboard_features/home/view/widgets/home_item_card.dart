@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../gen/assets.gen.dart';
+import '../../../../../app/routes/app_route.dart';
 import '../../../../../global/constants/colors_resources.dart';
 import '../../../../../global/global_widget/global_image_loader.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
-import '../../../live_video/live_video_view/live_video_screen.dart';
 
 class HomeItemCard extends StatelessWidget {
   final String? category;
@@ -15,7 +15,7 @@ class HomeItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const LiveVideoScreen());
+        Get.toNamed(AppRouteKeys.liveVideo);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

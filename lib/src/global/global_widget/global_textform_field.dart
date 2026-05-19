@@ -184,7 +184,7 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
                 color: ColorRes.grey,
               ),
             ) : widget.sufixIcon,
-          ) ?? inputDecoration.copyWith(
+          ) ?? borderDecoration.copyWith(
             isDense: widget.isDense,
             hintText: widget.hintText,
             hintStyle: widget.hintTextStyle ?? const TextStyle(

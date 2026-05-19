@@ -65,4 +65,62 @@ class AppStrings {
   static const String passwordMismatch = "Passwords do not match";
   static const String passwordMinLength = "Password must be at least 6 characters";
   static const String agreeToTerms = "Please agree to the terms and conditions";
+
+  // Live Video & Bidding
+  static const String follow = "Follow";
+  static const String following = "Following";
+  static const String freeShipping = "Free Shipping";
+  static const String taxes = "+ Taxes";
+  static const String sold = "Sold";
+  static const String more = "More";
+  static const String tip = "Tip";
+  static const String wallet = "Wallet";
+  static const String share = "Share";
+  static const String viewShop = "View\nShop";
+  static const String saySomething = "Say Something";
+  static const String custom = "Custom";
+  static const String sec = "Sec";
+  static const String bidPrefix = "Bid: ";
+  static const String awaitingNextItem = "Awaiting Next Item...";
+
+  // Bid Dialogs
+  static const String confirmYourBid = "Confirm Your Bid";
+  static const String amount = "Amount";
+  static const String placeBidPrompt = "You're about to place a bid on this item.";
+  static const String paymentChargeInfo = "If you win, your payment method will be charged automatically.";
+  static const String cancel = "Cancel";
+  static const String placeBid = "Place Bid";
+  static const String placeCustomBid = "Place Custom Bid";
+  static const String enterAmount = "Enter Amount";
+  static const String bidHigherPrompt = "Bid must be higher than current bid";
+  static const String invalidBid = "Invalid Bid";
+  static const String amountGreaterThanCurrent = "Amount must be greater than current bid";
+
+  // More Options Bottom Sheet
+  static const String viewProfile = "View profile";
+  static const String message = "Message";
+  static const String block = "Block";
+  static const String report = "Report";
+
+  // Send Tip
+  static const String sendATip = "Send a tip";
+  static const String chooseTipAmount = "Choose a tip amount";
+  static const String hostReceiveInfo = "The host will receive 100% of this amount";
+  static const String addThankYouNote = "Add a thank you note";
+  static const String max50Letter = "Maximum 50 letter";
+  static const String payNow = "Pay Now";
+
+  // Payment Methods
+  static const String addPaymentMethod = "Add Payment Method";
+  static const String paymentMethod = "Payment Method";
+  static const String payWithCard = "Pay with Card";
+  static const String paypal = "Paypal";
+  static const String masterCard = "Master Card";
+  static const String visaCard = "Visa card";
+  static const String addCard = "Add Card";
+  static const String name = "Name";
+  static const String cardNumber = "Card number";
+  static const String expiryDate = "Expiry Date";
+  static const String cvc = "CVC";
+  static const String saveCard = "Save Card";
 }

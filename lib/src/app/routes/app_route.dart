@@ -1,6 +1,12 @@
 import 'package:get/get.dart';
 import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
 import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
+import '../../features/dashboard_features/live_video/seller_profile/product_details_screen.dart';
+import '../../features/dashboard_features/live_video/live_video_view/payment_cards_screen.dart';
+import '../../features/dashboard_features/live_video/live_video_view/add_new_card_screen.dart';
+import '../../features/dashboard_features/live_video/live_video_view/add_payment_method_screen.dart';
+import '../../features/dashboard_features/live_video/live_video_view/send_tip_screen.dart';
+import '../../features/dashboard_features/live_video/live_video_view/live_video_screen.dart';
 import '../../features/dashboard_features/home/binding/home_binding.dart';
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
@@ -40,6 +46,12 @@ class AppRouteKeys {
   static const String profile      = '/profile';
   static const String editProfile  = '/edit-profile';
   static const String sellerProfile = '/seller-profile';
+  static const String sendTip      = '/send-tip';
+  static const String productDetails = '/product-details';
+  static const String liveVideo    = '/live-video';
+  static const String addPaymentMethod = '/add-payment-method';
+  static const String paymentCards = '/payment-cards';
+  static const String addNewCard = '/add-new-card';
 }
 
 class AppPages {
@@ -79,5 +91,11 @@ class AppPages {
       page: () => const SellerProfileScreen(),
       binding: SellerProfileBinding(),
     ),
+    GetPage(name: AppRouteKeys.sendTip, page: () => const SendTipScreen()),
+    GetPage(name: AppRouteKeys.productDetails, page: () => ProductDetailsScreen(product: Get.arguments)),
+    GetPage(name: AppRouteKeys.liveVideo, page: () => const LiveVideoScreen()),
+    GetPage(name: AppRouteKeys.addPaymentMethod, page: () => const AddPaymentMethodScreen()),
+    GetPage(name: AppRouteKeys.paymentCards, page: () => const PaymentCardsScreen()),
+    GetPage(name: AppRouteKeys.addNewCard, page: () => const AddNewCardScreen()),
   ];
 }
