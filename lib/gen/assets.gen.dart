@@ -18,6 +18,10 @@ class $AssetsAppIconsGen {
   AssetGenImage get appLogoIc =>
       const AssetGenImage('assets/app_icons/app_logo_ic.png');
 
+  /// File path: assets/app_icons/bids_logo_ic.png
+  AssetGenImage get bidsLogoIc =>
+      const AssetGenImage('assets/app_icons/bids_logo_ic.png');
+
   /// Directory path: assets/app_icons/buttom_nav_ic
   $AssetsAppIconsButtomNavIcGen get buttomNavIc =>
       const $AssetsAppIconsButtomNavIcGen();
@@ -57,6 +61,7 @@ class $AssetsAppIconsGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     appLogoIc,
+    bidsLogoIc,
     cartIc,
     congratulationIc,
     noInternetConnectionIc,

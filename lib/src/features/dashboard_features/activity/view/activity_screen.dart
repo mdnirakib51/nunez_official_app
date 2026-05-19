@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_text.dart';
 import 'purchase/view/purchase_tab.dart';
+import 'bids/view/bids_tab.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -71,7 +72,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
         controller: _tabController,
         children: const [
           PurchaseTab(),
-          Center(child: GlobalText(str: "Bids Tab")),
+          BidsTab(),
           Center(child: GlobalText(str: "Message Tab")),
           Center(child: GlobalText(str: "Saved Tab")),
         ],
