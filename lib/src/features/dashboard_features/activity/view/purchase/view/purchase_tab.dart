@@ -4,6 +4,7 @@ import '../../../../../../global/constants/colors_resources.dart';
 import '../../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../../global/global_widget/global_text.dart';
 import '../controller/purchase_controller.dart';
+import '../order_summary/view/order_summary_screen.dart';
 
 class PurchaseTab extends StatelessWidget {
   const PurchaseTab({super.key});
@@ -43,18 +44,22 @@ class PurchaseTab extends StatelessWidget {
               separatorBuilder: (context, index) => const Divider(height: 40, thickness: 1),
               itemBuilder: (context, index) {
                 final item = items[index];
-                return _buildActivityItem(
-                  title: item['title'],
-                  subtitle: item['subtitle'],
-                  price: item['price'],
-                  from: item['from'],
-                  date: item['date'],
-                  imageUrl: item['imageUrl'],
-                  status: item['status'],
-                  statusColor: item['statusColor'],
-                  statusTextColor: item['statusTextColor'],
-                  shippingCarrier: item['shippingCarrier'],
-                  trackingId: item['trackingId'],
+                return GestureDetector(
+                  onTap: () => Get.to(() => OrderSummaryScreen(item: item)),
+                  behavior: HitTestBehavior.opaque,
+                  child: _buildActivityItem(
+                    title: item['title'],
+                    subtitle: item['subtitle'],
+                    price: item['price'],
+                    from: item['from'],
+                    date: item['date'],
+                    imageUrl: item['imageUrl'],
+                    status: item['status'],
+                    statusColor: item['statusColor'],
+                    statusTextColor: item['statusTextColor'],
+                    shippingCarrier: item['shippingCarrier'],
+                    trackingId: item['trackingId'],
+                  ),
                 );
               },
             );
