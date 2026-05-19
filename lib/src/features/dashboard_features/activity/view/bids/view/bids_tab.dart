@@ -37,10 +37,13 @@ class BidsTab extends StatelessWidget {
             if (controller.selectedFilter.value == "All") {
               return _buildEmptyState();
             } else if (controller.selectedFilter.value == "Outbid") {
-              return ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                children: [
-                  _buildBidItem(
+              return ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                itemCount: 1, // Change to actual data length
+                physics: const BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => sizedBoxH(25),
+                itemBuilder: (context, index) {
+                  return _buildBidItem(
                     title: "Zara Original Hand bag",
                     qty: 40,
                     condition: "Brand New",
@@ -49,14 +52,17 @@ class BidsTab extends StatelessWidget {
                     statusColor: const Color(0xFFFF7A45),
                     imageUrl: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
                     bottomActionText: "\$25.00",
-                  ),
-                ],
+                  );
+                },
               );
             } else {
-              return ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                children: [
-                  _buildBidItem(
+              return ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                itemCount: 1, // Change to actual data length
+                physics: const BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => sizedBoxH(25),
+                itemBuilder: (context, index) {
+                  return _buildBidItem(
                     title: "Zara Original Hand bag",
                     qty: 40,
                     condition: "Brand New",
@@ -66,8 +72,8 @@ class BidsTab extends StatelessWidget {
                     statusColor: const Color(0xFF27AE60),
                     imageUrl: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
                     isWinning: true,
-                  ),
-                ],
+                  );
+                },
               );
             }
           }),
@@ -163,82 +169,76 @@ class BidsTab extends StatelessWidget {
     String? bottomActionText,
     bool isWinning = false,
   }) {
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                imageUrl,
-                height: 100,
-                width: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-            sizedBoxW(15),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GlobalText(
-                    str: title,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                  sizedBoxH(4),
-                  GlobalText(
-                    str: "Qty: $qty • $condition",
-                    fontSize: 13,
-                    color: ColorRes.grey,
-                  ),
-                  sizedBoxH(4),
-                  GlobalText(
-                    str: "\$$price",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                  if (date != null) ...[
-                    sizedBoxH(4),
-                    GlobalText(
-                      str: "Date: $date",
-                      fontSize: 12,
-                      color: ColorRes.grey,
-                    ),
-                  ],
-                  sizedBoxH(8),
-                  GlobalText(
-                    str: statusMessage,
-                    fontSize: 13,
-                    color: statusColor,
-                    fontWeight: isWinning ? FontWeight.w500 : FontWeight.w400,
-                  ),
-                  if (bottomActionText != null) ...[
-                    sizedBoxH(10),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      decoration: BoxDecoration(
-                        color: ColorRes.grey.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: GlobalText(
-                          str: bottomActionText,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ],
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.network(
+            imageUrl,
+            height: 120,
+            width: 120,
+            fit: BoxFit.cover,
+          ),
         ),
-        sizedBoxH(20),
+        sizedBoxW(15),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GlobalText(
+                str: title,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              sizedBoxH(4),
+              GlobalText(
+                str: "Qty: $qty • $condition",
+                fontSize: 12,
+                color: ColorRes.grey,
+              ),
+              sizedBoxH(4),
+              GlobalText(
+                str: "\$$price",
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              if (date != null) ...[
+                sizedBoxH(4),
+                GlobalText(
+                  str: "Date: $date",
+                  fontSize: 12,
+                  color: ColorRes.grey,
+                ),
+              ],
+              sizedBoxH(8),
+              GlobalText(
+                str: statusMessage,
+                fontSize: 13,
+                color: statusColor,
+                fontWeight: isWinning ? FontWeight.w500 : FontWeight.w400,
+              ),
+              if (bottomActionText != null) ...[
+                sizedBoxH(10),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    color: ColorRes.grey.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Center(
+                    child: GlobalText(
+                      str: bottomActionText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ],
     );
   }
