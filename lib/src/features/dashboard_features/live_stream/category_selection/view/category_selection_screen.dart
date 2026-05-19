@@ -1,11 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../../gen/assets.gen.dart';
-import '../../../../../../global/components/global_appbar.dart';
-import '../../../../../../global/constants/colors_resources.dart';
-import '../../../../../../global/global_widget/global_image_loader.dart';
-import '../../../../../../global/global_widget/global_sized_box.dart';
-import '../../../../../../global/global_widget/global_text.dart';
+import '../../../../../global/components/global_appbar.dart';
+import '../../../../../global/constants/colors_resources.dart';
+import '../../../../../global/global_widget/global_image_loader.dart';
+import '../../../../../global/global_widget/global_sized_box.dart';
+import '../../../../../global/global_widget/global_text.dart';
+import '../../../../../app/routes/app_route.dart';
 import '../controller/category_selection_controller.dart';
 
 class CategorySelectionScreen extends GetView<CategorySelectionController> {
@@ -108,7 +109,7 @@ class CategorySelectionScreen extends GetView<CategorySelectionController> {
             padding: const EdgeInsets.all(20),
             child: InkWell(
               onTap: () {
-                // Next step navigation
+                Get.toNamed(AppRouteKeys.subCategorySelection);
               },
               child: Container(
                 width: double.infinity,

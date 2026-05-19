@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../gen/assets.gen.dart';
-import '../../../../global/constants/colors_resources.dart';
-import '../../../../global/global_widget/global_image_loader.dart';
-import '../../../../global/global_widget/global_sized_box.dart';
-import '../../../../global/global_widget/global_text.dart';
-import '../../../../app/routes/app_route.dart';
-import '../../../../global/bottom_nav_bar/controller/bottom_nav_bar_controller.dart';
+import '../../../../../../../gen/assets.gen.dart';
+import '../../../../../global/constants/colors_resources.dart';
+import '../../../../../global/global_widget/global_image_loader.dart';
+import '../../../../../global/global_widget/global_sized_box.dart';
+import '../../../../../global/global_widget/global_text.dart';
+import '../../../../../app/routes/app_route.dart';
+import '../../../../../global/bottom_nav_bar/controller/bottom_nav_bar_controller.dart';
 import '../controller/stream_hub_controller.dart';
 
 class StreamHubView extends GetView<StreamHubController> {

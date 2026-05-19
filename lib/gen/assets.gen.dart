@@ -91,12 +91,17 @@ class $AssetsAppImagesGen {
   AssetGenImage get onBoardBackImg =>
       const AssetGenImage('assets/app_images/on_board_back_img.jpg');
 
+  /// File path: assets/app_images/seller_back_img.png
+  AssetGenImage get sellerBackImg =>
+      const AssetGenImage('assets/app_images/seller_back_img.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     onBoard1,
     onBoard2,
     onBoard3,
     onBoardBackImg,
+    sellerBackImg,
   ];
 }
 

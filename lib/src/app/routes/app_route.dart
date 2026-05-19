@@ -1,12 +1,18 @@
 import 'package:get/get.dart';
 import '../../features/dashboard_features/categories/view/category_product_screen.dart';
 import '../../features/dashboard_features/activity/view/purchase/order_summary/view/order_summary_screen.dart';
-import '../../features/dashboard_features/stream_hub/binding/stream_hub_binding.dart';
-import '../../features/dashboard_features/stream_hub/create_listing/category_selection/binding/category_selection_binding.dart';
-import '../../features/dashboard_features/stream_hub/create_listing/category_selection/view/category_selection_screen.dart';
-import '../../features/dashboard_features/stream_hub/create_listing/binding/create_listing_binding.dart';
-import '../../features/dashboard_features/stream_hub/create_listing/view/create_listing_screen.dart';
-import '../../features/dashboard_features/stream_hub/view/stream_hub_view.dart';
+import '../../features/dashboard_features/live_stream/category_selection/binding/category_selection_binding.dart';
+import '../../features/dashboard_features/live_stream/sub_category_selection/binding/sub_category_selection_binding.dart';
+import '../../features/dashboard_features/live_stream/sub_category_selection/view/sub_category_selection_screen.dart';
+import '../../features/dashboard_features/live_stream/seller_description/binding/seller_description_binding.dart';
+import '../../features/dashboard_features/live_stream/seller_description/view/seller_description_screen.dart';
+import '../../features/dashboard_features/live_stream/seller_guide/binding/seller_guide_binding.dart';
+import '../../features/dashboard_features/live_stream/seller_guide/view/seller_guide_screen.dart';
+import '../../features/dashboard_features/live_stream/category_selection/view/category_selection_screen.dart';
+import '../../features/dashboard_features/live_stream/create_listing/binding/create_listing_binding.dart';
+import '../../features/dashboard_features/live_stream/create_listing/view/create_listing_screen.dart';
+import '../../features/dashboard_features/live_stream/steam_hub/binding/stream_hub_binding.dart';
+import '../../features/dashboard_features/live_stream/steam_hub/view/stream_hub_view.dart';
 import '../../features/dashboard_features/search/view/search_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
 import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
@@ -67,6 +73,9 @@ class AppRouteKeys {
   static const String streamHub = '/stream-hub';
   static const String createListing = '/create-listing';
   static const String categorySelection = '/category-selection';
+  static const String subCategorySelection = '/sub-category-selection';
+  static const String sellerDescription = '/seller-description';
+  static const String sellerGuide = '/seller-guide';
 }
 
 class AppPages {
@@ -130,6 +139,21 @@ class AppPages {
       name: AppRouteKeys.categorySelection,
       page: () => const CategorySelectionScreen(),
       binding: CategorySelectionBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.subCategorySelection,
+      page: () => const SubCategorySelectionScreen(),
+      binding: SubCategorySelectionBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.sellerDescription,
+      page: () => const SellerDescriptionScreen(),
+      binding: SellerDescriptionBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.sellerGuide,
+      page: () => const SellerGuideScreen(),
+      binding: SellerGuideBinding(),
     ),
   ];
 }
