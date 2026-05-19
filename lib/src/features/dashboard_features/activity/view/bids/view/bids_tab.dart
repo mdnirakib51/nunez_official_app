@@ -35,42 +35,69 @@ class BidsTab extends StatelessWidget {
         Expanded(
           child: Obx(() {
             if (controller.selectedFilter.value == "All") {
-              return _buildEmptyState();
-            } else if (controller.selectedFilter.value == "Outbid") {
+              final allItems = [...controller.outbidItems, ...controller.winningItems];
+              if (allItems.isEmpty) {
+                return _buildEmptyState();
+              }
               return ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                itemCount: 1, // Change to actual data length
+                itemCount: allItems.length,
                 physics: const BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => sizedBoxH(25),
                 itemBuilder: (context, index) {
+                  final item = allItems[index];
+                  bool isWinning = controller.winningItems.contains(item);
                   return _buildBidItem(
-                    title: "Zara Original Hand bag",
-                    qty: 40,
-                    condition: "Brand New",
-                    price: "10.00",
-                    statusMessage: "Highest Bid \$40.00",
+                    title: item['title'],
+                    qty: item['qty'],
+                    condition: item['condition'],
+                    price: item['price'],
+                    date: item['date'],
+                    statusMessage: item['statusMessage'],
+                    statusColor: isWinning ? const Color(0xFF27AE60) : const Color(0xFFFF7A45),
+                    imageUrl: item['imageUrl'],
+                    bottomActionText: item['bottomActionText'],
+                    isWinning: isWinning,
+                  );
+                },
+              );
+            } else if (controller.selectedFilter.value == "Outbid") {
+              return ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                itemCount: controller.outbidItems.length,
+                physics: const BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => sizedBoxH(25),
+                itemBuilder: (context, index) {
+                  final item = controller.outbidItems[index];
+                  return _buildBidItem(
+                    title: item['title'],
+                    qty: item['qty'],
+                    condition: item['condition'],
+                    price: item['price'],
+                    statusMessage: item['statusMessage'],
                     statusColor: const Color(0xFFFF7A45),
-                    imageUrl: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
-                    bottomActionText: "\$25.00",
+                    imageUrl: item['imageUrl'],
+                    bottomActionText: item['bottomActionText'],
                   );
                 },
               );
             } else {
               return ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                itemCount: 1, // Change to actual data length
+                itemCount: controller.winningItems.length,
                 physics: const BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => sizedBoxH(25),
                 itemBuilder: (context, index) {
+                  final item = controller.winningItems[index];
                   return _buildBidItem(
-                    title: "Zara Original Hand bag",
-                    qty: 40,
-                    condition: "Brand New",
-                    price: "10.00",
-                    date: "Nov 12, 2026",
-                    statusMessage: "You won the bid for \$40.00",
+                    title: item['title'],
+                    qty: item['qty'],
+                    condition: item['condition'],
+                    price: item['price'],
+                    date: item['date'],
+                    statusMessage: item['statusMessage'],
                     statusColor: const Color(0xFF27AE60),
-                    imageUrl: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa",
+                    imageUrl: item['imageUrl'],
                     isWinning: true,
                   );
                 },

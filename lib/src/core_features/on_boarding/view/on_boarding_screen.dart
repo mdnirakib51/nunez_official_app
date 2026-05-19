@@ -31,6 +31,8 @@ class OnBoardingScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: size(context).width * 0.06),
               child: Column(
                 children: [
+                  sizedBoxH(10),
+
                   // Language selector (English/Spanish Dropdown)
                   Align(
                     alignment: Alignment.topRight,

@@ -32,53 +32,63 @@ class PurchaseTab extends StatelessWidget {
         sizedBoxH(15),
         // Activity List
         Expanded(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            children: [
-              _buildActivityItem(
-                title: "Nike Running Shoes",
-                subtitle: "Brand New",
-                price: "10.00",
-                from: "Micheal Yead",
-                date: "Nov 12, 2026",
-                imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-                status: "In Progress",
-                statusColor: const Color(0xFFE8E1FF),
-                statusTextColor: const Color(0xFF7047EB),
-              ),
-              const Divider(height: 40, thickness: 1),
-              _buildActivityItem(
-                title: "Pure Solution Essence",
-                subtitle: "Brand New",
-                price: "10.00",
-                from: "Micheal Yead",
-                date: "Nov 12, 2026",
-                imageUrl: "https://images.unsplash.com/photo-1556228720-195a672e8a03",
-                status: "Shipped",
-                statusColor: const Color(0xFFD6F0FF),
-                statusTextColor: const Color(0xFF0095FF),
-                shippingCarrier: "Fedex",
-                trackingId: "123456789",
-              ),
-              const Divider(height: 40, thickness: 1),
-              _buildActivityItem(
-                title: "Fuji-film 600D Camera",
-                subtitle: "Brand New",
-                price: "10.00",
-                from: "Micheal Yead",
-                date: "Nov 12, 2026",
-                imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
-                status: "Completed",
-                statusColor: const Color(0xFFE2FBEA),
-                statusTextColor: const Color(0xFF27AE60),
-                shippingCarrier: "Fedex",
-                trackingId: "123456789",
-              ),
-              sizedBoxH(20),
-            ],
-          ),
+          child: Obx(() {
+            final items = controller.filteredItems;
+            if (items.isEmpty) {
+              return _buildEmptyState();
+            }
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              itemCount: items.length,
+              separatorBuilder: (context, index) => const Divider(height: 40, thickness: 1),
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return _buildActivityItem(
+                  title: item['title'],
+                  subtitle: item['subtitle'],
+                  price: item['price'],
+                  from: item['from'],
+                  date: item['date'],
+                  imageUrl: item['imageUrl'],
+                  status: item['status'],
+                  statusColor: item['statusColor'],
+                  statusTextColor: item['statusTextColor'],
+                  shippingCarrier: item['shippingCarrier'],
+                  trackingId: item['trackingId'],
+                );
+              },
+            );
+          }),
         ),
       ],
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.shopping_bag_outlined, size: 80, color: Colors.grey),
+            sizedBoxH(20),
+            const GlobalText(
+              str: "No purchases found",
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
+            ),
+            sizedBoxH(10),
+            GlobalText(
+              str: "You haven't made any purchases in this category yet.",
+              fontSize: 14,
+              color: ColorRes.grey,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
