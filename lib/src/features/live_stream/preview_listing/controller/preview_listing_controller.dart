@@ -4,11 +4,7 @@ import 'package:get/get.dart';
 
 class PreviewListingController extends GetxController {
   void finish() {
-    Get.offAllNamed(AppRouteKeys.dashboard);
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (Get.isRegistered<BottomNavBarController>()) {
-        Get.find<BottomNavBarController>().changeTab(2);
-      }
-    });
+    // Navigate back to Dashboard and reset the stack, passing the target tab index
+    Get.offAllNamed(AppRouteKeys.dashboard, arguments: 2);
   }
 }

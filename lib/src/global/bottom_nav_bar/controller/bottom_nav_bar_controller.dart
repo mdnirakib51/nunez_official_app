@@ -59,6 +59,14 @@ class BottomNavBarController extends GetxController {
   // ── Selected index (observable) ────────────────────────────────────────────
   final RxInt selectedIndex = 0.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    if (Get.arguments != null && Get.arguments is int) {
+      selectedIndex.value = Get.arguments;
+    }
+  }
+
   void changeTab(int index) {
     selectedIndex.value = index;
   }

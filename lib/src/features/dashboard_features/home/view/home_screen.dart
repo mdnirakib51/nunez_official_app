@@ -18,99 +18,100 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorRes.white,
-      appBar: AppBar(
+    return DefaultTabController(
+      length: controller.categories.length,
+      child: Scaffold(
         backgroundColor: ColorRes.white,
-        elevation: 0,
-        toolbarHeight: 80,
-        title: Row(
-          children: [
-            // Search Bar
-            Expanded(
-              child: GestureDetector(
-                onTap: () => Get.toNamed(AppRouteKeys.search),
-                child: Container(
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: ColorRes.grey.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    children: [
-                      GlobalImageLoader(
-                        imagePath: Assets.appIcons.searchIc.path,
-                        height: 20,
-                        width: 20,
-                        color: ColorRes.grey,
-                      ),
-                      sizedBoxW(10),
-                      const Expanded(
-                        child: GlobalText(
-                          str: "Search",
-                          fontSize: 14,
+        appBar: AppBar(
+          backgroundColor: ColorRes.white,
+          elevation: 0,
+          toolbarHeight: 80,
+          title: Row(
+            children: [
+              // Search Bar
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(AppRouteKeys.search),
+                  child: Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: ColorRes.grey.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        GlobalImageLoader(
+                          imagePath: Assets.appIcons.searchIc.path,
+                          height: 20,
+                          width: 20,
                           color: ColorRes.grey,
                         ),
-                      ),
-                    ],
+                        sizedBoxW(10),
+                        const Expanded(
+                          child: GlobalText(
+                            str: "Search",
+                            fontSize: 14,
+                            color: ColorRes.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            sizedBoxW(15),
-            // Notification Icon
-            GlobalImageLoader(
-              imagePath: Assets.appIcons.notificationIc.path,
-              height: 24,
-              width: 24,
-            ),
-            sizedBoxW(15),
-            // Cart Icon
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(
-                color: ColorRes.appColor,
-                shape: BoxShape.circle,
+              sizedBoxW(15),
+              // Notification Icon
+              GlobalImageLoader(
+                imagePath: Assets.appIcons.notificationIc.path,
+                height: 24,
+                width: 24,
               ),
-              child: GlobalImageLoader(
-                imagePath: Assets.appIcons.cartIc.path,
-                height: 20,
-                width: 20,
-                color: ColorRes.white,
+              sizedBoxW(15),
+              // Cart Icon
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: ColorRes.appColor,
+                  shape: BoxShape.circle,
+                ),
+                child: GlobalImageLoader(
+                  imagePath: Assets.appIcons.cartIc.path,
+                  height: 20,
+                  width: 20,
+                  color: ColorRes.white,
+                ),
               ),
-            ),
+            ],
+          ),
+          bottom: TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.start,
+            dividerColor: Colors.transparent,
+            dividerHeight: 0,
+            labelColor: ColorRes.black,
+            unselectedLabelColor: ColorRes.grey,
+            labelPadding: const EdgeInsets.only(left: 0, right: 20),
+            padding: const EdgeInsets.only(left: 16),
+            labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+            indicatorColor: ColorRes.black,
+            indicatorSize: TabBarIndicatorSize.label,
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            splashFactory: NoSplash.splashFactory,
+            enableFeedback: false,
+            tabs: controller.categories.map((category) => Tab(text: category)).toList(),
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            ForYouTab(),
+            ToysHobbiesTab(),
+            ElectronicsTab(),
+            VideoGamesTab(),
+            FashionTab(),
           ],
         ),
-        bottom: TabBar(
-          controller: controller.tabController,
-          isScrollable: true,
-          tabAlignment: TabAlignment.start,
-          dividerColor: Colors.transparent,
-          dividerHeight: 0,
-          labelColor: ColorRes.black,
-          unselectedLabelColor: ColorRes.grey,
-          labelPadding: const EdgeInsets.only(left: 0, right: 20),
-          padding: const EdgeInsets.only(left: 16),
-          labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-          indicatorColor: ColorRes.black,
-          indicatorSize: TabBarIndicatorSize.label,
-          overlayColor: WidgetStateProperty.all(Colors.transparent),
-          splashFactory: NoSplash.splashFactory,
-          enableFeedback: false,
-          tabs: controller.categories.map((category) => Tab(text: category)).toList(),
-        ),
-      ),
-      body: TabBarView(
-        controller: controller.tabController,
-        children: const [
-          ForYouTab(),
-          ToysHobbiesTab(),
-          ElectronicsTab(),
-          VideoGamesTab(),
-          FashionTab(),
-        ],
       ),
     );
   }
