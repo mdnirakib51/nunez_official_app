@@ -286,6 +286,10 @@ class $AssetsAppIconsLiveVideoIcGen {
   AssetGenImage get paypalIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/paypal_ic.png');
 
+  /// File path: assets/app_icons/live_video_ic/pin_ic.png
+  AssetGenImage get pinIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/pin_ic.png');
+
   /// File path: assets/app_icons/live_video_ic/report_ic.png
   AssetGenImage get reportIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/report_ic.png');
@@ -337,6 +341,7 @@ class $AssetsAppIconsLiveVideoIcGen {
     payCardIc,
     payWithCardIc,
     paypalIc,
+    pinIc,
     reportIc,
     sendATipIc,
     shareIc,

@@ -2,12 +2,12 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../gen/assets.gen.dart';
-import '../../../../global/constants/app_strings.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
 import '../controller/live_stream_controller.dart';
+import 'components/live_listing_bottom_sheet.dart';
 
 class LiveStreamView extends GetView<LiveStreamController> {
   const LiveStreamView({super.key});
@@ -53,7 +53,7 @@ class LiveStreamView extends GetView<LiveStreamController> {
                     sizedBoxH(20),
 
                     // Bottom Input and Actions
-                    _buildBottomActions(),
+                    _buildBottomActions(context),
                   ],
                 ),
               ),
@@ -325,7 +325,7 @@ class LiveStreamView extends GetView<LiveStreamController> {
     );
   }
 
-  Widget _buildBottomActions() {
+  Widget _buildBottomActions(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -369,21 +369,35 @@ class LiveStreamView extends GetView<LiveStreamController> {
                 ),
               ),
               sizedBoxW(12),
-              // Run Next Button
+              // Run Next / Add Product Button
               Expanded(
                 flex: 7,
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.orange.shade900,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  alignment: Alignment.center,
-                  child: const GlobalText(
-                    str: "Run Next",
-                    color: ColorRes.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                child: GestureDetector(
+                  onTap: () {
+                    if (controller.isRunNextClicked.value) {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) => const LiveListingBottomSheet(),
+                      );
+                    } else {
+                      controller.isRunNextClicked.value = true;
+                    }
+                  },
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade900,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    alignment: Alignment.center,
+                    child: Obx(() => GlobalText(
+                          str: controller.isRunNextClicked.value ? "Add Product" : "Run Next",
+                          color: ColorRes.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
                   ),
                 ),
               ),

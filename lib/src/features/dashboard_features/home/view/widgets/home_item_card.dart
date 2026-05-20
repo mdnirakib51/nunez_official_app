@@ -17,6 +17,9 @@ class HomeItemCard extends StatelessWidget {
   final bool isLive;
   final bool showBookmark;
   final bool isFreeShipping;
+  final bool isStreamHub;
+  final VoidCallback? onDelete;
+  final VoidCallback? onStartLive;
 
   const HomeItemCard({
     super.key,
@@ -29,13 +32,19 @@ class HomeItemCard extends StatelessWidget {
     this.isLive = false,
     this.showBookmark = false,
     this.isFreeShipping = true,
+    this.isStreamHub = false,
+    this.onDelete,
+    this.onStartLive,
   });
 
   @override
   Widget build(BuildContext context) {
+    Color textColor = isStreamHub ? ColorRes.white : ColorRes.black;
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRouteKeys.liveVideo);
+        if (!isStreamHub) {
+          Get.toNamed(AppRouteKeys.liveVideo);
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,6 +63,7 @@ class HomeItemCard extends StatelessWidget {
                   str: sellerName ?? "Asadur Yead",
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
+                  color: textColor,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -110,21 +120,24 @@ class HomeItemCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                // Bookmark Badge
-                if (showBookmark)
+                // Bookmark Badge OR Delete Icon
+                if (showBookmark || isStreamHub)
                   Positioned(
                     top: 8,
                     right: 8,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.bookmark,
-                        color: Color(0xFFFF570D),
-                        size: 16,
+                    child: InkWell(
+                      onTap: onDelete,
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          isStreamHub ? Icons.delete_outline : Icons.bookmark,
+                          color: isStreamHub ? ColorRes.red : const Color(0xFFFF570D),
+                          size: 16,
+                        ),
                       ),
                     ),
                   ),
@@ -156,6 +169,7 @@ class HomeItemCard extends StatelessWidget {
             str: title ?? "500 Items Starts \$1 Electronics General Items",
             fontSize: 13,
             fontWeight: FontWeight.w600,
+            color: textColor,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
@@ -167,6 +181,41 @@ class HomeItemCard extends StatelessWidget {
             color: ColorRes.green,
             fontWeight: FontWeight.w500,
           ),
+          if (isStreamHub) ...[
+            sizedBoxH(10),
+            // Start Live Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: onStartLive ?? () => Get.toNamed(AppRouteKeys.liveStream),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFFF4D4D),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  elevation: 0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GlobalImageLoader(
+                      imagePath: Assets.appIcons.liveVideoIc.startLive.path,
+                      height: 20,
+                      width: 20,
+                    ),
+                    sizedBoxW(8),
+                    const GlobalText(
+                      str: "Start Live",
+                      color: ColorRes.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

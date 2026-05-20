@@ -16,6 +16,9 @@ class LiveStreamController extends GetxController {
   // Bidding/Sales State
   RxInt currentBid = 7.obs;
   RxInt bidCount = 4.obs;
+  RxBool isRunNextClicked = false.obs;
+  RxBool isSuddenDeath = false.obs;
+  RxString selectedCounterTime = "5s".obs;
 
   @override
   void onInit() {
@@ -27,6 +30,18 @@ class LiveStreamController extends GetxController {
   Future<void> _initializeCamera() async {
     cameras.value = await availableCameras();
     if (cameras.isNotEmpty) {
+      // Find the front camera index
+      int frontCameraIndex = cameras.indexWhere(
+        (camera) => camera.lensDirection == CameraLensDirection.front,
+      );
+
+      // If front camera exists, use it; otherwise use the first available
+      if (frontCameraIndex != -1) {
+        selectedCameraIndex.value = frontCameraIndex;
+      } else {
+        selectedCameraIndex.value = 0;
+      }
+
       _setupCamera(cameras[selectedCameraIndex.value]);
     }
   }
