@@ -14,6 +14,12 @@ import '../../features/dashboard_features/live_video/live_video_view/live_video_
 import '../../features/dashboard_features/home/binding/home_binding.dart';
 import '../../features/live_stream/category_selection/binding/category_selection_binding.dart';
 import '../../features/live_stream/category_selection/view/category_selection_screen.dart';
+import '../../features/live_stream/preview_listing/binding/preview_listing_binding.dart';
+import '../../features/live_stream/preview_listing/view/preview_listing_screen.dart';
+import '../../features/live_stream/sales_format/binding/sales_format_binding.dart';
+import '../../features/live_stream/sales_format/view/sales_format_screen.dart';
+import '../../features/live_stream/create_product_listing/binding/create_product_listing_binding.dart';
+import '../../features/live_stream/create_product_listing/view/create_product_listing_screen.dart';
 import '../../features/live_stream/create_listing/binding/create_listing_binding.dart';
 import '../../features/live_stream/create_listing/view/create_listing_screen.dart';
 import '../../features/live_stream/seller_description/binding/seller_description_binding.dart';
@@ -77,6 +83,9 @@ class AppRouteKeys {
   static const String subCategorySelection = '/sub-category-selection';
   static const String sellerDescription = '/seller-description';
   static const String sellerGuide = '/seller-guide';
+  static const String createProductListing = '/create-product-listing';
+  static const String salesFormat = '/sales-format';
+  static const String previewListing = '/preview-listing';
 }
 
 class AppPages {
@@ -155,6 +164,21 @@ class AppPages {
       name: AppRouteKeys.sellerGuide,
       page: () => const SellerGuideScreen(),
       binding: SellerGuideBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.createProductListing,
+      page: () => const CreateProductListingScreen(),
+      binding: CreateProductListingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.salesFormat,
+      page: () => const SalesFormatScreen(),
+      binding: SalesFormatBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.previewListing,
+      page: () => const PreviewListingScreen(),
+      binding: PreviewListingBinding(),
     ),
   ];
 }

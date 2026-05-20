@@ -36,6 +36,7 @@ class LoginScreen extends GetView<LoginController> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
           key: controller.formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

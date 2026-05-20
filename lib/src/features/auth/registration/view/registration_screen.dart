@@ -39,6 +39,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
                   key: controller.formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -53,6 +54,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.next,
                         validator: controller.validateName,
                       ),
@@ -69,6 +71,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.next,
                         validator: controller.validateEmail,
                       ),
@@ -85,6 +88,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.next,
                         validator: controller.validatePassword,
                       ),
@@ -101,6 +105,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                         fillColor: ColorRes.white,
                         filled: true,
                         decoration: borderDecoration,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.done,
                         validator: controller.validateConfirmPassword,
                         onFieldSubmitted: (_) => controller.register(),

@@ -32,6 +32,7 @@ class ForgotPassScreen extends GetView<ForgotController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
                   key: controller.formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

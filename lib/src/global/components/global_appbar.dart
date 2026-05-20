@@ -43,7 +43,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isBackIc == true
           ? IconButton(
         splashRadius: 0.1,
-        icon: Icon(Icons.arrow_back_ios_new_outlined, color: iconColor ?? ColorRes.white, size: 18),
+        icon: Icon(Icons.arrow_back_ios_new_outlined, color: iconColor ?? ColorRes.black, size: 18),
         onPressed: () {
           AppNavigator.pop();
         },
@@ -52,9 +52,9 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: centerTitle ?? true,
       title: GlobalText(
         str: title ?? '',
-        color: titleColor ?? ColorRes.white,
+        color: titleColor ?? ColorRes.black,
         fontSize: fontSize ?? 16,
-        fontWeight: fontWeight ?? FontWeight.w500,
+        fontWeight: fontWeight ?? FontWeight.w700,
         textAlign: TextAlign.center,
         fontFamily: 'Rubik',
       ),

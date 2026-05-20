@@ -42,6 +42,8 @@ class GlobalTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextInputAction? textInputAction;
   final Function(String)? onFieldSubmitted;
+  final AutovalidateMode? autovalidateMode;
+
   const GlobalTextFormField({
     super.key,
     this.enabled,
@@ -78,6 +80,7 @@ class GlobalTextFormField extends StatefulWidget {
     this.isDense = false,
     this.textInputAction,
     this.onFieldSubmitted,
+    this.autovalidateMode,
   });
 
   @override
@@ -142,6 +145,7 @@ class _GlobalTextFormFieldState extends State<GlobalTextFormField> {
           obscuringCharacter: widget.obscuringCharacter ?? "*",
           keyboardType: widget.keyboardType,
           maxLines: widget.maxLines ?? 1,
+          autovalidateMode: widget.autovalidateMode,
           textInputAction: widget.textInputAction,
           onFieldSubmitted: widget.onFieldSubmitted,
           onChanged: (text)=> widget.onChanged != null ? widget.onChanged!(text) : widget.onChanged,

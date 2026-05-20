@@ -233,6 +233,10 @@ class $AssetsAppIconsButtomNavIcGen {
 class $AssetsAppIconsLiveVideoIcGen {
   const $AssetsAppIconsLiveVideoIcGen();
 
+  /// File path: assets/app_icons/live_video_ic/add_product_ic.png
+  AssetGenImage get addProductIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/add_product_ic.png');
+
   /// File path: assets/app_icons/live_video_ic/block_ic.png
   AssetGenImage get blockIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/block_ic.png');
@@ -316,6 +320,7 @@ class $AssetsAppIconsLiveVideoIcGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    addProductIc,
     blockIc,
     emoji1,
     emoji2,

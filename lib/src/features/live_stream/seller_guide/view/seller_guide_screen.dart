@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../gen/assets.gen.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
@@ -140,9 +141,7 @@ class SellerGuideScreen extends GetView<SellerGuideController> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: InkWell(
-                      onTap: () {
-                        // Action for Let's Start
-                      },
+                      onTap: () => Get.toNamed(AppRouteKeys.createProductListing),
                       child: Container(
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(vertical: 15),

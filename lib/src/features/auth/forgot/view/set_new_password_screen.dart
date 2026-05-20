@@ -32,6 +32,7 @@ class SetNewPasswordScreen extends GetView<ForgotController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
                   key: controller.setNewPassFormKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
