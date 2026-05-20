@@ -123,4 +123,40 @@ class AppStrings {
   static const String expiryDate = "Expiry Date";
   static const String cvc = "CVC";
   static const String saveCard = "Save Card";
+
+  // Profile Screen
+  static const String profile = "Profile";
+  static const String sellerHub = "Seller Hub";
+  static const String account = "Account";
+  static const String inventory = "Inventory";
+  static const String shows = "Shows";
+  static const String payouts = "Payouts";
+  static const String orders = "Orders";
+  static const String tips = "Tips";
+  static const String salesAnalytics = "Sales Analytics";
+  static const String followers = "Followers";
+  static const String vacationMode = "Vacation Mode";
+  static const String vacationModeSubTitle = "Temporary your shop may be out of service";
+
+  // Account Tab
+  static const String paymentsAndShipping = "Payments and Shipping";
+  static const String notifications = "Notifications";
+  static const String changePassword = "Change Password";
+  static const String language = "Language";
+  static const String helpAndLegal = "Help and Legal";
+  static const String helpSupport = "Help & Support";
+  static const String termsConditions = "Terms and Conditions";
+  static const String faq = "FAQ";
+  static const String deleteAccount = "Delete Account";
+  static const String logout = "Logout";
+
+  // Edit Profile
+  static const String editProfile = "Edit Profile";
+  static const String gender = "Gender";
+  static const String dateOfBirth = "Date of Birth";
+  static const String phone = "Phone";
+  static const String nationalIdNo = "National Id No";
+  static const String saveChanges = "Save Changes";
+  static const String issueTitle = "Issue title";
+
 }

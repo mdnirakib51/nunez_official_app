@@ -54,6 +54,10 @@ class $AssetsAppIconsGen {
   AssetGenImage get pageNotFoundIc =>
       const AssetGenImage('assets/app_icons/page_not_found_ic.png');
 
+  /// Directory path: assets/app_icons/profile_ic
+  $AssetsAppIconsProfileIcGen get profileIc =>
+      const $AssetsAppIconsProfileIcGen();
+
   /// File path: assets/app_icons/search_ic.png
   AssetGenImage get searchIc =>
       const AssetGenImage('assets/app_icons/search_ic.png');
@@ -351,6 +355,104 @@ class $AssetsAppIconsLiveVideoIcGen {
     tipMeIc,
     viewShopIc,
     walletIc,
+  ];
+}
+
+class $AssetsAppIconsProfileIcGen {
+  const $AssetsAppIconsProfileIcGen();
+
+  /// File path: assets/app_icons/profile_ic/change_password_ic.png
+  AssetGenImage get changePasswordIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/change_password_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/delete_account_ic.png
+  AssetGenImage get deleteAccountIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/delete_account_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/edit_profile_ic.png
+  AssetGenImage get editProfileIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/edit_profile_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/faq_ic.png
+  AssetGenImage get faqIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/faq_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/followers_ic.png
+  AssetGenImage get followersIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/followers_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/help_support_ic.png
+  AssetGenImage get helpSupportIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/help_support_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/inventory_ic.png
+  AssetGenImage get inventoryIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/inventory_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/language_ic.png
+  AssetGenImage get languageIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/language_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/logout_ic.png
+  AssetGenImage get logoutIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/logout_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/order_ic.png
+  AssetGenImage get orderIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/order_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/payouts_ic.png
+  AssetGenImage get payoutsIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/payouts_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/privacy_policy_ic.png
+  AssetGenImage get privacyPolicyIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/privacy_policy_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/report_ic.png
+  AssetGenImage get reportIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/report_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/sales_analytics_ic.png
+  AssetGenImage get salesAnalyticsIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/sales_analytics_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/shows_ic.png
+  AssetGenImage get showsIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/shows_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/terms_condition_ic.png
+  AssetGenImage get termsConditionIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/terms_condition_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/tips_ic.png
+  AssetGenImage get tipsIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/tips_ic.png');
+
+  /// File path: assets/app_icons/profile_ic/vacation_mode_ic.png
+  AssetGenImage get vacationModeIc =>
+      const AssetGenImage('assets/app_icons/profile_ic/vacation_mode_ic.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    changePasswordIc,
+    deleteAccountIc,
+    editProfileIc,
+    faqIc,
+    followersIc,
+    helpSupportIc,
+    inventoryIc,
+    languageIc,
+    logoutIc,
+    orderIc,
+    payoutsIc,
+    privacyPolicyIc,
+    reportIc,
+    salesAnalyticsIc,
+    showsIc,
+    termsConditionIc,
+    tipsIc,
+    vacationModeIc,
   ];
 }
 

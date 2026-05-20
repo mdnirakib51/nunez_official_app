@@ -47,6 +47,8 @@ import '../../features/auth/registration/binding/registration_binding.dart';
 import '../../features/auth/registration/view/registration_screen.dart';
 import '../../features/auth/verification/binding/verification_binding.dart';
 import '../../features/auth/verification/view/verification_screen.dart';
+import '../../features/profile/edit_profile/binding/edit_profile_binding.dart';
+import '../../features/profile/edit_profile/view/edit_profile_screen.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -187,6 +189,11 @@ class AppPages {
       name: AppRouteKeys.liveStream,
       page: () => const LiveStreamView(),
       binding: LiveStreamBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.editProfile,
+      page: () => const EditProfileScreen(),
+      binding: EditProfileBinding(),
     ),
   ];
 }

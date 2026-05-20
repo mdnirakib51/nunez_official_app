@@ -7,6 +7,8 @@ import '../../../features/categories/view/categories_screen.dart';
 import '../../../features/dashboard_features/home/view/home_screen.dart';
 import '../../../features/live_stream/steam_hub/view/stream_hub_view.dart';
 
+import '../../../features/profile/profile_view/view/profile_screen.dart';
+
 // ─── Nav Item Model ───────────────────────────────────────────────────────────
 class NavItemModel {
   final String title;
@@ -53,7 +55,7 @@ class BottomNavBarController extends GetxController {
     const CategoriesScreen(),
     const StreamHubView(),
     const ActivityScreen(),
-    const Scaffold(body: Center(child: Text("Profile Screen"))),
+    const ProfileScreen(),
   ];
 
   // ── Selected index (observable) ────────────────────────────────────────────
