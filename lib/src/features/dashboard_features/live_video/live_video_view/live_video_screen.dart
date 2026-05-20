@@ -415,8 +415,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
-                                          sizedBoxH(6),
-                                          Row(
+                                          Wrap(
                                             children: [
                                               _badge(AppStrings.freeShipping, ColorRes.indigo.withValues(alpha: 0.7)),
                                               sizedBoxW(6),
@@ -728,7 +727,8 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
 
   Widget _badge(String text, Color color) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      margin: const EdgeInsets.symmetric(vertical: 3),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(4),

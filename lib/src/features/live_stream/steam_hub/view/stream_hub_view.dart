@@ -229,7 +229,9 @@ class _StreamHubItemCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRouteKeys.liveStream);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFF4D4D),
                 shape: RoundedRectangleBorder(

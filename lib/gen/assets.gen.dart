@@ -302,6 +302,10 @@ class $AssetsAppIconsLiveVideoIcGen {
   AssetGenImage get startLive =>
       const AssetGenImage('assets/app_icons/live_video_ic/start_live.png');
 
+  /// File path: assets/app_icons/live_video_ic/switch_ic.png
+  AssetGenImage get switchIc =>
+      const AssetGenImage('assets/app_icons/live_video_ic/switch_ic.png');
+
   /// File path: assets/app_icons/live_video_ic/tip_ic.png
   AssetGenImage get tipIc =>
       const AssetGenImage('assets/app_icons/live_video_ic/tip_ic.png');
@@ -337,6 +341,7 @@ class $AssetsAppIconsLiveVideoIcGen {
     sendATipIc,
     shareIc,
     startLive,
+    switchIc,
     tipIc,
     tipMeIc,
     viewShopIc,

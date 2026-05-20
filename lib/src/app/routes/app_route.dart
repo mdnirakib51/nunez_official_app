@@ -14,6 +14,8 @@ import '../../features/dashboard_features/live_video/live_video_view/live_video_
 import '../../features/dashboard_features/home/binding/home_binding.dart';
 import '../../features/live_stream/category_selection/binding/category_selection_binding.dart';
 import '../../features/live_stream/category_selection/view/category_selection_screen.dart';
+import '../../features/live_stream/live_stream/binding/live_stream_binding.dart';
+import '../../features/live_stream/live_stream/view/live_stream_view.dart';
 import '../../features/live_stream/preview_listing/binding/preview_listing_binding.dart';
 import '../../features/live_stream/preview_listing/view/preview_listing_screen.dart';
 import '../../features/live_stream/sales_format/binding/sales_format_binding.dart';
@@ -86,6 +88,7 @@ class AppRouteKeys {
   static const String createProductListing = '/create-product-listing';
   static const String salesFormat = '/sales-format';
   static const String previewListing = '/preview-listing';
+  static const String liveStream = '/live-stream';
 }
 
 class AppPages {
@@ -179,6 +182,11 @@ class AppPages {
       name: AppRouteKeys.previewListing,
       page: () => const PreviewListingScreen(),
       binding: PreviewListingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.liveStream,
+      page: () => const LiveStreamView(),
+      binding: LiveStreamBinding(),
     ),
   ];
 }
