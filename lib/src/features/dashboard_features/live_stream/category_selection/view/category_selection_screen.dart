@@ -72,7 +72,7 @@ class CategorySelectionScreen extends GetView<CategorySelectionController> {
                         color: ColorRes.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: isSelected ? ColorRes.appColor : Colors.grey.withOpacity(0.2),
+                          color: isSelected ? ColorRes.appColor : Colors.grey.withValues(alpha: 0.2),
                           width: isSelected ? 2 : 1,
                         ),
                       ),

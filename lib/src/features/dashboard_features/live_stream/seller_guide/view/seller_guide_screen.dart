@@ -89,10 +89,10 @@ class SellerGuideScreen extends GetView<SellerGuideController> {
                         decoration: BoxDecoration(
                           color: ColorRes.white,
                           borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey.withOpacity(0.1)),
+                          border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
+                              color: Colors.black.withValues(alpha: 0.05),
                               blurRadius: 10,
                               offset: const Offset(0, 5),
                             ),
@@ -129,7 +129,7 @@ class SellerGuideScreen extends GetView<SellerGuideController> {
                                   ),
                                 ],
                               ),
-                            )).toList(),
+                            )),
                           ],
                         ),
                       ),

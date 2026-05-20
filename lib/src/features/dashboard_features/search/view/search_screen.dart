@@ -35,7 +35,7 @@ class SearchScreen extends StatelessWidget {
             Container(
               height: 45,
               decoration: BoxDecoration(
-                color: ColorRes.grey.withOpacity(0.1),
+                color: ColorRes.grey.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(
@@ -73,7 +73,7 @@ class SearchScreen extends StatelessWidget {
               '4.9k Followers',
               'https://randomuser.me/api/portraits/men/2.jpg',
             ),
-            Divider(height: 30, thickness: 1, color: ColorRes.grey.withOpacity(0.1)),
+            Divider(height: 30, thickness: 1, color: ColorRes.grey.withValues(alpha: 0.1)),
             // Search Query Suggestion
             _buildSearchSuggestion('Micheal Clothing'),
           ],

@@ -225,14 +225,14 @@ InputDecoration dateInputDecoration = InputDecoration(
 InputDecoration oceanInputDecoration = InputDecoration(
   isDense: true,
   filled: true,
-  fillColor: Colors.white.withOpacity(0.9),
+  fillColor: Colors.white.withValues(alpha: 0.9),
 
   // Content Padding
   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
 
   // Hint Style
   hintStyle: TextStyle(
-    color: Color(0xFF2a5298).withOpacity(0.5),
+    color: Color(0xFF2a5298).withValues(alpha: 0.5),
     fontSize: 14,
     fontWeight: FontWeight.w400,
   ),
@@ -255,7 +255,7 @@ InputDecoration oceanInputDecoration = InputDecoration(
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
     borderSide: BorderSide(
-      color: Color(0xFF5fa0b8).withOpacity(0.5),
+      color: Color(0xFF5fa0b8).withValues(alpha: 0.5),
       width: 2,
     ),
   ),
@@ -291,7 +291,7 @@ InputDecoration oceanInputDecoration = InputDecoration(
   disabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
     borderSide: BorderSide(
-      color: Colors.grey.withOpacity(0.3),
+      color: Colors.grey.withValues(alpha: 0.3),
       width: 1.5,
     ),
   ),
@@ -314,7 +314,7 @@ InputDecoration oceanInputDecoration = InputDecoration(
 InputDecoration glassInputDecoration = InputDecoration(
   isDense: true,
   filled: true,
-  fillColor: Colors.grey.withOpacity(0.05),
+  fillColor: Colors.grey.withValues(alpha: 0.05),
 
   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
 
@@ -339,7 +339,7 @@ InputDecoration glassInputDecoration = InputDecoration(
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(14),
     borderSide: BorderSide(
-      color: Colors.grey.withOpacity(0.25),
+      color: Colors.grey.withValues(alpha: 0.25),
       width: 1.2,
     ),
   ),
@@ -371,7 +371,7 @@ InputDecoration glassInputDecoration = InputDecoration(
   disabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(14),
     borderSide: BorderSide(
-      color: Colors.grey.withOpacity(0.15),
+      color: Colors.grey.withValues(alpha: 0.15),
       width: 1,
     ),
   ),
@@ -396,7 +396,7 @@ InputDecoration bubbleInputDecoration = InputDecoration(
   contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
 
   hintStyle: TextStyle(
-    color: Color(0xFF2a5298).withOpacity(0.6),
+    color: Color(0xFF2a5298).withValues(alpha: 0.6),
     fontSize: 14,
     fontWeight: FontWeight.w400,
   ),
@@ -416,7 +416,7 @@ InputDecoration bubbleInputDecoration = InputDecoration(
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(20),
     borderSide: BorderSide(
-      color: Color(0xFF5fa0b8).withOpacity(0.3),
+      color: Color(0xFF5fa0b8).withValues(alpha: 0.3),
       width: 2,
     ),
   ),
@@ -448,7 +448,7 @@ InputDecoration bubbleInputDecoration = InputDecoration(
   disabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(20),
     borderSide: BorderSide(
-      color: Colors.grey.withOpacity(0.3),
+      color: Colors.grey.withValues(alpha: 0.3),
       width: 1.5,
     ),
   ),

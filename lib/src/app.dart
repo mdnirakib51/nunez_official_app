@@ -33,7 +33,7 @@ class _NotFoundScreen extends StatelessWidget {
             Container(
               width: 80, height: 80,
               decoration: BoxDecoration(
-                color: const Color(0xFF6C5CE7).withOpacity(0.15),
+                color: const Color(0xFF6C5CE7).withValues(alpha: 0.15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -81,7 +81,7 @@ class _NotFoundScreen extends StatelessWidget {
             TextButton(
               onPressed: () => Get.offAllNamed(AppRouteKeys.splash),
               style: TextButton.styleFrom(
-                backgroundColor: const Color(0xFF6C5CE7).withOpacity(0.15),
+                backgroundColor: const Color(0xFF6C5CE7).withValues(alpha: 0.15),
                 foregroundColor: const Color(0xFFa29bfe),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 32, vertical: 14,

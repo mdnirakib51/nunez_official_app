@@ -59,7 +59,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
               child: Container(
                 height: 45,
                 decoration: BoxDecoration(
-                  color: ColorRes.grey.withOpacity(0.1),
+                  color: ColorRes.grey.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -248,7 +248,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: isBuyNow ? const Color(0xFF2B2B2B) : ColorRes.grey.withOpacity(0.1),
+                  color: isBuyNow ? const Color(0xFF2B2B2B) : ColorRes.grey.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 alignment: Alignment.center,
@@ -294,7 +294,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
         margin: const EdgeInsets.only(right: 10),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF2B2B2B) : ColorRes.grey.withOpacity(0.1),
+          color: isSelected ? const Color(0xFF2B2B2B) : ColorRes.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: GlobalText(

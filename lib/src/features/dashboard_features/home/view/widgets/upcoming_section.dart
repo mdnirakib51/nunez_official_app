@@ -143,7 +143,7 @@ class UpcomingItemCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                     decoration: BoxDecoration(
-                      color: ColorRes.indigo.withOpacity(0.8),
+                      color: ColorRes.indigo.withValues(alpha: 0.8),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: const GlobalText(

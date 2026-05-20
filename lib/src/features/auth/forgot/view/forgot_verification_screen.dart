@@ -62,10 +62,10 @@ class ForgotVerificationScreen extends GetView<ForgotController> {
                             height: 55,
                             width: (size(context).width - 90) / 6,
                             decoration: BoxDecoration(
-                              color: isFilled ? ColorRes.white : ColorRes.grey.withOpacity(0.05),
+                              color: isFilled ? ColorRes.white : ColorRes.grey.withValues(alpha: 0.05),
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: isFilled ? ColorRes.green : ColorRes.grey.withOpacity(0.2),
+                                color: isFilled ? ColorRes.green : ColorRes.grey.withValues(alpha: 0.2),
                                 width: 1,
                               ),
                             ),

@@ -66,7 +66,7 @@ class SellerDescriptionScreen extends GetView<SellerDescriptionController> {
                         color: ColorRes.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: isSelected ? ColorRes.appColor : Colors.grey.withOpacity(0.3),
+                          color: isSelected ? ColorRes.appColor : Colors.grey.withValues(alpha: 0.3),
                           width: isSelected ? 1.5 : 1,
                         ),
                       ),
@@ -86,7 +86,7 @@ class SellerDescriptionScreen extends GetView<SellerDescriptionController> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: isSelected ? ColorRes.appColor : Colors.grey.withOpacity(0.5),
+                                color: isSelected ? ColorRes.appColor : Colors.grey.withValues(alpha: 0.5),
                                 width: isSelected ? 5 : 1,
                               ),
                             ),

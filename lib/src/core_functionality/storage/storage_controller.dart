@@ -7,7 +7,7 @@ import 'local_storage.dart';
 
 class LocalStorageService {
   static LocalStorageService? _instance;
-  SharedPreferences? _prefs;
+  SharedPreferences? prefs;
 
   // Private constructor
   LocalStorageService._();
@@ -24,7 +24,7 @@ class LocalStorageService {
   /// Initialize SharedPreferences
   Future<void> _init() async {
     log("Initializing SharedPreferences...");
-    _prefs = await SharedPreferences.getInstance();
+    prefs = await SharedPreferences.getInstance();
     log("SharedPreferences initialized successfully");
   }
 

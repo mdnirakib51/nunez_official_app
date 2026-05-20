@@ -24,11 +24,6 @@ class ForgotController extends GetxController {
   late Timer _timer;
   int _start = 15;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   void startTimer() {
     _start = 15;
     canResend.value = false;

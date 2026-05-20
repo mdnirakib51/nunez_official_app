@@ -80,7 +80,7 @@ class VerificationController extends GetxController {
               height: 4,
               width: 40,
               decoration: BoxDecoration(
-                color: ColorRes.grey.withOpacity(0.2),
+                color: ColorRes.grey.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),

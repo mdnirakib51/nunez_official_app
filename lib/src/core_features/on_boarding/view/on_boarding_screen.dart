@@ -48,7 +48,7 @@ class OnBoardingScreen extends StatelessWidget {
                           height: 50,
                           child: GlobalText(
                             str: AppStrings.english,
-                            color: ColorRes.black.withOpacity(0.9),
+                            color: ColorRes.black.withValues(alpha: 0.9),
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
                           ),
@@ -59,7 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
                           height: 50,
                           child: GlobalText(
                             str: AppStrings.spanish,
-                            color: ColorRes.black.withOpacity(0.9),
+                            color: ColorRes.black.withValues(alpha: 0.9),
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
                           ),
@@ -181,7 +181,7 @@ class OnBoardingScreen extends StatelessWidget {
                           TextSpan(
                             text: AppStrings.termsOfService,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Colors.white.withValues(alpha: 0.9),
                               decoration: TextDecoration.underline,
                               fontFamily: 'Inter',
                             ),
@@ -190,7 +190,7 @@ class OnBoardingScreen extends StatelessWidget {
                           TextSpan(
                             text: AppStrings.privacyPolicy,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Colors.white.withValues(alpha: 0.9),
                               decoration: TextDecoration.underline,
                               fontFamily: 'Inter',
                             ),

@@ -68,7 +68,7 @@ class SubCategorySelectionScreen extends GetView<SubCategorySelectionController>
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: isSelected ? const Color(0xFF252525) : Colors.grey.withOpacity(0.1),
+                      color: isSelected ? const Color(0xFF252525) : Colors.grey.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: GlobalText(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../global/components/global_appbar.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_sized_box.dart';

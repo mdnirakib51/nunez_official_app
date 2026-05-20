@@ -138,7 +138,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                                   TextSpan(
                                     text: AppStrings.termsOfService,
                                     style: TextStyle(
-                                      color: ColorRes.black.withOpacity(0.8),
+                                      color: ColorRes.black.withValues(alpha: 0.8),
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -147,7 +147,7 @@ class RegistrationScreen extends GetView<RegisterController> {
                                   TextSpan(
                                     text: AppStrings.privacyPolicy,
                                     style: TextStyle(
-                                      color: ColorRes.black.withOpacity(0.8),
+                                      color: ColorRes.black.withValues(alpha: 0.8),
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w600,
                                     ),

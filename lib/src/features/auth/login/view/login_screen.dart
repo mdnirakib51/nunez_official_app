@@ -107,7 +107,7 @@ class LoginScreen extends GetView<LoginController> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: GlobalText(
                       str: AppStrings.or,
-                      color: ColorRes.grey.withOpacity(0.5),
+                      color: ColorRes.grey.withValues(alpha: 0.5),
                       fontSize: 14,
                     ),
                   ),
@@ -124,7 +124,7 @@ class LoginScreen extends GetView<LoginController> {
                   height: 55,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: ColorRes.grey.withOpacity(0.2)),
+                    border: Border.all(color: ColorRes.grey.withValues(alpha: 0.2)),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

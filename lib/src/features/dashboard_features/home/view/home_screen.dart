@@ -33,7 +33,7 @@ class HomeScreen extends GetView<HomeController> {
                 child: Container(
                   height: 45,
                   decoration: BoxDecoration(
-                    color: ColorRes.grey.withOpacity(0.1),
+                    color: ColorRes.grey.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(25),
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 15),
