@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../features/dashboard_features/activity/view/activity_screen.dart';
-import '../../../features/dashboard_features/categories/view/categories_screen.dart';
+import '../../../features/activity/view/activity_screen.dart';
+import '../../../features/categories/view/categories_screen.dart';
 import '../../../features/dashboard_features/home/view/home_screen.dart';
-import '../../../features/dashboard_features/live_stream/steam_hub/view/stream_hub_view.dart';
+import '../../../features/live_stream/steam_hub/view/stream_hub_view.dart';
 
 // ─── Nav Item Model ───────────────────────────────────────────────────────────
 class NavItemModel {
