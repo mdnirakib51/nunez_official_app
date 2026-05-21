@@ -79,6 +79,13 @@ import '../../features/profile/followers/view/followers_view.dart';
 import '../../features/profile/language/binding/language_binding.dart';
 import '../../features/profile/language/view/language_view.dart';
 
+import '../../features/auth/setup_profile/binding/setup_profile_binding.dart';
+import '../../features/auth/setup_profile/view/setup_profile_country_screen.dart';
+import '../../features/auth/setup_profile/view/setup_profile_gender_screen.dart';
+
+import '../../features/auth/setup_profile/view/setup_profile_interests_screen.dart';
+import '../../features/auth/setup_profile/view/setup_profile_sub_interests_screen.dart';
+
 class AppRouteKeys {
   AppRouteKeys._();
 
@@ -91,6 +98,10 @@ class AppRouteKeys {
   static const String resetPass    = '/reset-password';
   static const String congratulation = '/other';
   static const String otp          = '/otp';
+  static const String setupProfileCountry = '/setup-profile-country';
+  static const String setupProfileGender  = '/setup-profile-gender';
+  static const String setupProfileInterests = '/setup-profile-interests';
+  static const String setupProfileSubInterests = '/setup-profile-sub-interests';
 
   static const String dashboard    = '/dashboard';
   static const String home         = '/dashboard_features';
@@ -160,6 +171,10 @@ class AppPages {
       ),
     ),
     GetPage(name: AppRouteKeys.otp, page: () => const VerificationScreen(), binding: VerificationBinding()),
+    GetPage(name: AppRouteKeys.setupProfileCountry, page: () => const SetupProfileCountryScreen(), binding: SetupProfileBinding()),
+    GetPage(name: AppRouteKeys.setupProfileGender, page: () => const SetupProfileGenderScreen(), binding: SetupProfileBinding()),
+    GetPage(name: AppRouteKeys.setupProfileInterests, page: () => const SetupProfileInterestsScreen(), binding: SetupProfileBinding()),
+    GetPage(name: AppRouteKeys.setupProfileSubInterests, page: () => const SetupProfileSubInterestsScreen(), binding: SetupProfileBinding()),
     
     // ── Main ──
     GetPage(
@@ -219,6 +234,16 @@ class AppPages {
       name: AppRouteKeys.createProductListing,
       page: () => const CreateProductListingScreen(),
       binding: CreateProductListingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.setupProfileInterests,
+      page: () => const SetupProfileInterestsScreen(),
+      binding: SetupProfileBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.setupProfileSubInterests,
+      page: () => const SetupProfileSubInterestsScreen(),
+      binding: SetupProfileBinding(),
     ),
     GetPage(
       name: AppRouteKeys.salesFormat,

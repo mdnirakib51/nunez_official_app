@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
+import '../../../cart/view/cart_screen.dart';
 import '../product_details_screen.dart';
 
 class ShopTab extends StatefulWidget {
@@ -14,6 +15,8 @@ class ShopTab extends StatefulWidget {
 class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
+
+  bool isAuction = true;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +50,15 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Row(
             children: [
-              _toggleButton("Auction", isSelected: true),
+              GestureDetector(
+                onTap: () => setState(() => isAuction = true),
+                child: _toggleButton("Auction", isSelected: isAuction),
+              ),
               sizedBoxW(10),
-              _toggleButton("Buy Now", isSelected: false),
+              GestureDetector(
+                onTap: () => setState(() => isAuction = false),
+                child: _toggleButton("Buy Now", isSelected: !isAuction),
+              ),
             ],
           ),
         ),
@@ -166,19 +175,26 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
                 fontWeight: FontWeight.w400,
               ),
               sizedBoxH(10),
-              // Pre-Bid Button
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                alignment: Alignment.center,
-                child: const GlobalText(
-                  str: "Pre-Bid",
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12,
+              // Pre-Bid / Add to Cart Button
+              GestureDetector(
+                onTap: () {
+                  if (!isAuction) {
+                    Get.to(() => const CartScreen());
+                  }
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  alignment: Alignment.center,
+                  child: GlobalText(
+                    str: isAuction ? "Pre-Bid" : "Add To Cart",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                  ),
                 ),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nunez_official_app/src/global/constants/colors_resources.dart';
 import '../../../../../global/constants/app_strings.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../global/global_widget/global_image_loader.dart';
@@ -124,6 +125,7 @@ class MoreOptionsBottomSheet extends StatelessWidget {
                 imagePath: iconPath,
                 height: 20,
                 width: 20,
+                color: ColorRes.black,
               ),
             ),
             sizedBoxW(15),

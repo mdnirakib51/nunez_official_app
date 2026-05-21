@@ -26,11 +26,11 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
                 children: [
                   // Profile Header with Background Image
                   SizedBox(
-                    height: 270,
+                    height: 320,
                     child: Stack(
                       children: [
                         Container(
-                          height: 230,
+                          height: 280,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             color: ColorRes.grey,

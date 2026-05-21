@@ -29,7 +29,7 @@ class ForYouTab extends StatelessWidget {
             ),
             itemCount: 4, // Dummy count
             itemBuilder: (context, index) {
-              return const HomeItemCard();
+              return const HomeItemCard(isLive: true);
             },
           ),
 

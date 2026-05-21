@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/app_strings.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_bottom_widget.dart';
@@ -61,7 +62,7 @@ class VerificationController extends GetxController {
     // Simulate API call
     Future.delayed(const Duration(seconds: 2), () {
       isLoading.value = false;
-      // Handle other or error
+      Get.toNamed(AppRouteKeys.setupProfileCountry);
     });
   }
 

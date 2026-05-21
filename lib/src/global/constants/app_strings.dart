@@ -126,6 +126,19 @@ class AppStrings {
 
   // Profile Screen
   static const String profile = "Profile";
+  static const String setUpYourProfile = "Set Up Your Profile";
+  static const String addCountryResidence = "Add your country of residence";
+  static const String makeSureItsYou = "We want to make sure its really you";
+  static const String whatsYourGender = "What's your gender?";
+  static const String whatDoYouLikeToShopFor = "What do you like to shop for?";
+  static const String pickAFewToGetStarted = "Pick a few to get started";
+  static const String tellUsABitMore = "Tell us a bit more";
+  static const String pickOnlyWhatYouArePassionateAbout = "Pick only what you are passionate about";
+  static const String suggestMoreCategories = "This allow us to suggest more categories";
+  static const String next = "Next";
+  static const String male = "Male";
+  static const String female = "Female";
+  static const String nonBinary = "Non-Binary";
   static const String sellerHub = "Seller Hub";
   static const String account = "Account";
   static const String inventory = "Inventory";
