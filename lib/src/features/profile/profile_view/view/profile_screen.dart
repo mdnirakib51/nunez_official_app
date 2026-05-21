@@ -179,7 +179,10 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
             onTap: () => Get.toNamed(AppRouteKeys.salesAnalytics),
             child: _buildListItem(AppStrings.salesAnalytics, Assets.appIcons.profileIc.salesAnalyticsIc.path),
           ),
-          _buildListItem(AppStrings.followers, Assets.appIcons.profileIc.followersIc.path),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.followers),
+            child: _buildListItem(AppStrings.followers, Assets.appIcons.profileIc.followersIc.path),
+          ),
           _buildListItem(AppStrings.report, Assets.appIcons.profileIc.reportIc.path),
           
           // Vacation Mode

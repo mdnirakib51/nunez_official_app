@@ -31,10 +31,9 @@ class FAQView extends StatelessWidget {
               children: [
                 sizedBoxH(20),
                 const GlobalText(
-                  str: "We are here to help you with anything and everything in pur service",
+                  str: "We are here to help you with anything and\neverything in pur service",
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  height: 1.5,
                 ),
                 sizedBoxH(20),
                 ...faqs.map((faq) => Container(

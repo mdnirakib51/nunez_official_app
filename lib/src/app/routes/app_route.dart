@@ -74,6 +74,8 @@ import '../../features/profile/privacy_policy/view/privacy_policy_view.dart';
 import '../../features/profile/delete_account/binding/delete_account_binding.dart';
 import '../../features/profile/delete_account/view/delete_account_otp_view.dart';
 
+import '../../features/profile/followers/binding/followers_binding.dart';
+import '../../features/profile/followers/view/followers_view.dart';
 import '../../features/profile/language/binding/language_binding.dart';
 import '../../features/profile/language/view/language_view.dart';
 
@@ -133,6 +135,7 @@ class AppRouteKeys {
   static const String faq            = '/faq';
   static const String deleteAccount  = '/delete-account';
   static const String language       = '/language';
+  static const String followers      = '/followers';
 }
 
 class AppPages {
@@ -311,6 +314,11 @@ class AppPages {
       name: AppRouteKeys.language,
       page: () => const LanguageView(),
       binding: LanguageBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.followers,
+      page: () => const FollowersView(),
+      binding: FollowersBinding(),
     ),
   ];
 }
