@@ -49,6 +49,8 @@ import '../../features/auth/verification/binding/verification_binding.dart';
 import '../../features/auth/verification/view/verification_screen.dart';
 import '../../features/profile/edit_profile/binding/edit_profile_binding.dart';
 import '../../features/profile/edit_profile/view/edit_profile_screen.dart';
+import '../../features/profile/inventory/binding/inventory_binding.dart';
+import '../../features/profile/inventory/view/inventory_screen.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -71,6 +73,7 @@ class AppRouteKeys {
   static const String profileMenu  = '/profileMenu';
   static const String profile      = '/profile';
   static const String editProfile  = '/edit-profile';
+  static const String inventory    = '/inventory';
   static const String sellerProfile = '/seller-profile';
   static const String sendTip      = '/send-tip';
   static const String productDetails = '/product-details';
@@ -194,6 +197,11 @@ class AppPages {
       name: AppRouteKeys.editProfile,
       page: () => const EditProfileScreen(),
       binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.inventory,
+      page: () => const InventoryScreen(),
+      binding: InventoryBinding(),
     ),
   ];
 }

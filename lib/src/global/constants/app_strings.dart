@@ -159,4 +159,13 @@ class AppStrings {
   static const String saveChanges = "Save Changes";
   static const String issueTitle = "Issue title";
 
+  // Inventory
+  static const String inventoryTitle = "Inventory";
+  static const String auction = "Auction";
+  static const String buyNow = "Buy Now";
+  static const String active = "Active";
+  static const String inactive = "Inactive";
+  static const String searchProduct = "Search product..";
+  static const String edit = "Edit";
+
 }

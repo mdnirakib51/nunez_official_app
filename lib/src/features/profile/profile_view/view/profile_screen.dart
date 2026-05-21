@@ -153,7 +153,10 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
             mainAxisSpacing: 15,
             childAspectRatio: 1.9,
             children: [
-              _buildGridItem(AppStrings.inventory, Assets.appIcons.profileIc.inventoryIc.path),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.inventory),
+                child: _buildGridItem(AppStrings.inventory, Assets.appIcons.profileIc.inventoryIc.path),
+              ),
               _buildGridItem(AppStrings.shows, Assets.appIcons.profileIc.showsIc.path),
               _buildGridItem(AppStrings.payouts, Assets.appIcons.profileIc.payoutsIc.path),
               _buildGridItem(AppStrings.orders, Assets.appIcons.profileIc.orderIc.path),
