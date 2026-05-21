@@ -32,6 +32,7 @@ import '../../features/live_stream/steam_hub/binding/stream_hub_binding.dart';
 import '../../features/live_stream/steam_hub/view/stream_hub_view.dart';
 import '../../features/live_stream/sub_category_selection/binding/sub_category_selection_binding.dart';
 import '../../features/live_stream/sub_category_selection/view/sub_category_selection_screen.dart';
+import '../../features/profile/orders/view/orders_view.dart';
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
 import '../../core_features/other/congratulations_screen.dart';
@@ -49,6 +50,11 @@ import '../../features/auth/verification/binding/verification_binding.dart';
 import '../../features/auth/verification/view/verification_screen.dart';
 import '../../features/profile/edit_profile/binding/edit_profile_binding.dart';
 import '../../features/profile/edit_profile/view/edit_profile_screen.dart';
+import '../../features/profile/finance/binding/finance_binding.dart';
+import '../../features/profile/finance/view/finance_view.dart';
+import '../../features/profile/orders/binding/orders_binding.dart';
+import '../../features/profile/sales_analytics/binding/sales_analytics_binding.dart';
+import '../../features/profile/sales_analytics/view/sales_analytics_view.dart';
 import '../../features/profile/inventory/binding/inventory_binding.dart';
 import '../../features/profile/inventory/view/inventory_screen.dart';
 
@@ -94,6 +100,9 @@ class AppRouteKeys {
   static const String salesFormat = '/sales-format';
   static const String previewListing = '/preview-listing';
   static const String liveStream = '/live-stream';
+  static const String finance = '/finance';
+  static const String orders = '/orders';
+  static const String salesAnalytics = '/sales-analytics';
 }
 
 class AppPages {
@@ -202,6 +211,21 @@ class AppPages {
       name: AppRouteKeys.inventory,
       page: () => const InventoryScreen(),
       binding: InventoryBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.finance,
+      page: () => const FinanceView(),
+      binding: FinanceBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.orders,
+      page: () => const OrdersView(),
+      binding: OrdersBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.salesAnalytics,
+      page: () => const SalesAnalyticsView(),
+      binding: SalesAnalyticsBinding(),
     ),
   ];
 }

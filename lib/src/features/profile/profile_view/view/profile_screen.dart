@@ -161,15 +161,24 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
                 onTap: () => Get.toNamed(AppRouteKeys.streamHub, arguments: true),
                 child: _buildGridItem(AppStrings.shows, Assets.appIcons.profileIc.showsIc.path),
               ),
-              _buildGridItem(AppStrings.payouts, Assets.appIcons.profileIc.payoutsIc.path),
-              _buildGridItem(AppStrings.orders, Assets.appIcons.profileIc.orderIc.path),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.finance),
+                child: _buildGridItem(AppStrings.payouts, Assets.appIcons.profileIc.payoutsIc.path),
+              ),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.orders),
+                child: _buildGridItem(AppStrings.orders, Assets.appIcons.profileIc.orderIc.path),
+              ),
             ],
           ),
           sizedBoxH(25),
           
           // List items
           _buildListItem(AppStrings.tips, Assets.appIcons.profileIc.tipsIc.path),
-          _buildListItem(AppStrings.salesAnalytics, Assets.appIcons.profileIc.salesAnalyticsIc.path),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.salesAnalytics),
+            child: _buildListItem(AppStrings.salesAnalytics, Assets.appIcons.profileIc.salesAnalyticsIc.path),
+          ),
           _buildListItem(AppStrings.followers, Assets.appIcons.profileIc.followersIc.path),
           _buildListItem(AppStrings.report, Assets.appIcons.profileIc.reportIc.path),
           
