@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nunez_official_app/src/global/components/global_appbar.dart';
-import '../../../../../gen/assets.gen.dart';
 import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/app_strings.dart';
 import '../../../../global/constants/colors_resources.dart';

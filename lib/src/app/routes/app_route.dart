@@ -32,6 +32,8 @@ import '../../features/live_stream/steam_hub/binding/stream_hub_binding.dart';
 import '../../features/live_stream/steam_hub/view/stream_hub_view.dart';
 import '../../features/live_stream/sub_category_selection/binding/sub_category_selection_binding.dart';
 import '../../features/live_stream/sub_category_selection/view/sub_category_selection_screen.dart';
+import '../../features/profile/change_password/view/change_password_view.dart';
+import '../../features/profile/inventory/view/inventory_screen.dart';
 import '../../features/profile/orders/view/orders_view.dart';
 import '../../global/bottom_nav_bar/binding/bottom_nav_bar_binding.dart';
 import '../../global/bottom_nav_bar/view/bottom_nav_bar.dart';
@@ -56,7 +58,24 @@ import '../../features/profile/orders/binding/orders_binding.dart';
 import '../../features/profile/sales_analytics/binding/sales_analytics_binding.dart';
 import '../../features/profile/sales_analytics/view/sales_analytics_view.dart';
 import '../../features/profile/inventory/binding/inventory_binding.dart';
-import '../../features/profile/inventory/view/inventory_screen.dart';
+import '../../features/profile/shipping_address/binding/shipping_address_binding.dart';
+import '../../features/profile/shipping_address/view/shipping_address_view.dart';
+import '../../features/profile/shipping_address/view/add_shipping_address_view.dart';
+import '../../features/profile/payment_and_shipping/view/payment_and_shipping_view.dart';
+import '../../features/notification/view/notification_view.dart';
+import '../../features/profile/change_password/binding/change_password_binding.dart';
+import '../../features/profile/following/binding/following_binding.dart';
+import '../../features/profile/following/view/following_view.dart';
+import '../../features/profile/help_support/binding/help_support_binding.dart';
+import '../../features/profile/help_support/view/help_support_view.dart';
+import '../../features/profile/faq/view/faq_view.dart';
+import '../../features/profile/terms_conditions/view/terms_conditions_view.dart';
+import '../../features/profile/privacy_policy/view/privacy_policy_view.dart';
+import '../../features/profile/delete_account/binding/delete_account_binding.dart';
+import '../../features/profile/delete_account/view/delete_account_otp_view.dart';
+
+import '../../features/profile/language/binding/language_binding.dart';
+import '../../features/profile/language/view/language_view.dart';
 
 class AppRouteKeys {
   AppRouteKeys._();
@@ -103,6 +122,17 @@ class AppRouteKeys {
   static const String finance = '/finance';
   static const String orders = '/orders';
   static const String salesAnalytics = '/sales-analytics';
+  static const String shippingAddress = '/shipping-address';
+  static const String addShippingAddress = '/add-shipping-address';
+  static const String paymentAndShipping = '/payment-and-shipping';
+  static const String changePassword = '/change-password';
+  static const String following      = '/following';
+  static const String helpSupport    = '/help-support';
+  static const String termsConditions = '/terms-conditions';
+  static const String privacyPolicy  = '/privacy-policy';
+  static const String faq            = '/faq';
+  static const String deleteAccount  = '/delete-account';
+  static const String language       = '/language';
 }
 
 class AppPages {
@@ -226,6 +256,61 @@ class AppPages {
       name: AppRouteKeys.salesAnalytics,
       page: () => const SalesAnalyticsView(),
       binding: SalesAnalyticsBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.shippingAddress,
+      page: () => const ShippingAddressView(),
+      binding: ShippingAddressBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.addShippingAddress,
+      page: () => const AddShippingAddressView(),
+      binding: ShippingAddressBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.paymentAndShipping,
+      page: () => const PaymentAndShippingView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.notification,
+      page: () => const NotificationView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.changePassword,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.following,
+      page: () => const FollowingView(),
+      binding: FollowingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.helpSupport,
+      page: () => const HelpSupportView(),
+      binding: HelpSupportBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.faq,
+      page: () => const FAQView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.termsConditions,
+      page: () => const TermsConditionsView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.privacyPolicy,
+      page: () => const PrivacyPolicyView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.deleteAccount,
+      page: () => const DeleteAccountOtpView(),
+      binding: DeleteAccountBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.language,
+      page: () => const LanguageView(),
+      binding: LanguageBinding(),
     ),
   ];
 }

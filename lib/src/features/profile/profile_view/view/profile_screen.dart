@@ -297,11 +297,31 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildListItem(AppStrings.paymentsAndShipping, Assets.appIcons.profileIc.tipsIc.path),
-          _buildListItem(AppStrings.notifications, Assets.appIcons.notificationIc.path),
-          _buildListItem(AppStrings.changePassword, Assets.appIcons.profileIc.changePasswordIc.path),
-          _buildListItem(AppStrings.following, Assets.appIcons.profileIc.followersIc.path),
-          _buildListItem(AppStrings.language, Assets.appIcons.profileIc.languageIc.path),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.paymentAndShipping),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.paymentsAndShipping, Assets.appIcons.profileIc.shippingAddressIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.notification),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.notifications, Assets.appIcons.notificationIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.changePassword),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.changePassword, Assets.appIcons.profileIc.changePasswordIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.following),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.following, Assets.appIcons.profileIc.followersIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.language),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.language, Assets.appIcons.profileIc.languageIc.path),
+          ),
 
           sizedBoxH(10),
           const GlobalText(
@@ -311,11 +331,31 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
           ),
           sizedBoxH(20),
 
-          _buildListItem(AppStrings.helpSupport, Assets.appIcons.profileIc.helpSupportIc.path),
-          _buildListItem(AppStrings.termsConditions, Assets.appIcons.profileIc.termsConditionIc.path),
-          _buildListItem(AppStrings.privacyPolicy, Assets.appIcons.profileIc.reportIc.path),
-          _buildListItem(AppStrings.faq, Assets.appIcons.profileIc.faqIc.path),
-          _buildListItem(AppStrings.deleteAccount, Assets.appIcons.profileIc.deleteAccountIc.path),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.helpSupport),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.helpSupport, Assets.appIcons.profileIc.helpSupportIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.termsConditions),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.termsConditions, Assets.appIcons.profileIc.termsConditionIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.privacyPolicy),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.privacyPolicy, Assets.appIcons.profileIc.reportIc.path),
+          ),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.faq),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.faq, Assets.appIcons.profileIc.faqIc.path),
+          ),
+          GestureDetector(
+            onTap: () => _showDeleteAccountDialog(),
+            behavior: HitTestBehavior.opaque,
+            child: _buildListItem(AppStrings.deleteAccount, Assets.appIcons.profileIc.deleteAccountIc.path),
+          ),
 
           sizedBoxH(20),
           _buildLogoutButton(),
@@ -326,30 +366,183 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
   }
 
   Widget _buildLogoutButton() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(30),
+    return GestureDetector(
+      onTap: () => _showLogoutDialog(),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade100,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GlobalImageLoader(
+              imagePath: Assets.appIcons.profileIc.logoutIc.path,
+              height: 20,
+              width: 20,
+              color: Colors.red,
+            ),
+            sizedBoxW(10),
+            const GlobalText(
+              str: AppStrings.logout,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.red,
+            ),
+          ],
+        ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GlobalImageLoader(
-            imagePath: Assets.appIcons.profileIc.logoutIc.path,
-            height: 20,
-            width: 20,
-            color: Colors.red,
-          ),
-          sizedBoxW(10),
-          const GlobalText(
-            str: AppStrings.logout,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.red,
-          ),
-        ],
+    );
+  }
+
+  void _showLogoutDialog() {
+    Get.dialog(
+      Dialog(
+        backgroundColor: ColorRes.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 25, bottom: 20, left: 20, right: 20),
+              child: Column(
+                children: [
+                  const GlobalText(
+                    str: "Logout",
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  sizedBoxH(15),
+                  const GlobalText(
+                    str: "Are you sure you want to logout?",
+                    fontSize: 15,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            const Divider(height: 1, thickness: 1, color: Color(0xFFEEEEEE)),
+            IntrinsicHeight(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => Get.back(),
+                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20)),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        alignment: Alignment.center,
+                        child: const GlobalText(
+                          str: "Cancel",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const VerticalDivider(width: 1, thickness: 1, color: Color(0xFFEEEEEE)),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Get.back();
+                        Get.offAllNamed(AppRouteKeys.login);
+                      },
+                      borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20)),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        alignment: Alignment.center,
+                        child: const GlobalText(
+                          str: "Yes, Logout",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showDeleteAccountDialog() {
+    Get.dialog(
+      Dialog(
+        backgroundColor: ColorRes.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 25, bottom: 20, left: 20, right: 20),
+              child: Column(
+                children: [
+                  const GlobalText(
+                    str: "Account Delete",
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  sizedBoxH(15),
+                  const GlobalText(
+                    str: "Are you sure you want to delete your account?",
+                    fontSize: 15,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            const Divider(height: 1, thickness: 1, color: Color(0xFFEEEEEE)),
+            IntrinsicHeight(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => Get.back(),
+                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20)),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        alignment: Alignment.center,
+                        child: const GlobalText(
+                          str: "Cancel",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const VerticalDivider(width: 1, thickness: 1, color: Color(0xFFEEEEEE)),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(AppRouteKeys.deleteAccount);
+                      },
+                      borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20)),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        alignment: Alignment.center,
+                        child: const GlobalText(
+                          str: "Yes, Delete",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

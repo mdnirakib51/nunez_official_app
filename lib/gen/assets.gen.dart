@@ -417,6 +417,11 @@ class $AssetsAppIconsProfileIcGen {
   AssetGenImage get salesAnalyticsIc =>
       const AssetGenImage('assets/app_icons/profile_ic/sales_analytics_ic.png');
 
+  /// File path: assets/app_icons/profile_ic/shipping_address_ic.png
+  AssetGenImage get shippingAddressIc => const AssetGenImage(
+    'assets/app_icons/profile_ic/shipping_address_ic.png',
+  );
+
   /// File path: assets/app_icons/profile_ic/shows_ic.png
   AssetGenImage get showsIc =>
       const AssetGenImage('assets/app_icons/profile_ic/shows_ic.png');
@@ -449,6 +454,7 @@ class $AssetsAppIconsProfileIcGen {
     privacyPolicyIc,
     reportIc,
     salesAnalyticsIc,
+    shippingAddressIc,
     showsIc,
     termsConditionIc,
     tipsIc,

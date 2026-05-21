@@ -57,6 +57,7 @@ class ColorRes {
   static const Color white100 = Color(0xFFF6F6F6);
   static const Color white150 = Color(0xFFF5F5F5);
   static const Color white200 = Color(0xFFBDBDBD);
+  static const Color grey200 = Color(0xFFEEEEEE);
 
   static const Color deep100 = Color(0xFF7A7A7A);
   static const Color deep200 = Color(0xFF797471);

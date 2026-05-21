@@ -62,10 +62,13 @@ class HomeScreen extends GetView<HomeController> {
               ),
               sizedBoxW(15),
               // Notification Icon
-              GlobalImageLoader(
-                imagePath: Assets.appIcons.notificationIc.path,
-                height: 24,
-                width: 24,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.notification),
+                child: GlobalImageLoader(
+                  imagePath: Assets.appIcons.notificationIc.path,
+                  height: 24,
+                  width: 24,
+                ),
               ),
               sizedBoxW(15),
               // Cart Icon
