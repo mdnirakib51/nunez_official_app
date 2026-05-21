@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nunez_official_app/src/global/components/global_appbar.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
@@ -15,18 +16,14 @@ class StreamHubView extends GetView<StreamHubController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.white,
-      appBar: AppBar(
-        backgroundColor: ColorRes.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const GlobalText(
-          str: "Stream Hub",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+      appBar: GlobalAppBar(
+        title: Get.arguments == true ? "Shows" : "Stream Hub",
+        isBackIc: Get.arguments == true,
         actions: [
           IconButton(
-            onPressed: () => Get.find<BottomNavBarController>().changeTab(0),
+            onPressed: () => Get.arguments == true
+                ? Get.back()
+                : Get.find<BottomNavBarController>().changeTab(0),
             icon: const Icon(Icons.close, color: ColorRes.black),
           ),
           sizedBoxW(10),
@@ -54,7 +51,7 @@ class StreamHubView extends GetView<StreamHubController> {
                   ),
                   sizedBoxH(15),
                   SizedBox(
-                    height: 410, // Fixed height for horizontal list
+                    height: 410,
                     child: Obx(() => ListView.builder(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -72,9 +69,7 @@ class StreamHubView extends GetView<StreamHubController> {
                               isFreeShipping: show['isFreeShipping'] ?? false,
                               title: show['title'],
                               category: show['category'],
-                              onDelete: () {
-                                // Add delete logic if needed
-                              },
+                              onDelete: () {},
                               onStartLive: () {
                                 Get.toNamed(AppRouteKeys.liveStream);
                               },
@@ -88,40 +83,88 @@ class StreamHubView extends GetView<StreamHubController> {
               ),
             ),
 
-            // Create Listing Button
-            Padding(
-              padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20, top: 20),
-              child: InkWell(
-                onTap: () {
-                  Get.toNamed(AppRouteKeys.createListing);
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF252525),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.add, color: ColorRes.white, size: 24),
-                      sizedBoxW(10),
-                      const GlobalText(
-                        str: "Create Listing",
-                        color: ColorRes.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
+            // Create New Show Button (Visible when NOT coming from Profile)
+            if (Get.arguments != true)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                child: InkWell(
+                  onTap: () => Get.toNamed(AppRouteKeys.createListing),
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF2B2B2B),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.add, color: ColorRes.white, size: 24),
+                        sizedBoxW(10),
+                        const GlobalText(
+                          str: "Create New Show",
+                          color: ColorRes.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            sizedBoxH(MediaQuery.of(context).padding.bottom + 20),
+
+            // Past Shows Section (Visible when coming from Profile)
+            if (Get.arguments == true) ...[
+              sizedBoxH(20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: GlobalText(
+                    str: "Past Shows",
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Obx(() => GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(15),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      childAspectRatio: 0.50,
+                    ),
+                    itemCount: controller.pastShows.length,
+                    itemBuilder: (context, index) {
+                      final show = controller.pastShows[index];
+                      return HomeItemCard(
+                        sellerName: show['name'],
+                        title: show['title'],
+                        category: show['category'],
+                        time: show['time'],
+                        isFreeShipping: show['isFreeShipping'] ?? false,
+                        isStreamHub: true,
+                        textColor: ColorRes.black,
+                        onDelete: () {},
+                      );
+                    },
+                  )),
+            ],
+            sizedBoxH(100), // Space for bottom
           ],
         ),
       ),
+      floatingActionButton: Get.arguments == true
+          ? FloatingActionButton(
+              onPressed: () => Get.toNamed(AppRouteKeys.createListing),
+              backgroundColor: ColorRes.appButtonColor,
+              shape: const CircleBorder(),
+              child: const Icon(Icons.add, color: ColorRes.white, size: 30),
+            )
+          : null,
     );
   }
 }

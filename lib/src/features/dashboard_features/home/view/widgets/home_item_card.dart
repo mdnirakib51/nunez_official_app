@@ -18,6 +18,7 @@ class HomeItemCard extends StatelessWidget {
   final bool showBookmark;
   final bool isFreeShipping;
   final bool isStreamHub;
+  final Color? textColor;
   final VoidCallback? onDelete;
   final VoidCallback? onStartLive;
 
@@ -33,13 +34,14 @@ class HomeItemCard extends StatelessWidget {
     this.showBookmark = false,
     this.isFreeShipping = true,
     this.isStreamHub = false,
+    this.textColor,
     this.onDelete,
     this.onStartLive,
   });
 
   @override
   Widget build(BuildContext context) {
-    Color textColor = isStreamHub ? ColorRes.white : ColorRes.black;
+    Color effectiveTextColor = textColor ?? (isStreamHub ? ColorRes.white : ColorRes.black);
     return GestureDetector(
       onTap: () {
         if (!isStreamHub) {
@@ -63,7 +65,7 @@ class HomeItemCard extends StatelessWidget {
                   str: sellerName ?? "Asadur Yead",
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: textColor,
+                  color: effectiveTextColor,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -169,7 +171,7 @@ class HomeItemCard extends StatelessWidget {
             str: title ?? "500 Items Starts \$1 Electronics General Items",
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: textColor,
+            color: effectiveTextColor,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

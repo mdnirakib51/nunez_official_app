@@ -17,4 +17,21 @@ class StreamHubController extends GetxController {
       "isFreeShipping": true,
     },
   ].obs;
+
+  var pastShows = <Map<String, dynamic>>[
+    {
+      "name": "Tanvir Chowdhury",
+      "title": "Luxury Handbags Collection",
+      "category": "Fashion",
+      "time": "2 days ago",
+      "isFreeShipping": false,
+    },
+    {
+      "name": "Tanvir Chowdhury",
+      "title": "Vintage Watches Auction",
+      "category": "Accessories",
+      "time": "5 days ago",
+      "isFreeShipping": true,
+    },
+  ].obs;
 }
