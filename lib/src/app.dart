@@ -11,6 +11,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppRouteKeys.splash,
       getPages: AppPages.pages,
+      builder: (context, child) {
+        return SafeArea(
+          top: false,
+          child: child!,
+        );
+      },
       unknownRoute: GetPage(
         name: '/not-found',
         page: () => const _NotFoundScreen(),

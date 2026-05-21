@@ -32,7 +32,7 @@ class _BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 70, // Optimized height for global SafeArea
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
