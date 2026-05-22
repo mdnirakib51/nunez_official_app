@@ -89,6 +89,8 @@ import '../../features/auth/setup_profile/view/setup_profile_gender_screen.dart'
 import '../../features/auth/setup_profile/view/setup_profile_interests_screen.dart';
 import '../../features/auth/setup_profile/view/setup_profile_sub_interests_screen.dart';
 
+import '../../features/dashboard_features/cart/view/payment_confirmation_screen.dart';
+
 class AppRouteKeys {
   AppRouteKeys._();
 
@@ -126,6 +128,7 @@ class AppRouteKeys {
   static const String categoryProduct = '/category-product';
   static const String search = '/search';
   static const String cart = '/cart';
+  static const String paymentConfirmation = '/payment-confirmation';
   static const String orderSummary = '/order-summary';
   static const String streamHub = '/stream-hub';
   static const String createListing = '/create-listing';
@@ -207,6 +210,7 @@ class AppPages {
     GetPage(name: AppRouteKeys.categoryProduct, page: () => const CategoryProductScreen()),
     GetPage(name: AppRouteKeys.search, page: () => const SearchScreen()),
     GetPage(name: AppRouteKeys.cart, page: () => const CartScreen()),
+    GetPage(name: AppRouteKeys.paymentConfirmation, page: () => const PaymentConfirmationScreen()),
     GetPage(name: AppRouteKeys.orderSummary, page: () => OrderSummaryScreen(item: Get.arguments)),
     GetPage(
       name: AppRouteKeys.streamHub,

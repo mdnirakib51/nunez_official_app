@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../app/routes/app_route.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
@@ -87,7 +88,9 @@ class CartScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(AppRouteKeys.paymentConfirmation);
+              },
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 15),
