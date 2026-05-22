@@ -24,12 +24,38 @@ class _PaymentCardsScreenState extends State<PaymentCardsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.white,
-      appBar: const GlobalAppBar(
+      appBar: GlobalAppBar(
         title: AppStrings.addPaymentMethod,
         titleColor: ColorRes.black,
         iconColor: ColorRes.black,
         backColor: ColorRes.white,
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Center(
+              child: GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.addNewCard),
+                child: Container(
+                  height: 38,
+                  width: 38,
+                  decoration: BoxDecoration(
+                    color: ColorRes.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(Icons.add_card, color: ColorRes.black, size: 22),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -56,11 +82,11 @@ class _PaymentCardsScreenState extends State<PaymentCardsScreen> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: GlobalButtonWidget(
-              str: AppStrings.addCard,
+              str: AppStrings.save,
               radius: 30,
               height: 55,
               onTap: () {
-                Get.toNamed(AppRouteKeys.addNewCard);
+                Get.back();
               },
             ),
           ),

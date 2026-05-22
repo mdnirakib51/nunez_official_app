@@ -306,7 +306,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
             child: _buildListItem(AppStrings.paymentsAndShipping, Assets.appIcons.profileIc.shippingAddressIc.path),
           ),
           GestureDetector(
-            onTap: () => Get.toNamed(AppRouteKeys.notification),
+            onTap: () => Get.toNamed(AppRouteKeys.notificationSetting),
             behavior: HitTestBehavior.opaque,
             child: _buildListItem(AppStrings.notifications, Assets.appIcons.notificationIc.path),
           ),

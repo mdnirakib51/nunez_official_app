@@ -153,7 +153,10 @@ class AppStrings {
 
   // Account Tab
   static const String paymentsAndShipping = "Payments and Shipping";
-  static const String notifications = "Notifications";
+  static const String notifications = "Notification Settings";
+  static const String notificationSetting = "Notification Setting";
+  static const String generalNotification = "General Notification";
+  static const String sound = "Sound";
   static const String changePassword = "Change Password";
   static const String language = "Language";
   static const String helpAndLegal = "Help and Legal";
@@ -169,6 +172,7 @@ class AppStrings {
   static const String dateOfBirth = "Date of Birth";
   static const String phone = "Phone";
   static const String nationalIdNo = "National Id No";
+  static const String save = "Save";
   static const String saveChanges = "Save Changes";
   static const String issueTitle = "Issue title";
 

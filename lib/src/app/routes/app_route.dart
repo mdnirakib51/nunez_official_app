@@ -91,6 +91,8 @@ import '../../features/auth/setup_profile/view/setup_profile_sub_interests_scree
 
 import '../../features/dashboard_features/cart/view/payment_confirmation_screen.dart';
 
+import '../../features/profile/notification_setting/view/notification_setting_screen.dart';
+
 class AppRouteKeys {
   AppRouteKeys._();
 
@@ -111,6 +113,7 @@ class AppRouteKeys {
   static const String dashboard    = '/dashboard';
   static const String home         = '/dashboard_features';
   static const String notification = '/notification';
+  static const String notificationSetting = '/notification-setting';
   static const String settings     = '/settings';
 
   static const String profileMenu  = '/profileMenu';
@@ -318,6 +321,10 @@ class AppPages {
     GetPage(
       name: AppRouteKeys.notification,
       page: () => const NotificationView(),
+    ),
+    GetPage(
+      name: AppRouteKeys.notificationSetting,
+      page: () => const NotificationSettingScreen(),
     ),
     GetPage(
       name: AppRouteKeys.changePassword,

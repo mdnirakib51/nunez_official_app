@@ -48,6 +48,8 @@ class PurchaseTab extends StatelessWidget {
                   onTap: () => Get.toNamed(AppRouteKeys.orderSummary, arguments: item),
                   behavior: HitTestBehavior.opaque,
                   child: _buildActivityItem(
+                    index: index,
+                    controller: controller,
                     title: item['title'],
                     subtitle: item['subtitle'],
                     price: item['price'],
@@ -59,6 +61,7 @@ class PurchaseTab extends StatelessWidget {
                     statusTextColor: item['statusTextColor'],
                     shippingCarrier: item['shippingCarrier'],
                     trackingId: item['trackingId'],
+                    rating: item['rating'],
                   ),
                 );
               },
@@ -123,6 +126,8 @@ class PurchaseTab extends StatelessWidget {
   }
 
   Widget _buildActivityItem({
+    required int index,
+    required PurchaseController controller,
     required String title,
     required String subtitle,
     required String price,
@@ -134,6 +139,7 @@ class PurchaseTab extends StatelessWidget {
     required Color statusTextColor,
     String? shippingCarrier,
     String? trackingId,
+    double? rating,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,12 +232,175 @@ class PurchaseTab extends StatelessWidget {
                   ),
                 ],
               ),
-              // Status Chip (Bottom right for Shipped/Completed)
-              _statusChip(status, statusColor, statusTextColor),
+              // Buttons and Status
+              Row(
+                children: [
+                  if (status == "Completed") ...[
+                    if (rating == null)
+                      GestureDetector(
+                        onTap: () => _showReviewDialog(Get.context!, index, controller, imageUrl),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.orange.shade50,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: GlobalText(
+                            str: "Review",
+                            color: Colors.orange.shade700,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    else
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade50,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.star, color: Colors.orange, size: 12),
+                            sizedBoxW(4),
+                            GlobalText(
+                              str: rating.toString(),
+                              color: Colors.orange,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ],
+                        ),
+                      ),
+                    sizedBoxW(10),
+                  ],
+                  _statusChip(status, statusColor, statusTextColor),
+                ],
+              ),
             ],
           ),
         ],
       ],
+    );
+  }
+
+  void _showReviewDialog(BuildContext context, int index, PurchaseController controller, String imageUrl) {
+    double selectedRating = 0;
+    TextEditingController reviewController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Dialog(
+              backgroundColor: ColorRes.appBackColor,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const GlobalText(str: "Write a Review", fontWeight: FontWeight.bold, fontSize: 18),
+                        GestureDetector(
+                          onTap: () => Get.back(),
+                          child: const Icon(Icons.close, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                    sizedBoxH(20),
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(imageUrl),
+                    ),
+                    sizedBoxH(20),
+                    const GlobalText(
+                      str: "How was your experience?",
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                    sizedBoxH(15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(5, (starIndex) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRating = starIndex + 1.0;
+                            });
+                          },
+                          child: Icon(
+                            starIndex < selectedRating ? Icons.star : Icons.star_border,
+                            color: starIndex < selectedRating ? ColorRes.appColor : Colors.grey.shade400,
+                            size: 30,
+                          ),
+                        );
+                      }),
+                    ),
+                    sizedBoxH(20),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: GlobalText(str: "Write Your Review", fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                    sizedBoxH(10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade50,
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.grey.shade100),
+                      ),
+                      child: TextField(
+                        controller: reviewController,
+                        maxLines: 4,
+                        decoration: const InputDecoration(
+                          hintText: "Write here",
+                          hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    sizedBoxH(25),
+                    GestureDetector(
+                      onTap: () {
+                        if (selectedRating > 0) {
+                          controller.updateRating(index, selectedRating);
+                          Get.back();
+                          Get.snackbar("Success", "Review submitted successfully!", 
+                              backgroundColor: Colors.green, colorText: Colors.white);
+                        } else {
+                          Get.snackbar("Error", "Please select a rating", 
+                              backgroundColor: Colors.red, colorText: Colors.white);
+                        }
+                      },
+                      child: Container(
+                        width: 150,
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade900,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        alignment: Alignment.center,
+                        child: const GlobalText(
+                          str: "Submit",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 

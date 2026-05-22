@@ -19,6 +19,7 @@ class PurchaseController extends GetxController {
       "status": "In Progress",
       "statusColor": const Color(0xFFE8E1FF),
       "statusTextColor": const Color(0xFF7047EB),
+      "rating": null,
     },
     {
       "title": "Pure Solution Essence",
@@ -32,6 +33,7 @@ class PurchaseController extends GetxController {
       "statusTextColor": const Color(0xFF0095FF),
       "shippingCarrier": "Fedex",
       "trackingId": "123456789",
+      "rating": null,
     },
     {
       "title": "Fuji-film 600D Camera",
@@ -45,8 +47,15 @@ class PurchaseController extends GetxController {
       "statusTextColor": const Color(0xFF27AE60),
       "shippingCarrier": "Fedex",
       "trackingId": "123456789",
+      "rating": null,
     },
   ].obs;
+
+  void updateRating(int index, double rating) {
+    var item = purchaseItems[index];
+    item['rating'] = rating;
+    purchaseItems[index] = item;
+  }
 
   List<Map<String, dynamic>> get filteredItems {
     if (selectedFilter.value == "All") {
