@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:nunez_official_app/src/app/routes/app_route.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
-import '../../../cart/view/cart_screen.dart';
-import '../product_details_screen.dart';
 
 class ShopTab extends StatefulWidget {
   const ShopTab({super.key});
@@ -76,7 +75,7 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
               return GestureDetector(
                 onTap: () {
                   final products = _getProducts();
-                  Get.to(() => ProductDetailsScreen(product: products[index]));
+                  Get.toNamed(AppRouteKeys.productDetails, arguments: products[index]);
                 },
                 child: _productItem(index),
               );
@@ -179,7 +178,9 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
               GestureDetector(
                 onTap: () {
                   if (!isAuction) {
-                    Get.to(() => const CartScreen());
+                    Get.toNamed(AppRouteKeys.cart);
+                  } else {
+                    Get.toNamed(AppRouteKeys.placeBid, arguments: products[index]);
                   }
                 },
                 child: Container(

@@ -192,6 +192,11 @@ class $AssetsSocialIcGen {
 class $AssetsAppIconsButtomNavIcGen {
   const $AssetsAppIconsButtomNavIcGen();
 
+  /// File path: assets/app_icons/buttom_nav_ic/activity_active_ic.png
+  AssetGenImage get activityActiveIc => const AssetGenImage(
+    'assets/app_icons/buttom_nav_ic/activity_active_ic.png',
+  );
+
   /// File path: assets/app_icons/buttom_nav_ic/activity_ic.png
   AssetGenImage get activityIc =>
       const AssetGenImage('assets/app_icons/buttom_nav_ic/activity_ic.png');
@@ -224,6 +229,7 @@ class $AssetsAppIconsButtomNavIcGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    activityActiveIc,
     activityIc,
     categoriesActiveIc,
     categoriesIc,

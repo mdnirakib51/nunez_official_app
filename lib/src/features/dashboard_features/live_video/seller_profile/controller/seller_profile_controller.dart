@@ -10,6 +10,8 @@ class SellerProfileController extends GetxController with GetSingleTickerProvide
     "Reviews",
   ];
 
+  var selectedNotification = 0.obs;
+
   @override
   void onInit() {
     super.onInit();

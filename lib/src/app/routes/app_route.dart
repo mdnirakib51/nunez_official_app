@@ -6,6 +6,8 @@ import '../../features/dashboard_features/search/view/search_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/binding/seller_profile_binding.dart';
 import '../../features/dashboard_features/live_video/seller_profile/seller_profile_screen.dart';
 import '../../features/dashboard_features/live_video/seller_profile/product_details_screen.dart';
+import '../../features/dashboard_features/live_video/seller_profile/place_bid_screen.dart';
+import '../../features/dashboard_features/cart/view/cart_screen.dart';
 import '../../features/dashboard_features/live_video/live_video_view/payment_cards_screen.dart';
 import '../../features/dashboard_features/live_video/live_video_view/add_new_card_screen.dart';
 import '../../features/dashboard_features/live_video/live_video_view/add_payment_method_screen.dart';
@@ -54,6 +56,7 @@ import '../../features/profile/edit_profile/binding/edit_profile_binding.dart';
 import '../../features/profile/edit_profile/view/edit_profile_screen.dart';
 import '../../features/profile/finance/binding/finance_binding.dart';
 import '../../features/profile/finance/view/finance_view.dart';
+import '../../features/profile/finance/view/withdraw_money_screen.dart';
 import '../../features/profile/orders/binding/orders_binding.dart';
 import '../../features/profile/sales_analytics/binding/sales_analytics_binding.dart';
 import '../../features/profile/sales_analytics/view/sales_analytics_view.dart';
@@ -115,12 +118,14 @@ class AppRouteKeys {
   static const String sellerProfile = '/seller-profile';
   static const String sendTip      = '/send-tip';
   static const String productDetails = '/product-details';
+  static const String placeBid      = '/place-bid';
   static const String liveVideo    = '/live-video';
   static const String addPaymentMethod = '/add-payment-method';
   static const String paymentCards = '/payment-cards';
   static const String addNewCard = '/add-new-card';
   static const String categoryProduct = '/category-product';
   static const String search = '/search';
+  static const String cart = '/cart';
   static const String orderSummary = '/order-summary';
   static const String streamHub = '/stream-hub';
   static const String createListing = '/create-listing';
@@ -133,6 +138,7 @@ class AppRouteKeys {
   static const String previewListing = '/preview-listing';
   static const String liveStream = '/live-stream';
   static const String finance = '/finance';
+  static const String withdrawMoney = '/withdraw-money';
   static const String orders = '/orders';
   static const String salesAnalytics = '/sales-analytics';
   static const String shippingAddress = '/shipping-address';
@@ -193,12 +199,14 @@ class AppPages {
     ),
     GetPage(name: AppRouteKeys.sendTip, page: () => const SendTipScreen()),
     GetPage(name: AppRouteKeys.productDetails, page: () => ProductDetailsScreen(product: Get.arguments)),
+    GetPage(name: AppRouteKeys.placeBid, page: () => PlaceBidScreen(product: Get.arguments)),
     GetPage(name: AppRouteKeys.liveVideo, page: () => const LiveVideoScreen()),
     GetPage(name: AppRouteKeys.addPaymentMethod, page: () => const AddPaymentMethodScreen()),
     GetPage(name: AppRouteKeys.paymentCards, page: () => const PaymentCardsScreen()),
     GetPage(name: AppRouteKeys.addNewCard, page: () => const AddNewCardScreen()),
     GetPage(name: AppRouteKeys.categoryProduct, page: () => const CategoryProductScreen()),
     GetPage(name: AppRouteKeys.search, page: () => const SearchScreen()),
+    GetPage(name: AppRouteKeys.cart, page: () => const CartScreen()),
     GetPage(name: AppRouteKeys.orderSummary, page: () => OrderSummaryScreen(item: Get.arguments)),
     GetPage(
       name: AppRouteKeys.streamHub,
@@ -274,6 +282,10 @@ class AppPages {
       name: AppRouteKeys.finance,
       page: () => const FinanceView(),
       binding: FinanceBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.withdrawMoney,
+      page: () => const WithdrawMoneyScreen(),
     ),
     GetPage(
       name: AppRouteKeys.orders,

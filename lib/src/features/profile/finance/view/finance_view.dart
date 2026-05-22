@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nunez_official_app/src/app/routes/app_route.dart';
 import 'package:nunez_official_app/src/global/components/global_appbar.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
@@ -305,7 +306,7 @@ class _FinanceViewState extends State<FinanceView> with SingleTickerProviderStat
     return Padding(
       padding: const EdgeInsets.all(16),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => Get.toNamed(AppRouteKeys.withdrawMoney),
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorRes.appButtonColor,
           minimumSize: const Size(double.infinity, 55),

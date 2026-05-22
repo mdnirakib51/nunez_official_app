@@ -40,7 +40,7 @@ class BottomNavBarController extends GetxController {
     NavItemModel(
       title: 'Activity', 
       icon: Assets.appIcons.buttomNavIc.activityIc.path, 
-      activeIcon: Assets.appIcons.buttomNavIc.activityIc.path
+      activeIcon: Assets.appIcons.buttomNavIc.activityActiveIc.path
     ),
     NavItemModel(
       title: 'Profile', 

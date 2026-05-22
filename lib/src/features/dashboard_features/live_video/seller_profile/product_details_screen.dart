@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nunez_official_app/src/app/routes/app_route.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../global/constants/colors_resources.dart';
 import '../../../../global/global_widget/global_image_loader.dart';
 import '../../../../global/global_widget/global_sized_box.dart';
 import '../../../../global/global_widget/global_text.dart';
-import '../../cart/view/cart_screen.dart';
-import 'place_bid_screen.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final Map<String, String> product;
@@ -267,7 +266,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   sizedBoxH(10),
 
                   GestureDetector(
-                    onTap: () => Get.to(() => const CartScreen()),
+                    onTap: () => Get.toNamed(AppRouteKeys.cart),
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(vertical: 15),

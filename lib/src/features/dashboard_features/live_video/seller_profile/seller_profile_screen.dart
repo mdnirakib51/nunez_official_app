@@ -106,13 +106,18 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
                                       ),
                                     ),
 
-                                    Container(
-                                      padding: const EdgeInsets.all(6),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withValues(alpha: 0.8),
-                                        shape: BoxShape.circle,
+                                    GestureDetector(
+                                      onTap: () {
+                                        _showNotificationBottomSheet(context);
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(6),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withValues(alpha: 0.8),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(Icons.notifications_active, color: Colors.black),
                                       ),
-                                      child: const Icon(Icons.notifications_active, color: Colors.black),
                                     ),
                                   ],
                                 ),
@@ -302,6 +307,75 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
           GlobalText(str: label, fontWeight: FontWeight.w500, fontSize: 13),
         ],
       ),
+    );
+  }
+
+  void _showNotificationBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 4,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              sizedBoxH(20),
+              const GlobalText(
+                str: "Live Show Setting",
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              sizedBoxH(20),
+              const Divider(height: 1),
+              Obx(() => ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.grey.shade100,
+                      child: const Icon(Icons.notifications, color: Colors.black),
+                    ),
+                    title: const GlobalText(str: "All Notification", fontWeight: FontWeight.bold),
+                    subtitle: const GlobalText(str: "Receive all notifications", fontSize: 12, color: Colors.grey),
+                    trailing: Radio<int>(
+                      value: 0,
+                      groupValue: controller.selectedNotification.value,
+                      activeColor: Colors.black,
+                      onChanged: (value) {
+                        controller.selectedNotification.value = value!;
+                      },
+                    ),
+                  )),
+              Obx(() => ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.grey.shade100,
+                      child: const Icon(Icons.notifications_off, color: Colors.black),
+                    ),
+                    title: const GlobalText(str: "No Notifications", fontWeight: FontWeight.bold),
+                    subtitle: const GlobalText(str: "Turn off notifications", fontSize: 12, color: Colors.grey),
+                    trailing: Radio<int>(
+                      value: 1,
+                      groupValue: controller.selectedNotification.value,
+                      activeColor: Colors.black,
+                      onChanged: (value) {
+                        controller.selectedNotification.value = value!;
+                      },
+                    ),
+                  )),
+              sizedBoxH(50),
+            ],
+          ),
+        );
+      },
     );
   }
 }
