@@ -19,7 +19,7 @@ class SetupProfileInterestsScreen extends GetView<SetupProfileController> {
       backgroundColor: ColorRes.white,
       appBar: GlobalAppBar(
         title: AppStrings.setUpYourProfile,
-        isBackIc: true,
+        isBackIc: false,
         actions: [
           IconButton(
             onPressed: () => Get.back(),

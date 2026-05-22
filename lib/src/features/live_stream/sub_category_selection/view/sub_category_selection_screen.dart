@@ -15,7 +15,7 @@ class SubCategorySelectionScreen extends GetView<SubCategorySelectionController>
     return Scaffold(
       backgroundColor: ColorRes.white,
       appBar: GlobalAppBar(
-        isBackIc: true,
+        isBackIc: false,
         actions: [
           IconButton(
             onPressed: () => Get.back(),
