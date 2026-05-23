@@ -16,6 +16,7 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: ColorRes.white,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {

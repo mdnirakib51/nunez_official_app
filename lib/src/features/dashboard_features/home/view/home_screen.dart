@@ -72,17 +72,20 @@ class HomeScreen extends GetView<HomeController> {
               ),
               sizedBoxW(15),
               // Cart Icon
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: ColorRes.appColor,
-                  shape: BoxShape.circle,
-                ),
-                child: GlobalImageLoader(
-                  imagePath: Assets.appIcons.cartIc.path,
-                  height: 20,
-                  width: 20,
-                  color: ColorRes.white,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRouteKeys.cart),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: const BoxDecoration(
+                    color: ColorRes.appColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: GlobalImageLoader(
+                    imagePath: Assets.appIcons.cartIc.path,
+                    height: 20,
+                    width: 20,
+                    color: ColorRes.white,
+                  ),
                 ),
               ),
             ],

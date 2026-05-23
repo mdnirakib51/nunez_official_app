@@ -11,6 +11,7 @@ class PlaceBidScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: ColorRes.white,
       appBar: GlobalAppBar(
         title: product["title"] ?? "Product Details",

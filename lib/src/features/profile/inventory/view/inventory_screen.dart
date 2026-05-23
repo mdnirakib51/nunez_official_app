@@ -160,6 +160,7 @@ class _InventoryScreenState extends State<InventoryScreen> with SingleTickerProv
             height: 120,
             width: 120,
             fit: BoxFit.cover,
+            imageFor: ImageFor.network,
           ),
         ),
         sizedBoxW(15),

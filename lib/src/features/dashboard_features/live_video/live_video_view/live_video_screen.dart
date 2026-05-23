@@ -164,6 +164,7 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> with WidgetsBindingOb
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.black,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           // Background Video
