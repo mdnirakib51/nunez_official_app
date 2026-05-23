@@ -174,7 +174,10 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
           sizedBoxH(25),
           
           // List items
-          _buildListItem(AppStrings.tips, Assets.appIcons.profileIc.tipsIc.path),
+          GestureDetector(
+            onTap: () => Get.toNamed(AppRouteKeys.tips),
+            child: _buildListItem(AppStrings.tips, Assets.appIcons.profileIc.tipsIc.path),
+          ),
           GestureDetector(
             onTap: () => Get.toNamed(AppRouteKeys.salesAnalytics),
             child: _buildListItem(AppStrings.salesAnalytics, Assets.appIcons.profileIc.salesAnalyticsIc.path),

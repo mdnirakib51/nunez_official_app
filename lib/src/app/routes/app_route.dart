@@ -91,6 +91,7 @@ import '../../features/auth/setup_profile/view/setup_profile_sub_interests_scree
 
 import '../../features/dashboard_features/cart/view/payment_confirmation_screen.dart';
 
+import '../../features/profile/tips/view/tips_screen.dart';
 import '../../features/profile/notification_setting/view/notification_setting_screen.dart';
 
 class AppRouteKeys {
@@ -152,6 +153,7 @@ class AppRouteKeys {
   static const String paymentAndShipping = '/payment-and-shipping';
   static const String changePassword = '/change-password';
   static const String following      = '/following';
+  static const String tips           = '/tips';
   static const String helpSupport    = '/help-support';
   static const String termsConditions = '/terms-conditions';
   static const String privacyPolicy  = '/privacy-policy';
@@ -335,6 +337,10 @@ class AppPages {
       name: AppRouteKeys.following,
       page: () => const FollowingView(),
       binding: FollowingBinding(),
+    ),
+    GetPage(
+      name: AppRouteKeys.tips,
+      page: () => const TipsScreen(),
     ),
     GetPage(
       name: AppRouteKeys.helpSupport,
