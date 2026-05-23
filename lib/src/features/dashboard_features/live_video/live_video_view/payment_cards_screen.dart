@@ -135,7 +135,7 @@ class _PaymentCardsScreenState extends State<PaymentCardsScreen> {
                     str: subtitle,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                 ],
               ),

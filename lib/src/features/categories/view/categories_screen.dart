@@ -59,7 +59,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         child: GlobalText(
                           str: "Search shop...",
                           fontSize: 14,
-                          color: ColorRes.grey,
+                          color: ColorRes.grey900,
                         ),
                       ),
                     ],

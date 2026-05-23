@@ -72,7 +72,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
                       child: GlobalText(
                         str: "Search shop...",
                         fontSize: 14,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                     ),
                   ],

@@ -42,7 +42,7 @@ class CreateListingScreen extends GetView<CreateListingController> {
             const GlobalText(
               str: "Before you start selling, please review and\naccept these guidelines",
               fontSize: 14,
-              color: ColorRes.grey,
+              color: ColorRes.grey900,
               textAlign: TextAlign.center,
             ),
             sizedBoxH(40),
@@ -80,7 +80,7 @@ class CreateListingScreen extends GetView<CreateListingController> {
                   child: GlobalText(
                     str: "I agree to the guidelines and understand that Whatnot may send SMS updates to verify my submission and keep me informed about my progress.",
                     fontSize: 12,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                 ),
               ],
@@ -148,7 +148,7 @@ class CreateListingScreen extends GetView<CreateListingController> {
                 GlobalText(
                   str: description,
                   fontSize: 13,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),

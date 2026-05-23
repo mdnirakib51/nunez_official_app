@@ -159,7 +159,7 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
               GlobalText(
                 str: products[index]["desc"]!,
                 fontSize: 12,
-                color: Colors.grey.shade600,
+                color: ColorRes.grey900,
                 fontWeight: FontWeight.w400,
               ),
               sizedBoxH(4),

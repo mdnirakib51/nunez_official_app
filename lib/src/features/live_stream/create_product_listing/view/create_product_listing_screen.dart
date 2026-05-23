@@ -56,7 +56,7 @@ class CreateProductListingScreen extends GetView<CreateProductListingController>
                             sizedBoxH(10),
                             const GlobalText(
                               str: "Add Product",
-                              color: ColorRes.grey,
+                              color: ColorRes.grey900,
                               fontSize: 14,
                             ),
                           ],

@@ -42,7 +42,7 @@ class SearchScreen extends StatelessWidget {
                 autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Search shop...',
-                  hintStyle: const TextStyle(color: ColorRes.grey, fontSize: 14),
+                  hintStyle: const TextStyle(color: ColorRes.grey900, fontSize: 14),
                   prefixIcon: const Icon(Icons.search, color: ColorRes.grey),
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.close, color: ColorRes.black, size: 20),
@@ -103,7 +103,7 @@ class SearchScreen extends StatelessWidget {
               GlobalText(
                 str: followers,
                 fontSize: 12,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
               ),
             ],
           ),

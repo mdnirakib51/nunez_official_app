@@ -49,7 +49,7 @@ class SetupProfileSubInterestsScreen extends GetView<SetupProfileController> {
                     const GlobalText(
                       str: AppStrings.pickOnlyWhatYouArePassionateAbout,
                       fontSize: 16,
-                      color: ColorRes.grey,
+                      color: ColorRes.grey900,
                     ),
                     sizedBoxH(30),
                     ...controller.subInterestsMap.entries.map((entry) {

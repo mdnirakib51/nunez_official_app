@@ -93,7 +93,7 @@ class AuctionSettingBottomSheet extends GetView<LiveStreamController> {
           const GlobalText(
             str: "When auction has less than 5 seconds remaining, new bids will reset the timer to the selected amount",
             fontSize: 12,
-            color: ColorRes.grey,
+            color: ColorRes.grey900,
           ),
           sizedBoxH(10),
           Obx(() => Wrap(
@@ -128,7 +128,7 @@ class AuctionSettingBottomSheet extends GetView<LiveStreamController> {
                   GlobalText(
                     str: "This means when you're down to 00:01, the\nlast person to bid wins!",
                     fontSize: 11,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                 ],
               ),

@@ -43,7 +43,7 @@ class SubCategorySelectionScreen extends GetView<SubCategorySelectionController>
                 const GlobalText(
                   str: "You can change or add more later",
                   fontSize: 14,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
                 sizedBoxH(25),
                 const GlobalText(

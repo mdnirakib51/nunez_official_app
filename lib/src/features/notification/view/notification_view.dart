@@ -99,7 +99,7 @@ class NotificationView extends StatelessWidget {
                         GlobalText(
                           str: item['time']!,
                           fontSize: 12,
-                          color: ColorRes.grey,
+                          color: ColorRes.grey900,
                         ),
                       ],
                     ),
@@ -107,7 +107,7 @@ class NotificationView extends StatelessWidget {
                     GlobalText(
                       str: item['subtitle']!,
                       fontSize: 12,
-                      color: ColorRes.grey,
+                      color: ColorRes.grey900,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
