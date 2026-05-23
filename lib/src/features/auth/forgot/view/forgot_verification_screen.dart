@@ -42,7 +42,7 @@ class ForgotVerificationScreen extends GetView<ForgotController> {
                     GlobalText(
                       str: "${AppStrings.enterCodeSent}${controller.emailController.text}",
                       fontSize: 14,
-                      color: ColorRes.grey,
+                      color: ColorRes.grey900,
                     ),
                     sizedBoxH(30),
                     const GlobalText(
@@ -114,7 +114,7 @@ class ForgotVerificationScreen extends GetView<ForgotController> {
                         const GlobalText(
                           str: AppStrings.resendCodeIn,
                           fontSize: 14,
-                          color: ColorRes.grey,
+                          color: ColorRes.grey900,
                         ),
                         GlobalText(
                           str: controller.timerText.value,

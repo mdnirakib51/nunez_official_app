@@ -91,7 +91,7 @@ class PurchaseTab extends StatelessWidget {
             GlobalText(
               str: "You haven't made any purchases in this category yet.",
               fontSize: 14,
-              color: ColorRes.grey,
+              color: ColorRes.grey900,
               textAlign: TextAlign.center,
             ),
           ],
@@ -178,7 +178,7 @@ class PurchaseTab extends StatelessWidget {
                   GlobalText(
                     str: subtitle,
                     fontSize: 13,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(4),
                   GlobalText(
@@ -190,7 +190,7 @@ class PurchaseTab extends StatelessWidget {
                   GlobalText(
                     str: "From $from",
                     fontSize: 13,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
 
                   Row(
@@ -200,7 +200,7 @@ class PurchaseTab extends StatelessWidget {
                       GlobalText(
                         str: "Purchased: $date",
                         fontSize: 12,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                       if (shippingCarrier == null)
                         _statusChip(status, statusColor, statusTextColor),
@@ -228,7 +228,7 @@ class PurchaseTab extends StatelessWidget {
                   GlobalText(
                     str: "Tracking Id: $trackingId",
                     fontSize: 12,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                 ],
               ),

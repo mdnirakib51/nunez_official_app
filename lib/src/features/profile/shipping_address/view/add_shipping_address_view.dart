@@ -181,7 +181,7 @@ class AddShippingAddressView extends StatelessWidget {
           items: [value].map((String item) {
             return DropdownMenuItem<String>(
               value: item,
-              child: GlobalText(str: item, fontSize: 14, color: ColorRes.grey),
+              child: GlobalText(str: item, fontSize: 14, color: ColorRes.grey900),
             );
           }).toList(),
           onChanged: (_) {},

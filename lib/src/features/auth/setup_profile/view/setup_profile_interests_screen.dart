@@ -46,7 +46,7 @@ class SetupProfileInterestsScreen extends GetView<SetupProfileController> {
                 const GlobalText(
                   str: AppStrings.pickAFewToGetStarted,
                   fontSize: 14,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),

@@ -158,7 +158,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   GlobalText(
                     str: subtitle,
                     fontSize: 12,
-                    color: Colors.grey,
+                    color: ColorRes.grey900,
                   ),
                 ],
               ),

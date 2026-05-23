@@ -61,7 +61,7 @@ class _SendTipScreenState extends State<SendTipScreen> {
             const GlobalText(
               str: AppStrings.hostReceiveInfo,
               fontSize: 12,
-              color: Colors.grey,
+              color: ColorRes.grey900,
             ),
             sizedBoxH(20),
             GridView.builder(

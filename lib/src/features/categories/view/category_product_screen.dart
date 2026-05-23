@@ -230,7 +230,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
               GlobalText(
                 str: "Qty: ${product["qty"]}  •  ${product["status"]}",
                 fontSize: 12,
-                color: Colors.grey.shade600,
+                color: ColorRes.grey900,
               ),
               sizedBoxH(4),
               GlobalText(
@@ -241,7 +241,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> with Sing
               GlobalText(
                 str: product["bids"]!,
                 fontSize: 12,
-                color: Colors.grey,
+                color: ColorRes.grey900,
               ),
               sizedBoxH(10),
               // Action Button

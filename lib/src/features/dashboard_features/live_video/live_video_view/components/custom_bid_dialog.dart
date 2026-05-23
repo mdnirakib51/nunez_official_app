@@ -59,7 +59,7 @@ class _CustomBidDialogState extends State<CustomBidDialog> {
             const GlobalText(
               str: AppStrings.enterAmount,
               fontSize: 14,
-              color: Colors.grey,
+              color: ColorRes.grey900,
             ),
             sizedBoxH(10),
             Container(

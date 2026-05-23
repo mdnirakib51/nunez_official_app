@@ -64,7 +64,7 @@ class PlaceBidScreen extends StatelessWidget {
                 sizedBoxH(5),
                 const GlobalText(
                   str: "Enter a bid above your existing max bid of \$6.00",
-                  color: Colors.grey,
+                  color: ColorRes.grey900,
                   fontSize: 13,
                 ),
                 sizedBoxH(10),
@@ -107,7 +107,7 @@ class PlaceBidScreen extends StatelessWidget {
             sizedBoxH(15),
             const GlobalText(
               str: "Your max bid cannot be canceled or reduced after submission, but you're free to raise it whenever needed.",
-              color: Colors.grey,
+              color: ColorRes.grey900,
               fontSize: 12,
               textAlign: TextAlign.center,
             ),

@@ -46,7 +46,7 @@ class ForgotPassScreen extends GetView<ForgotController> {
                       const GlobalText(
                         str: AppStrings.forgotPassSubTitle,
                         fontSize: 14,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                       sizedBoxH(30),
                       

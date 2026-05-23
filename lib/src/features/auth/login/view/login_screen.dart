@@ -108,7 +108,7 @@ class LoginScreen extends GetView<LoginController> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: GlobalText(
                       str: AppStrings.or,
-                      color: ColorRes.grey.withValues(alpha: 0.5),
+                      color: ColorRes.grey900,
                       fontSize: 14,
                     ),
                   ),
@@ -150,7 +150,7 @@ class LoginScreen extends GetView<LoginController> {
                     text: TextSpan(
                       text: AppStrings.dontHaveAccount,
                       style: const TextStyle(
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                         fontSize: 14,
                         fontFamily: 'Inter',
                       ),

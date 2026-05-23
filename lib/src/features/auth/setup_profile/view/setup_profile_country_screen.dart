@@ -49,7 +49,7 @@ class SetupProfileCountryScreen extends GetView<SetupProfileController> {
                     const GlobalText(
                       str: AppStrings.makeSureItsYou,
                       fontSize: 16,
-                      color: ColorRes.grey,
+                      color: ColorRes.grey900,
                     ),
                     sizedBoxH(40),
                     Obx(() => Container(

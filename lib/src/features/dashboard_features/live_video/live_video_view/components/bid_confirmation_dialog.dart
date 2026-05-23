@@ -46,7 +46,7 @@ class BidConfirmationDialog extends StatelessWidget {
             const GlobalText(
               str: AppStrings.amount,
               fontSize: 14,
-              color: Colors.grey,
+              color: ColorRes.grey900,
             ),
             sizedBoxH(10),
             GlobalText(

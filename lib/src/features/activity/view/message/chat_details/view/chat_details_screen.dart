@@ -71,7 +71,7 @@ class ChatDetailsScreen extends StatelessWidget {
                       child: const GlobalText(
                         str: "Today, 02:45 PM",
                         fontSize: 12,
-                        color: Colors.grey,
+                        color: ColorRes.grey900,
                       ),
                     ),
                   );
@@ -127,7 +127,7 @@ class ChatDetailsScreen extends StatelessWidget {
           GlobalText(
             str: time,
             fontSize: 10,
-            color: Colors.grey,
+            color: ColorRes.grey900,
           ),
         ],
       ),

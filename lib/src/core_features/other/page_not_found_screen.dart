@@ -44,7 +44,7 @@ class PageNotFoundScreen extends StatelessWidget {
               // Subtitle
               const GlobalText(
                 str: "The page you requested could not be found",
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
                 fontSize: 14,
                 textAlign: TextAlign.center,
               ),

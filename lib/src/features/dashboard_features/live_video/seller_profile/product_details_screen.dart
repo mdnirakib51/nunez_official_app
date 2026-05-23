@@ -87,14 +87,14 @@ class ProductDetailsScreen extends StatelessWidget {
                   GlobalText(
                     str: product["desc"]!,
                     fontSize: 14,
-                    color: Colors.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(10),
                   const Row(
                     children: [
-                      GlobalText(str: "Starting at ", fontSize: 14, color: Colors.grey),
+                      GlobalText(str: "Starting at ", fontSize: 14, color: ColorRes.grey900),
                       GlobalText(str: "\$10", fontSize: 16, fontWeight: FontWeight.bold),
-                      GlobalText(str: " + Shipping +Taxes", fontSize: 14, color: Colors.grey),
+                      GlobalText(str: " + Shipping +Taxes", fontSize: 14, color: ColorRes.grey900),
                     ],
                   ),
 
@@ -187,7 +187,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   const GlobalText(
                     str: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
                     fontSize: 14,
-                    color: Colors.grey,
+                    color: ColorRes.grey900,
                   ),
 
                   sizedBoxH(25),
@@ -202,7 +202,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       children: [
                         GlobalText(str: "Category", fontWeight: FontWeight.bold),
                         Spacer(),
-                        GlobalText(str: "Ladies Bag", color: Colors.grey),
+                        GlobalText(str: "Ladies Bag", color: ColorRes.grey900),
                       ],
                     ),
                   ),
@@ -227,7 +227,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             const CircleAvatar(radius: 18, backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=irfan")),
                             sizedBoxW(10),
                             const Expanded(child: GlobalText(str: "Irfan Haider", fontWeight: FontWeight.bold)),
-                            const GlobalText(str: "02/06/2026", color: Colors.grey, fontSize: 11),
+                            const GlobalText(str: "02/06/2026", color: ColorRes.grey900, fontSize: 11),
                           ],
                         ),
                         sizedBoxH(10),
@@ -254,7 +254,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   sizedBoxH(20),
                   Row(
                     children: [
-                      const GlobalText(str: "Created on: 02/06/26", color: Colors.grey, fontSize: 13),
+                      const GlobalText(str: "Created on: 02/06/26", color: ColorRes.grey900, fontSize: 13),
                       const Spacer(),
                       TextButton(
                         onPressed: () {},
@@ -325,7 +325,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ],
           ),
           sizedBoxH(4),
-          GlobalText(str: label, fontSize: 12, color: Colors.grey),
+          GlobalText(str: label, fontSize: 12, color: ColorRes.grey900),
         ],
       ),
     );

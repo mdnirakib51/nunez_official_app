@@ -158,7 +158,7 @@ class BidsTab extends StatelessWidget {
             GlobalText(
               str: "Browse your favorite categories auctions to place a bid",
               fontSize: 14,
-              color: ColorRes.grey,
+              color: ColorRes.grey900,
               textAlign: TextAlign.center,
             ),
             sizedBoxH(30),
@@ -222,7 +222,7 @@ class BidsTab extends StatelessWidget {
               GlobalText(
                 str: "Qty: $qty • $condition",
                 fontSize: 12,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
               ),
               sizedBoxH(4),
               GlobalText(
@@ -235,7 +235,7 @@ class BidsTab extends StatelessWidget {
                 GlobalText(
                   str: "Date: $date",
                   fontSize: 12,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
               sizedBoxH(8),

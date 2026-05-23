@@ -61,7 +61,7 @@ class SavedTab extends StatelessWidget {
             GlobalText(
               str: "Items you save will appear here for easy access.",
               fontSize: 14,
-              color: ColorRes.grey,
+              color: ColorRes.grey900,
               textAlign: TextAlign.center,
             ),
           ],

@@ -148,7 +148,7 @@ class CartScreen extends StatelessWidget {
                     const Icon(Icons.delete_outline, color: Colors.grey, size: 22),
                   ],
                 ),
-                GlobalText(str: desc, fontSize: 12, color: Colors.grey),
+                GlobalText(str: desc, fontSize: 12, color: ColorRes.grey900),
                 sizedBoxH(5),
                 GlobalText(str: price, fontWeight: FontWeight.bold, fontSize: 14),
                 sizedBoxH(10),
@@ -189,7 +189,7 @@ class CartScreen extends StatelessWidget {
           str: label,
           fontSize: isTotal ? 16 : 14,
           fontWeight: isTotal ? FontWeight.bold : FontWeight.w400,
-          color: isTotal ? Colors.black : Colors.grey.shade700,
+          color: isTotal ? Colors.black : ColorRes.grey900,
         ),
         GlobalText(
           str: value,

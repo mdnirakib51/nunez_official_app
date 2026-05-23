@@ -44,7 +44,7 @@ class NoInternetConnectionScreen extends StatelessWidget {
               // Subtitle
               const GlobalText(
                 str: "Please check your internet connection and\ntry again",
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
                 fontSize: 14,
                 textAlign: TextAlign.center,
               ),

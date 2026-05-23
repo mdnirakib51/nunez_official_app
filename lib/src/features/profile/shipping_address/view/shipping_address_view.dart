@@ -91,7 +91,7 @@ class ShippingAddressView extends StatelessWidget {
               GlobalText(
                 str: address['address'],
                 fontSize: 13,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
               ),
               sizedBoxH(8),
               Row(

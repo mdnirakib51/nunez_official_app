@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:nunez_official_app/src/app/routes/app_route.dart';
+import '../../../../../global/constants/colors_resources.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
 
@@ -170,7 +171,7 @@ class _ShopTabState extends State<ShopTab> with AutomaticKeepAliveClientMixin {
               const GlobalText(
                 str: "4 bids",
                 fontSize: 12,
-                color: Colors.grey,
+                color: ColorRes.grey900,
                 fontWeight: FontWeight.w400,
               ),
               sizedBoxH(10),

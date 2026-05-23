@@ -70,7 +70,7 @@ class MessageTab extends StatelessWidget {
             GlobalText(
               str: "When you start a conversation, it will appear here.",
               fontSize: 14,
-              color: ColorRes.grey,
+              color: ColorRes.grey900,
               textAlign: TextAlign.center,
             ),
           ],
@@ -110,7 +110,7 @@ class MessageTab extends StatelessWidget {
                 GlobalText(
                   str: text,
                   fontSize: 13,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),
@@ -119,7 +119,7 @@ class MessageTab extends StatelessWidget {
           GlobalText(
             str: time,
             fontSize: 12,
-            color: ColorRes.grey,
+            color: ColorRes.grey900,
           ),
         ],
       ),

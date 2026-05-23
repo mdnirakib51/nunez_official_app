@@ -166,7 +166,7 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
                         const GlobalText(
                           str: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
                           fontSize: 12,
-                          color: Colors.grey,
+                          color: ColorRes.grey900,
                         ),
                       ],
                     ),
@@ -284,7 +284,7 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
           sizedBoxH(4),
           FittedBox(
             fit: BoxFit.scaleDown,
-            child: GlobalText(str: label, fontSize: 12, color: Colors.grey),
+            child: GlobalText(str: label, fontSize: 12, color: ColorRes.grey900),
           ),
         ],
       ),
@@ -346,7 +346,7 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
                       child: const Icon(Icons.notifications, color: Colors.black),
                     ),
                     title: const GlobalText(str: "All Notification", fontWeight: FontWeight.bold),
-                    subtitle: const GlobalText(str: "Receive all notifications", fontSize: 12, color: Colors.grey),
+                    subtitle: const GlobalText(str: "Receive all notifications", fontSize: 12, color: ColorRes.grey900),
                     trailing: Radio<int>(
                       value: 0,
                       groupValue: controller.selectedNotification.value,
@@ -362,7 +362,7 @@ class SellerProfileScreen extends GetView<SellerProfileController> {
                       child: const Icon(Icons.notifications_off, color: Colors.black),
                     ),
                     title: const GlobalText(str: "No Notifications", fontWeight: FontWeight.bold),
-                    subtitle: const GlobalText(str: "Turn off notifications", fontSize: 12, color: Colors.grey),
+                    subtitle: const GlobalText(str: "Turn off notifications", fontSize: 12, color: ColorRes.grey900),
                     trailing: Radio<int>(
                       value: 1,
                       groupValue: controller.selectedNotification.value,

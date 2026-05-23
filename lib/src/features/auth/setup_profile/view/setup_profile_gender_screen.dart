@@ -49,7 +49,7 @@ class SetupProfileGenderScreen extends GetView<SetupProfileController> {
                     const GlobalText(
                       str: AppStrings.suggestMoreCategories,
                       fontSize: 16,
-                      color: ColorRes.grey,
+                      color: ColorRes.grey900,
                     ),
                     sizedBoxH(40),
                     _buildGenderOption(AppStrings.male),

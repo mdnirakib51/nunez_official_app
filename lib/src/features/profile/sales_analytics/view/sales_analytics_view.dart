@@ -32,7 +32,7 @@ class SalesAnalyticsView extends StatelessWidget {
             sizedBoxH(15),
             Row(
               children: [
-                const GlobalText(str: "Show: ", fontSize: 14, color: ColorRes.grey),
+                const GlobalText(str: "Show: ", fontSize: 14, color: ColorRes.grey900),
                 Obx(() => Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class SalesAnalyticsView extends StatelessWidget {
           GlobalText(
             str: label,
             fontSize: 11,
-            color: ColorRes.grey,
+            color: ColorRes.grey900,
             textAlign: TextAlign.center,
           ),
         ],
@@ -166,7 +166,7 @@ class SalesAnalyticsView extends StatelessWidget {
                 ),
               ),
               sizedBoxW(8),
-              const GlobalText(str: "Sales", fontSize: 14, color: ColorRes.grey),
+              const GlobalText(str: "Sales", fontSize: 14, color: ColorRes.grey900),
             ],
           ),
           sizedBoxH(20),

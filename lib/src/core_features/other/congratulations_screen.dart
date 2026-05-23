@@ -47,7 +47,7 @@ class CongratulationsScreen extends StatelessWidget {
               // Dynamic Subtitle
               GlobalText(
                 str: subTitle,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
                 textAlign: TextAlign.center,
               ),
 

@@ -81,6 +81,7 @@ class ColorRes {
   static const Color bottomColor = Color(0xFF0A67DE);
   static const Color listTileBackColor = Color(0xFF1C1C1E);
   static const Color blue100 = Color(0xFFD6EFFA);
+  static const Color grey900 = Color(0xFF212121);
 
   static const List<Color> splashColor = [
     Color(0xFF7BC7E9), // #7BC7E9

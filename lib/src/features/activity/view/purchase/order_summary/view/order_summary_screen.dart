@@ -48,7 +48,7 @@ class OrderSummaryScreen extends StatelessWidget {
                       GlobalText(
                         str: item['subtitle'] ?? "N/A",
                         fontSize: 14,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                     ],
                   ),
@@ -176,7 +176,7 @@ class OrderSummaryScreen extends StatelessWidget {
           GlobalText(
             str: label,
             fontSize: 14,
-            color: ColorRes.grey,
+            color: ColorRes.grey900,
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
           ),
           const SizedBox(width: 20),

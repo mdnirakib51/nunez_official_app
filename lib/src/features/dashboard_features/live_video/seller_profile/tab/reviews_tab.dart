@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../global/constants/colors_resources.dart';
 import '../../../../../global/global_widget/global_sized_box.dart';
 import '../../../../../global/global_widget/global_text.dart';
 
@@ -34,7 +35,7 @@ class _ReviewsTabState extends State<ReviewsTab> with AutomaticKeepAliveClientMi
                 const CircleAvatar(radius: 18, backgroundImage: NetworkImage("https://i.pravatar.cc/150?u=irfan")),
                 sizedBoxW(10),
                 const Expanded(child: GlobalText(str: "Irfan Haider", fontWeight: FontWeight.bold)),
-                const GlobalText(str: "02/06/2026", color: Colors.grey, fontSize: 11),
+                const GlobalText(str: "02/06/2026", color: ColorRes.grey900, fontSize: 11),
               ],
             ),
             sizedBoxH(10),

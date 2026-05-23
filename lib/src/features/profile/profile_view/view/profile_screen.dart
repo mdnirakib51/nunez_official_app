@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
                 GlobalText(
                   str: "tanvirchowdhury123@gmail.com",
                   fontSize: 13,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),
@@ -283,7 +283,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
               GlobalText(
                 str: AppStrings.vacationModeSubTitle,
                 fontSize: 12,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
               ),
             ],
           ),

@@ -46,7 +46,7 @@ class SetNewPasswordScreen extends GetView<ForgotController> {
                       const GlobalText(
                         str: AppStrings.setNewPasswordSubTitle,
                         fontSize: 14,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                       sizedBoxH(30),
                       
