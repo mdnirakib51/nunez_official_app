@@ -54,7 +54,7 @@ class FAQView extends StatelessWidget {
                         child: GlobalText(
                           str: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                           fontSize: 13,
-                          color: ColorRes.grey,
+                          color: ColorRes.grey900,
                         ),
                       ),
                     ],

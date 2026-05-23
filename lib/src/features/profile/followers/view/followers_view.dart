@@ -31,7 +31,7 @@ class FollowersView extends GetView<FollowersController> {
                 controller: controller.searchController,
                 decoration: const InputDecoration(
                   hintText: "Search",
-                  hintStyle: TextStyle(color: ColorRes.grey, fontSize: 16),
+                  hintStyle: TextStyle(color: ColorRes.grey900, fontSize: 16),
                   prefixIcon: Icon(Icons.search, color: ColorRes.grey),
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(vertical: 15),
@@ -86,7 +86,7 @@ class FollowersView extends GetView<FollowersController> {
                           GlobalText(
                             str: item['followers']!,
                             fontSize: 12,
-                            color: ColorRes.grey,
+                            color: ColorRes.grey900,
                           ),
                         ],
                       ),

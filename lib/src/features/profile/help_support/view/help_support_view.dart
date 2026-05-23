@@ -81,7 +81,7 @@ class HelpSupportView extends GetView<HelpSupportController> {
                   const GlobalText(
                     str: "You can also contact us on this number",
                     fontSize: 14,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(5),
                   const GlobalText(

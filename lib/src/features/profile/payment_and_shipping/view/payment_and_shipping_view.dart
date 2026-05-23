@@ -72,7 +72,7 @@ class PaymentAndShippingView extends StatelessWidget {
                 GlobalText(
                   str: subtitle,
                   fontSize: 13,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),

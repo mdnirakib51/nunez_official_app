@@ -45,7 +45,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   const GlobalText(
                     str: "Amount",
                     fontSize: 14,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(10),
                   const GlobalText(
@@ -62,7 +62,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   const GlobalText(
                     str: "Available Balance",
                     fontSize: 14,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(50),
                   const Align(

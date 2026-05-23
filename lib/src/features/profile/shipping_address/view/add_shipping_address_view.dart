@@ -157,7 +157,7 @@ class AddShippingAddressView extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: const TextStyle(color: ColorRes.grey, fontSize: 14),
+          hintStyle: const TextStyle(color: ColorRes.grey900, fontSize: 14),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),
@@ -177,7 +177,7 @@ class AddShippingAddressView extends StatelessWidget {
         child: DropdownButton<String>(
           value: value,
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down, color: ColorRes.grey),
+          icon: const Icon(Icons.keyboard_arrow_down, color: ColorRes.grey900),
           items: [value].map((String item) {
             return DropdownMenuItem<String>(
               value: item,

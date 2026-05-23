@@ -92,7 +92,7 @@ class _FinanceViewState extends State<FinanceView> with SingleTickerProviderStat
           const GlobalText(
             str: "Available Balance",
             fontSize: 14,
-            color: ColorRes.grey,
+            color: ColorRes.grey900,
             fontWeight: FontWeight.w500,
           ),
           sizedBoxH(5),
@@ -159,7 +159,7 @@ class _FinanceViewState extends State<FinanceView> with SingleTickerProviderStat
                         GlobalText(
                           str: item['date'],
                           fontSize: 12,
-                          color: ColorRes.grey,
+                          color: ColorRes.grey900,
                         ),
                       ],
                     ),

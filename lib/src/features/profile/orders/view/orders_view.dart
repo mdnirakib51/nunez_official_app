@@ -117,7 +117,7 @@ class _OrdersViewState extends State<OrdersView> with SingleTickerProviderStateM
                   GlobalText(
                     str: "Qty: ${order['qty']}",
                     fontSize: 12,
-                    color: ColorRes.grey,
+                    color: ColorRes.grey900,
                   ),
                   sizedBoxH(4),
                   Row(
@@ -125,7 +125,7 @@ class _OrdersViewState extends State<OrdersView> with SingleTickerProviderStateM
                       const GlobalText(
                         str: "Order Id: ",
                         fontSize: 12,
-                        color: ColorRes.grey,
+                        color: ColorRes.grey900,
                       ),
                       GlobalText(
                         str: order['orderId'],
@@ -162,7 +162,7 @@ class _OrdersViewState extends State<OrdersView> with SingleTickerProviderStateM
                 GlobalText(
                   str: order['hasTracking'] ? "Tracking Id: ${order['trackingId']}" : order['time'],
                   fontSize: 12,
-                  color: ColorRes.grey,
+                  color: ColorRes.grey900,
                 ),
               ],
             ),

@@ -237,7 +237,7 @@ class SalesGraphPainter extends CustomPainter {
     }
     
     // Draw Y axis labels (Placeholder)
-    const textStyle = TextStyle(color: ColorRes.grey, fontSize: 10);
+    const textStyle = TextStyle(color: ColorRes.grey900, fontSize: 10);
     _drawText(canvas, "1k", const Offset(-20, 0), textStyle);
     _drawText(canvas, "800", Offset(-25, size.height * 0.2), textStyle);
     _drawText(canvas, "600", Offset(-25, size.height * 0.4), textStyle);

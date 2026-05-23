@@ -178,7 +178,7 @@ class _InventoryScreenState extends State<InventoryScreen> with SingleTickerProv
               GlobalText(
                 str: "Qty: ${product["qty"]}  •  ${product["status"]}",
                 fontSize: 12,
-                color: ColorRes.grey,
+                color: ColorRes.grey900,
               ),
               sizedBoxH(4),
               GlobalText(

@@ -58,7 +58,7 @@ class TipsScreen extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "Search",
-                        hintStyle: TextStyle(color: ColorRes.grey, fontSize: 14),
+                        hintStyle: TextStyle(color: ColorRes.grey900, fontSize: 14),
                         border: InputBorder.none,
                         isDense: true,
                       ),

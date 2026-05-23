@@ -52,7 +52,7 @@ class HomeScreen extends GetView<HomeController> {
                           child: GlobalText(
                             str: "Search",
                             fontSize: 14,
-                            color: ColorRes.grey,
+                            color: ColorRes.grey900,
                           ),
                         ),
                       ],

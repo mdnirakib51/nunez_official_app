@@ -99,7 +99,7 @@ class _NavItem extends StatelessWidget {
               GlobalText(
                 str: item.title,
                 fontSize: 10,
-                color: isActive ? Colors.black : Colors.grey,
+                color: isActive ? Colors.black : ColorRes.grey900,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
               ),
             ],
